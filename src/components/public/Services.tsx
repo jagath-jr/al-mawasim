@@ -41,17 +41,17 @@ export default function Services() {
   const servicesData = [
     { 
       title: "Curtains & Drapes", 
-      img: "/curtains.jpg", 
+      img: "/home/home-curtains-drapes.webp", 
       desc: "Trust us to deliver elegant curtain solutions, professional installation, and customized designs for homes, offices, hotels, and commercial interiors." 
     },
     { 
       title: "Flooring Solutions", 
-      img: "/flooring.jpg", 
+      img: "/home/home-Flooring-Solutions.webp", 
       desc: "Trust us to provide durable and stylish flooring solutions for residential, commercial, and hospitality environments." 
     },
     { 
       title: "Blinds & Window Coverings", 
-      img: "/blinds.jpg", 
+      img: "/home/home-Blinds-Window-Coverings.webp", 
       desc: "Trust us to deliver modern window treatment solutions with excellent light control, privacy, and functionality for every space." 
     }
   ];

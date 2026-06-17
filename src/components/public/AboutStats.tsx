@@ -113,7 +113,7 @@ export default function AboutStats() {
               <div 
                 ref={(el) => { masonryBoxesRef.current[0] = el; }}
                 className="h-48 sm:h-64 md:h-80 rounded-xl overflow-hidden bg-gray-200 bg-cover bg-center shadow-md"
-                style={{ backgroundImage: "url('/interior-living.jpg')" }} 
+                style={{ backgroundImage: "url('/home/home-Our-Specialize-01.webp')" }} 
               />
               {/* 500+ Box */}
               <div 
@@ -144,7 +144,7 @@ export default function AboutStats() {
               <div 
                 ref={(el) => { masonryBoxesRef.current[3] = el; }}
                 className="h-48 sm:h-64 md:h-80 rounded-xl overflow-hidden bg-gray-200 bg-cover bg-center shadow-md"
-                style={{ backgroundImage: "url('/interior-curtains.jpg')" }} 
+                style={{ backgroundImage: "url('/home/home-Our-Specialize-02.webp')" }} 
               />
             </div>
             
