@@ -59,12 +59,12 @@ export default function AboutStats() {
       }
     );
 
-    // 3. Counter Animation for 98% and 500+
+    // 3. Counter Animation for 100% and 500+
     const counterTarget = { sat: 0, proj: 0 };
     gsap.to(counterTarget, {
-      sat: 98,
+      sat: 100,
       proj: 500,
-      duration: 2.5,
+      duration: 2,
       ease: 'power2.out',
       scrollTrigger: {
         trigger: sectionRef.current,

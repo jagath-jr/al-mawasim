@@ -95,14 +95,14 @@ const features = [
 
 export default function AboutPage() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden w-full bg-[#f8f9fc]">      
+    <main className="relative min-h-screen overflow-x-hidden w-full bg-[#f8f9fc56]">      
       {/* ========================================
         1. FIXED BACKGROUND IMAGE (Parallax)
         ========================================
       */}
       <div className="fixed top-0 left-0 w-full h-screen -z-10 bg-[linear-gradient(90deg,rgba(110,95,165,0.75)_0%,rgba(255,255,255,0)_100%)]">
         <Image
-          src="/about-us-hero.webp" // Recommend replacing with a curtain/interior wide shot
+          src="/about-us/aboutus-bg-img.webp" // Recommend replacing with a curtain/interior wide shot
           alt="About Us Background"
           fill
           className="object-cover opacity-40 mix-blend-multiply"
@@ -224,7 +224,7 @@ export default function AboutPage() {
               <div className="flex flex-col gap-4 lg:gap-6 pt-8 md:pt-12">
                 <motion.div variants={zoomInBox} className="bg-[#eff0fc] rounded-xl p-6 md:p-8 flex flex-col justify-center items-center text-[#1e293b] shadow-sm h-36 md:h-40">
                   <h4 className="text-4xl md:text-5xl font-bold mb-1 flex items-baseline">
-                    <AnimatedNumber to={98} /><span className="text-2xl md:text-3xl ml-1">%</span>
+                    <AnimatedNumber to={100} /><span className="text-2xl md:text-3xl ml-1">%</span>
                   </h4>
                   <p className="text-xs md:text-sm font-medium text-slate-600">Customer Satisification</p>
                 </motion.div>
@@ -290,7 +290,7 @@ export default function AboutPage() {
               {/* Replace this block with your actual grouped logos image if preferred */}
               <div className="relative w-full h-full opacity-90 transition-transform duration-700 hover:scale-105">
                 <Image 
-                  src="/brands-grid.png" // Update with the actual logos compilation image
+                  src="/about-us/aboutl-us-services.png" // Update with the actual logos compilation image
                   alt="Brands We Work With" 
                   fill 
                   className="object-contain" 
