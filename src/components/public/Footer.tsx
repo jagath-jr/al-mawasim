@@ -151,7 +151,7 @@ export default function Footer() {
           href="/schedule" 
           className="w-full md:w-auto text-center bg-[#3b3470] text-white px-8 py-3.5 rounded-md font-medium hover:bg-[#2d2757] transition-colors shadow-md"
         >
-          Schedule Appointment
+          Call Us Now
         </Link>
       </div>
 
