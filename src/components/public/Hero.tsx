@@ -66,10 +66,10 @@ export default function Hero() {
         {/* Left Side: Text */}
         <div ref={textRef} className="text-white space-y-6">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight drop-shadow-lg tracking-tight">
-            Premium Interior Decor <br/> & Window Solutions
+            Premium Curtains, Blinds, Flooring & Wallpaper Services in Abu Dhabi
           </h1>
           <p className="text-lg md:text-xl text-gray-100 max-w-lg drop-shadow-md leading-relaxed">
-            We provide complete curtains, blinds, flooring, upholstery, and wall finishing solutions for residential, commercial, hospitality, and office spaces with premium materials and professional installation services.
+            AL MAWASIM DECOR & CURTAINS provides custom curtains, motorized curtains, roller blinds, zebra blinds, vertical blinds, Venetian blinds, SPC flooring, laminate flooring, wallpaper installation, and sofa upholstery services with professional installation across Abu Dhabi, UAE.
           </p>
         </div>
 

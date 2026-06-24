@@ -141,7 +141,7 @@ export default function AboutPage() {
             className="mt-6 md:mt-0 text-white md:text-right max-w-md lg:max-w-lg"
           >
             <p className="text-lg md:text-xl font-medium leading-snug drop-shadow-md lg:text-[#3b3470]">
-              Premium Curtains, Blinds & Interior Solutions
+             Premium Curtains, Blinds & Interior Solutions Abu Dhabi
             </p>
           </motion.div>
         </motion.div>
@@ -182,14 +182,11 @@ export default function AboutPage() {
                 Welcome
               </span>
               <h2 className="text-3xl md:text-4xl font-semibold text-[#1e293b] leading-tight">
-                History of Our Company
+                Professional Curtains, Flooring & Wallpaper Services in Abu Dhabi
               </h2>
               <div className="space-y-4 text-slate-500 text-sm md:text-base leading-relaxed">
                 <p>
-                  Welcome to AL MAWASIM DECOR & CURTAINS – LLC, your trusted partner for premium interior décor, curtains, blinds, flooring, upholstery, and wall finishing solutions. With years of industry experience and a commitment to quality craftsmanship, we specialize in delivering customized interior solutions tailored to the unique requirements of residential, commercial, hospitality, and office spaces. 
-                </p>
-                <p>
-                  From elegant curtains and motorized systems to flooring, wallpapers, upholstery, and custom furnishings, our experienced team is dedicated to providing stylish, functional, and professionally installed solutions that enhance every environment. Our focus on quality, reliability, and customer satisfaction enables us to transform spaces of all sizes while building long-term relationships based on trust, excellence, and outstanding service.
+                  Welcome to AL MAWASIM DECOR & CURTAINS LLC, a trusted provider of premium curtains, blinds, flooring, upholstery, wallpaper, and interior décor solutions in Abu Dhabi, UAE. We specialize in custom curtains, motorized curtains, roller blinds, zebra blinds, vertical blinds, Venetian blinds, SPC flooring, laminate flooring, wallpaper installation, and furniture upholstery services for residential, commercial, hospitality, and office spaces. Our experienced team delivers stylish designs, premium materials, and professional installation services to create elegant, functional, and comfortable interiors. With a strong commitment to quality, reliability, and customer satisfaction, we help transform homes, villas, offices, hotels, and commercial spaces across Abu Dhabi.
                 </p>
               </div>
             </motion.div>
@@ -206,7 +203,7 @@ export default function AboutPage() {
               <div className="flex flex-col gap-4 lg:gap-6">
                 <motion.div variants={zoomInBox} className="relative w-full h-48 md:h-56 rounded-xl overflow-hidden shadow-sm">
                   <Image 
-                    src="/interior-flooring.jpg" // Update image path
+                    src="/about-us/aboutus-Welcome-img01.webp" // Update image path
                     alt="Team installing flooring" 
                     fill 
                     className="object-cover" 
@@ -230,7 +227,7 @@ export default function AboutPage() {
                 </motion.div>
                 <motion.div variants={zoomInBox} className="relative w-full h-48 md:h-56 rounded-xl overflow-hidden shadow-sm">
                   <Image 
-                    src="/interior-living.jpg" // Update image path
+                    src="/about-us/aboutus-Welcome-img02.webp" // Update image path
                     alt="Living room interior" 
                     fill 
                     className="object-cover" 
@@ -257,7 +254,7 @@ export default function AboutPage() {
                 Why Choose Us
               </h2>
               <p className="text-slate-600 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-                Delivering premium interior décor solutions with quality craftsmanship, professional installation, and customized designs for residential and commercial spaces.
+                Whether you are looking for custom curtains, roller blinds, zebra blinds, motorized curtains, SPC flooring, laminate flooring, wallpaper installation, or sofa upholstery services in Abu Dhabi, our experienced team provides premium materials, customized designs, and professional installation to enhance every space.
               </p>
             </div>
 
@@ -310,10 +307,10 @@ export default function AboutPage() {
                 Services Process
               </span>
               <h2 className="text-3xl md:text-4xl font-semibold text-[#1e293b] leading-tight">
-                The Spaces We Serve
+               Industries We Serve in Abu Dhabi
               </h2>
               <p className="text-slate-500 text-sm md:text-base leading-relaxed">
-                AL MAWASIM DECOR & CURTAINS serves a diverse range of residential, commercial, hospitality, and office environments through premium décor solutions, skilled craftsmanship, and customized interior services. From homes and apartments to offices, hotels, retail outlets, and corporate spaces, we are committed to delivering stylish, functional, and high-quality solutions that help our clients create beautiful and comfortable interiors with confidence.
+                AL MAWASIM DECOR & CURTAINS provides custom curtains, motorized curtains, roller blinds, zebra blinds, vertical blinds, Venetian blinds, SPC flooring, laminate flooring, wallpaper installation, and furniture upholstery solutions for homes, villas, offices, hotels, retail outlets, and commercial spaces across Abu Dhabi. Our experienced team delivers premium materials, professional installation, and customized interior solutions designed to enhance comfort, style, and functionality while creating elegant and practical spaces tailored to every requirement.
               </p>
             </motion.div>
 

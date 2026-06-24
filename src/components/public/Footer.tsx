@@ -145,7 +145,7 @@ export default function Footer() {
         className="bg-[#4d3c8c] py-8 px-6 lg:px-16 flex flex-col md:flex-row justify-between items-center gap-6"
       >
         <h2 className="text-white text-2xl sm:text-3xl font-medium tracking-wide text-center md:text-left">
-          Ready to Transform Your Space?
+          Get a Free Quote for Curtains, Blinds & Flooring Services in Abu Dhabi
         </h2>
         <Link 
           href="/schedule" 
@@ -162,7 +162,7 @@ export default function Footer() {
           {/* Column 1: Description & Social Icons */}
           <div ref={(el) => { columnsRef.current[0] = el; }} className="lg:pr-6 flex flex-col h-full">
             <p className="text-gray-200 text-sm leading-relaxed text-center md:text-left mb-8">
-              AL MAWASIM DECOR & CURTAINS provides premium curtains, blinds, flooring, upholstery, and interior décor solutions for residential and commercial projects with a strong focus on quality, craftsmanship, and customer satisfaction.
+              AL MAWASIM DECOR & CURTAINS provides custom curtains, roller blinds, zebra blinds, vertical blinds, Venetian blinds, motorized curtains, SPC flooring, laminate flooring, wallpaper installation, and sofa upholstery services across Abu Dhabi, UAE.
             </p>
             
             {/* Social Icons Container */}
@@ -187,18 +187,23 @@ export default function Footer() {
             <h3 className="text-white font-medium text-lg mb-6">Company</h3>
             <ul className="space-y-3 text-gray-200 text-sm inline-block text-left">
               <li>
+                <Link href="/" className="hover:text-white transition-colors flex items-center gap-3 group">
+                  <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> Home
+                </Link>
+              </li>
+              <li>
                 <Link href="/about" className="hover:text-white transition-colors flex items-center gap-3 group">
                   <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> About Us
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/expertise" className="hover:text-white transition-colors flex items-center gap-3 group">
                   <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> Expertise
                 </Link>
-              </li>
+              </li> */}
               <li>
-                <Link href="/equipment" className="hover:text-white transition-colors flex items-center gap-3 group">
-                  <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> Equipment
+                <Link href="/services" className="hover:text-white transition-colors flex items-center gap-3 group">
+                  <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> Services
                 </Link>
               </li>
               <li>
@@ -251,45 +256,54 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Contact Info */}
-          <div ref={(el) => { columnsRef.current[3] = el; }} className="text-center md:text-left flex flex-col items-center md:items-start">
-            <h3 className="text-white font-medium text-lg mb-6">24 Hours & Emergencies</h3>
+          {/* Column 4: Contact Info (UPDATED) */}
+          <div ref={(el) => { columnsRef.current[3] = el; }} className="text-center md:text-left flex flex-col items-center md:items-start space-y-8">
             
-            <div className="flex items-center justify-center md:justify-start gap-4 mb-8 group cursor-pointer">
-              <div className="p-2.5 border-2 border-white rounded-full text-white group-hover:bg-white group-hover:text-[#262140] transition-colors duration-300">
-                <Phone size={24} />
+            {/* Contact Us */}
+            <div className="group cursor-pointer flex flex-col gap-3">
+              <div className="flex items-center justify-center md:justify-start gap-2 text-white font-medium">
+                <Phone size={16} className="text-white group-hover:scale-110 transition-transform shrink-0" />
+                <h4 className="text-base font-medium">Contact Us</h4>
               </div>
-              <span className="text-3xl font-normal text-white tracking-wide">+971 56 677 3793</span>
-            </div>
-
-            <div className="space-y-6 w-full max-w-[280px] md:max-w-none text-left">
-              <div className="group cursor-pointer flex flex-col gap-1">
-                <div className="flex items-center gap-2 text-white font-medium">
-                  <MapPin size={16} className="text-white group-hover:scale-110 transition-transform shrink-0" />
-                  <h4>Office Location</h4>
-                </div>
-                <p className="text-gray-300 text-sm pl-6 group-hover:text-white transition-colors">100 S Main St, New York, NY</p>
-              </div>
-
-              <div className="group cursor-pointer flex flex-col gap-1">
-                <div className="flex items-center gap-2 text-white font-medium">
-                  <Mail size={16} className="text-white group-hover:scale-110 transition-transform shrink-0" />
-                  <h4>Send a Message</h4>
-                </div>
-                <p className="text-gray-300 text-sm pl-6 group-hover:text-white transition-colors break-all sm:break-normal">info@almawasimdecor.com</p>
+              <div className="text-gray-300 text-sm pl-0 md:pl-6 space-y-2 group-hover:text-white transition-colors">
+                <p>+971 56 677 3793</p>
+                <p>+971 55 521 8804</p>
               </div>
             </div>
+
+            {/* Office Location */}
+            <div className="group cursor-pointer flex flex-col gap-3">
+              <div className="flex items-center justify-center md:justify-start gap-2 text-white font-medium">
+                <MapPin size={16} className="text-white group-hover:scale-110 transition-transform shrink-0" />
+                <h4 className="text-base font-medium">Office Location</h4>
+              </div>
+              <p className="text-gray-300 text-sm pl-0 md:pl-6 group-hover:text-white transition-colors">
+                Abu Dhabi, UAE
+              </p>
+            </div>
+
+            {/* Send a Message */}
+            <div className="group cursor-pointer flex flex-col gap-3">
+              <div className="flex items-center justify-center md:justify-start gap-2 text-white font-medium">
+                <Mail size={16} className="text-white group-hover:scale-110 transition-transform shrink-0" />
+                <h4 className="text-base font-medium">Send a Message</h4>
+              </div>
+              <p className="text-gray-300 text-sm pl-0 md:pl-6 group-hover:text-white transition-colors break-all sm:break-normal">
+                info@almawasimdecor.com
+              </p>
+            </div>
+            
           </div>
 
         </div>
       </div>
 
-      {/* Bottom Bar - Copyright */}
+      {/* Bottom Bar - Copyright (UPDATED) */}
       <div 
         ref={bottomBarRef}
         className="bg-[#1f1b36] border-t border-white/5 py-6 px-6 lg:px-16 flex flex-col md:flex-row justify-between items-center text-sm text-gray-300 gap-4"
       >
-        <p className="text-center md:text-left">Copyright 2026 - AL MAWASIM DECOR & CURTAINS</p>
+        <p className="text-center md:text-left">© 2026 AL MAWASIM DECOR & CURTAINS. All Rights Reserved.</p>
         <div className="flex flex-wrap justify-center items-center gap-6 mt-2 md:mt-0">
           <Link href="/terms" className="hover:text-white transition-colors whitespace-nowrap">Terms & Conditions</Link>
           <Link href="/privacy" className="hover:text-white transition-colors whitespace-nowrap">Privacy Policy</Link>

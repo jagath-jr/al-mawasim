@@ -20,82 +20,123 @@ export default function AboutStats() {
   // Refs for the number counters
   const satisfactionRef = useRef<HTMLSpanElement>(null);
   const projectsRef = useRef<HTMLSpanElement>(null);
+  
+  // Store ScrollTrigger instances for cleanup
+  const scrollTriggers = useRef<ScrollTrigger[]>([]);
 
   useEffect(() => {
     if (!sectionRef.current) return;
 
+    // Initialize counters with 0
+    if (satisfactionRef.current) satisfactionRef.current.innerText = '0';
+    if (projectsRef.current) projectsRef.current.innerText = '0';
+
+    // Clear any existing ScrollTriggers
+    scrollTriggers.current.forEach(st => st.kill());
+    scrollTriggers.current = [];
+
     // 1. "Zoom Down" staggered animation for the 4 masonry boxes
     if (masonryBoxesRef.current.length > 0) {
-      gsap.fromTo(
-        masonryBoxesRef.current,
-        { opacity: 0, scale: 0.9, y: -40 },
-        {
-          opacity: 1, 
-          scale: 1, 
-          y: 0, 
-          duration: 0.8, 
-          stagger: 0.15, 
-          ease: 'back.out(1.2)', // Gives a slight pop effect
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 75%',
-            toggleActions: 'play none none none'
-          }
-        }
-      );
+      const st1 = ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: 'top 75%',
+        onEnter: () => {
+          gsap.fromTo(
+            masonryBoxesRef.current,
+            { opacity: 0, scale: 0.9, y: -40 },
+            {
+              opacity: 1, 
+              scale: 1, 
+              y: 0, 
+              duration: 0.8, 
+              stagger: 0.15, 
+              ease: 'back.out(1.2)',
+            }
+          );
+        },
+        once: true
+      });
+      scrollTriggers.current.push(st1);
     }
 
     // 2. Slide in the right text block
-    gsap.fromTo(
-      rightTextRef.current,
-      { opacity: 0, x: 50 },
-      { 
-        opacity: 1, x: 0, duration: 1, ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 75%',
-          toggleActions: 'play none none none'
-        }
-      }
-    );
+    const st2 = ScrollTrigger.create({
+      trigger: sectionRef.current,
+      start: 'top 75%',
+      onEnter: () => {
+        gsap.fromTo(
+          rightTextRef.current,
+          { opacity: 0, x: 50 },
+          { 
+            opacity: 1, x: 0, duration: 1, ease: 'power3.out',
+          }
+        );
+      },
+      once: true
+    });
+    scrollTriggers.current.push(st2);
 
     // 3. Counter Animation for 100% and 500+
-    const counterTarget = { sat: 0, proj: 0 };
-    gsap.to(counterTarget, {
-      sat: 100,
-      proj: 500,
-      duration: 2,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top 75%',
-        toggleActions: 'play none none none'
+    const st3 = ScrollTrigger.create({
+      trigger: sectionRef.current,
+      start: 'top 75%',
+      onEnter: () => {
+        const counterTarget = { sat: 0, proj: 0 };
+        gsap.to(counterTarget, {
+          sat: 100,
+          proj: 500,
+          duration: 2,
+          ease: 'power2.out',
+          onUpdate: () => {
+            if (satisfactionRef.current) {
+              satisfactionRef.current.innerText = Math.floor(counterTarget.sat).toString();
+            }
+            if (projectsRef.current) {
+              projectsRef.current.innerText = Math.floor(counterTarget.proj).toString();
+            }
+          },
+          onComplete: () => {
+            // Ensure final values are set
+            if (satisfactionRef.current) satisfactionRef.current.innerText = '100';
+            if (projectsRef.current) projectsRef.current.innerText = '500';
+          }
+        });
       },
-      onUpdate: () => {
-        if (satisfactionRef.current) {
-          satisfactionRef.current.innerText = Math.floor(counterTarget.sat).toString();
-        }
-        if (projectsRef.current) {
-          projectsRef.current.innerText = Math.floor(counterTarget.proj).toString();
-        }
-      }
+      once: true
     });
+    scrollTriggers.current.push(st3);
 
     // 4. Slide-in reveal for the bottom contact banner cards
     if (bannerCardsRef.current.length > 0) {
-      gsap.fromTo(
-        bannerCardsRef.current,
-        { opacity: 0, x: -60 }, // Sliding in from the left
-        {
-          opacity: 1, x: 0, duration: 0.8, stagger: 0.2, ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.contact-banner-trigger',
-            start: 'top 85%',
-            toggleActions: 'play none none none'
-          }
-        }
-      );
+      const bannerTrigger = document.querySelector('.contact-banner-trigger');
+      if (bannerTrigger) {
+        const st4 = ScrollTrigger.create({
+          trigger: bannerTrigger,
+          start: 'top 85%',
+          onEnter: () => {
+            gsap.fromTo(
+              bannerCardsRef.current,
+              { opacity: 0, x: -60 },
+              {
+                opacity: 1, x: 0, duration: 0.8, stagger: 0.2, ease: 'power3.out',
+              }
+            );
+          },
+          once: true
+        });
+        scrollTriggers.current.push(st4);
+      }
     }
+
+    // Refresh ScrollTrigger after a short delay to ensure proper calculations
+    const refreshTimeout = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
+
+    return () => {
+      clearTimeout(refreshTimeout);
+      scrollTriggers.current.forEach(st => st.kill());
+    };
   }, []);
 
   return (
@@ -121,7 +162,7 @@ export default function AboutStats() {
                 className="bg-[#4a398c] h-32 sm:h-40 md:h-44 rounded-xl flex flex-col justify-center items-center text-white shadow-lg p-2 sm:p-4 text-center"
               >
                 <h3 className="text-4xl sm:text-5xl font-bold flex items-center tracking-tight mb-1 sm:mb-2">
-                  <span ref={projectsRef}>0</span>+
+                  <span ref={projectsRef}>500</span>+
                 </h3>
                 <p className="text-xs sm:text-sm text-white/90 font-medium">Projects Completed</p>
               </div>
@@ -135,7 +176,7 @@ export default function AboutStats() {
                 className="bg-[#e2e4fb] h-32 sm:h-40 md:h-44 rounded-xl flex flex-col justify-center items-center shadow-sm p-2 sm:p-4 text-center"
               >
                 <h3 className="text-4xl sm:text-6xl font-bold text-[#112440] flex items-baseline tracking-tight mb-1 sm:mb-2">
-                  <span ref={satisfactionRef}>0</span>
+                  <span ref={satisfactionRef}>100</span>
                   <span className="text-2xl sm:text-4xl ml-1">%</span>
                 </h3>
                 <p className="text-xs sm:text-sm text-[#334155] font-medium">Customer Satisification</p>
@@ -156,10 +197,10 @@ export default function AboutStats() {
               Our Specialize
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#112440] mb-6 leading-[1.2] tracking-tight">
-              Trusted Interior Decor & <br className="hidden lg:block"/> Furnishing Partner
+              Trusted Curtains & Interior Decor Company in Abu Dhabi
             </h2>
             <p className="text-[#4b5563] leading-relaxed text-sm sm:text-base md:text-lg">
-              AL MAWASIM DECOR & CURTAINS specializes in delivering premium interior décor and furnishing solutions for residential, commercial, hospitality, and office projects. With a commitment to quality craftsmanship, innovative designs, and professional installation, we help clients transform their spaces with elegant finishes, functional solutions, and exceptional attention to detail.
+              AL MAWASIM DECOR & CURTAINS specializes in premium curtains, roller blinds, zebra blinds, SPC flooring, wallpaper installation, sofa upholstery, and interior décor solutions for residential, commercial, hospitality, and office spaces in Abu Dhabi.. With a commitment to quality craftsmanship, innovative designs, and professional installation, we help clients transform their spaces with elegant finishes, functional solutions, and exceptional attention to detail.
             </p>
           </div>
           
@@ -192,7 +233,8 @@ export default function AboutStats() {
             </div>
             <div>
               <p className="text-sm text-gray-400 mb-1">Emergency Service</p>
-              <p className="font-semibold tracking-wide text-sm lg:text-base text-white">Call +929 XXX XXXX</p>
+              <p className="font-semibold tracking-wide text-sm lg:text-base text-white">Call  +971 56 677 3793</p>
+              <p className="font-semibold tracking-wide text-sm lg:text-base text-white">Call +971 55 521 8804 </p>
             </div>
           </div>
 

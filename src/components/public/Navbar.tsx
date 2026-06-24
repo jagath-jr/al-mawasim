@@ -94,7 +94,7 @@ export default function Navbar() {
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'About Us', href: '/about' },
-    { name: 'Expertise', href: '/expertise' },
+    // { name: 'Expertise', href: '/expertise' },
     { name: 'Services', href: '/services' },
     { name: 'Projects', href: '/projects' },
     { name: 'Sectors', href: '/sectors' },
@@ -182,7 +182,7 @@ export default function Navbar() {
         {/* 3. Right Side: CTA Button & Mobile Toggle */}
         <div className="flex justify-end items-center lg:w-[200px]">
           <Link 
-            href="/schedule" 
+            href="/contact" 
             className={`hidden lg:flex nav-item opacity-0 px-6 py-2.5 rounded-md font-medium shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg active:scale-95 ${
               isTransparent
                 ? 'bg-white text-[#3b3470] hover:bg-gray-100'

@@ -36,49 +36,49 @@ const sectors = [
     id: 1,
     title: "Residential",
     subtitle: "Transforming Homes with Elegant Interior Solutions",
-    description: "AL MAWASIM DECOR & CURTAINS supports villas, apartments, and residential properties with a comprehensive range of curtains, blinds, flooring, upholstery, and wall finishing solutions. Our expertise in customized interior décor helps homeowners create stylish, comfortable, and functional living environments. From design consultation and material selection to professional installation, we deliver solutions that enhance the beauty and value of every home.",
+    description: "AL MAWASIM DECOR & CURTAINS provides custom curtains, motorized curtains, roller blinds, zebra blinds, SPC flooring, wallpaper installation, and furniture upholstery solutions for villas, apartments, and residential properties across Abu Dhabi, creating stylish and comfortable living spaces.",
     image: "/sector-residential.jpg",
   },
   {
     id: 2,
     title: "Commercial Offices",
-    subtitle: "Creating Professional & Productive Workspaces",
-    description: "AL MAWASIM DECOR & CURTAINS plays a vital role in enhancing office interiors through modern window treatments, flooring solutions, and customized furnishing services. We provide specialized décor solutions for corporate offices, business centers, and commercial facilities. Our experienced team ensures efficient project execution with high-quality finishes that elevate professional environments while maintaining functionality and comfort.",
+    subtitle: "Professional Interior Solutions for Offices & Workspaces",
+    description: "We provide office curtains, roller blinds, vertical blinds, SPC flooring, and customized furnishing solutions for offices, business centers, and commercial facilities across Abu Dhabi, creating functional and professional workspaces.",
     image: "/sector-commercial.jpg",
   },
   {
     id: 3,
     title: "Hospitality",
-    subtitle: "Interior Solutions for Exceptional Guest Experiences",
-    description: "The hospitality sector requires attractive interiors that combine style, comfort, and durability. AL MAWASIM DECOR & CURTAINS provides curtains, upholstery, flooring, wallpapers, and decorative solutions for hotels, resorts, serviced apartments, and hospitality venues. Our solutions are designed to enhance guest experiences, support operational efficiency, and maintain the aesthetic appeal of hospitality properties.",
+    subtitle: "Premium Décor Solutions for Hotels & Hospitality Spaces",
+    description: "The hospitality sector requires attractive interiors that combine style, comfort, and durability. AL MAWASIM DECOR & CURTAINS provides hotel curtains, motorized curtains, upholstery, SPC flooring, wallpaper installation, and decorative solutions for hotels, resorts, serviced apartments, and hospitality venues throughout Abu Dhabi.",
     image: "/sector-hospitality.jpg",
   },
   {
     id: 4,
     title: "Hotels & Resorts",
-    subtitle: "Enhancing Hospitality Interiors with Premium Décor",
-    description: "AL MAWASIM DECOR & CURTAINS delivers customized décor and furnishing services for hotel rooms, lobbies, restaurants, and recreational spaces. We assist clients with window treatments, upholstery, flooring upgrades, and decorative wall finishes, helping them maintain luxurious interiors and create welcoming environments that leave lasting impressions on guests.",
+    subtitle: "Luxury Interior Solutions for Hotels & Resorts",
+    description: "We provide motorized curtains, window treatments, upholstery, flooring, and wall finishing solutions for hotels and resorts across Abu Dhabi, creating elegant interiors that enhance guest comfort and experience.",
     image: "/sector-hotels.jpg",
   },
   {
     id: 5,
     title: "Retail & Showrooms",
-    subtitle: "Elevating Customer Experiences Through Design",
-    description: "Retail environments rely on attractive interiors to engage customers and strengthen brand identity. AL MAWASIM DECOR & CURTAINS supports retail stores, boutiques, and showrooms with customized décor solutions that improve visual appeal and functionality. Our services help businesses create inviting spaces while maintaining durability and practical performance.",
+    subtitle: "Stylish Interiors for Retail Stores & Showrooms",
+    description: "We provide custom curtains, roller blinds, flooring, wallpaper installation, and decorative solutions for retail stores, boutiques, and showrooms across Abu Dhabi, helping create attractive and functional commercial spaces.",
     image: "/sector-retail.jpg",
   },
   {
     id: 6,
     title: "Educational Institutions",
-    subtitle: "Creating Comfortable Learning Environments",
-    description: "Schools, colleges, and educational facilities require practical and aesthetically pleasing interior solutions. AL MAWASIM DECOR & CURTAINS provides curtains, blinds, flooring, and furnishing solutions that contribute to comfortable and productive learning spaces. Our services are designed to meet the functional requirements of educational environments while enhancing their overall appearance.",
+    subtitle: "Interior Solutions for Schools & Educational Facilities",
+    description: "AL MAWASIM DECOR & CURTAINS provides curtains, roller blinds, flooring, and furnishing solutions for schools, colleges, and educational facilities across Abu Dhabi, helping create comfortable and productive learning environments.",
     image: "/sector-education.jpg",
   },
   {
     id: 7,
     title: "Healthcare Facilities",
-    subtitle: "Enhancing Medical & Care Environments",
-    description: "AL MAWASIM DECOR & CURTAINS provides specialized interior solutions for clinics, hospitals, medical centers, and healthcare facilities. Our expertise includes privacy curtains, flooring systems, blinds, and wall finishing solutions designed to support comfort, hygiene, and functionality. We work closely with clients to deliver reliable solutions that meet operational needs while creating welcoming healthcare environments.",
+    subtitle: "Specialized Interior Solutions for Healthcare Facilities",
+    description: "We provide privacy curtains, roller blinds, flooring systems, wallpaper installation, and wall finishing solutions for clinics, hospitals, and medical centers across Abu Dhabi, improving comfort, hygiene, and functionality.",
     image: "/sector-healthcare.jpg",
   },
 ];
@@ -133,7 +133,7 @@ export default function SectorPage() {
             className="mt-6 md:mt-0 md:text-right max-w-md lg:max-w-lg"
           >
             <p className="text-lg md:text-xl font-medium leading-snug drop-shadow-md text-[#3b3470]">
-              Premium Curtains, Blinds & Interior Solutions
+              Premium Curtains, Blinds & Interior Solutions Abu Dhabi
             </p>
           </motion.div>
         </motion.div>
@@ -184,13 +184,13 @@ export default function SectorPage() {
                 className="space-y-5"
               >
                 <h2 className="text-3xl md:text-4xl font-semibold text-[#4a398c]">
-                  Industries We Serve
+                  Our Sector
                 </h2>
                 <h3 className="text-xl md:text-2xl font-medium text-[#1e293b] leading-snug">
-                  Supporting Residential & Commercial Spaces with Premium Interior Solutions
+                  Interior Solutions for Residential, Commercial & Hospitality Spaces in Abu Dhabi
                 </h3>
                 <p className="text-slate-500 text-sm md:text-base leading-relaxed">
-                  AL MAWASIM DECOR & CURTAINS provides specialized interior décor and furnishing solutions across a diverse range of sectors. Our experience, skilled workforce, and premium product selections enable us to meet the unique design and functional requirements of every space we serve.
+                  AL MAWASIM DECOR & CURTAINS provides premium curtains, blinds, flooring, wallpaper installation, upholstery, and interior décor solutions for residential, commercial, hospitality, retail, educational, and healthcare sectors across Abu Dhabi. Our experienced team delivers customized solutions, premium materials, and professional installation services tailored to the unique requirements of every space.
                 </p>
               </motion.div>
             </div>
