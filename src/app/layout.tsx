@@ -3,7 +3,7 @@ import './globals.css';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://almawasim.com"),
+  metadataBase: new URL("https://al-mawasim.vercel.app/"),
 
   title: {
     default: "Al Mawasim | Trading, Contracting & Interior Solutions",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://almawasim.com",
+    url: "https://al-mawasim.vercel.app/",
     siteName: "Al Mawasim",
     title: "Al Mawasim | Trading, Contracting & Interior Solutions",
     description:
