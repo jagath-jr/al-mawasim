@@ -31,50 +31,50 @@ const projects = [
     id: 1,
     title: "Custom Curtains & Motorized Curtain Solutions",
     location: "Residential Villa • Abu Dhabi, UAE",
-    image: "/project-1.jpg", 
+    image: "/projects/projects.webp", 
   },
   {
     id: 2,
     title: "Roller & Zebra Blinds for Office Interiors",
     location: "Office Space • Abu Dhabi, UAE",
-    image: "/project-2.jpg",
+    image: "/projects/projects.webp", 
   },
   {
     id: 3,
     title: "SPC Flooring Solutions for Commercial Spaces",
     location: "Commercial Space • Abu Dhabi, UAE",
-    image: "/project-3.jpg",
+    image: "/projects/projects.webp",
   },
   {
     id: 4,
     title: "Wallpaper Installation & Decorative Wall Finishes",
     location: "Residential Apartment • Abu Dhabi, UAE",
-    image: "/project-4.jpg",
+    image: "/projects/projects.webp",
   },
   {
     id: 5,
     title: "Furniture & Sofa Upholstery Solutions",
     location: "Residential Property • Abu Dhabi, UAE",
-    image: "/project-5.jpg",
+    image: "/projects/projects.webp",
   },
   {
     id: 6,
     title: "Hotel Curtains & Interior Décor Solutions",
     location: "Hospitality Project • Abu Dhabi, UAE",
-    image: "/project-6.jpg",
+    image: "/projects/projects.webp",
   },
 ];
 
 export default function ProjectsPage() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden w-full bg-[#f8f9fc]">      
+    <main className="relative min-h-screen overflow-x-hidden w-full bg-[#f8f9fc4e]">      
       {/* ========================================
         1. FIXED BACKGROUND IMAGE (Parallax)
         ========================================
       */}
       <div className="fixed top-0 left-0 w-full h-screen -z-10 bg-[linear-gradient(90deg,rgba(110,95,165,0.75)_0%,rgba(255,255,255,0)_100%)]">
         <Image
-          src="/project-page-hero.webp" // Recommend replacing with an interior/curtain hero shot
+          src="/projects/bg-project.webp" // Recommend replacing with an interior/curtain hero shot
           alt="Interior Projects"
           fill
           className="object-cover opacity-40 mix-blend-multiply"
