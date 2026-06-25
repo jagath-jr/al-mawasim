@@ -12,7 +12,7 @@ import { motion, Variants } from "framer-motion";
 const heroData = {
   tagline: "Our Service",
   title: "Our Services",
-  description: "Premium Curtains, Blinds & Interior Solutions",
+  description: "Premium Curtains, Blinds & Interior Solutions Abu Dhabi",
   backgroundImage: "/services-page-hero.webp", // Update with your actual image path
 };
 
@@ -47,7 +47,7 @@ const servicesData: ServiceSection[] = [
     ),
     description: (
       <>
-        AL MAWASIM DECOR & CURTAINS provides exquisite curtain solutions that enhance the aesthetic appeal and functionality of any space. From classic drapes to modern motorized systems, we offer premium fabrics, precise tailoring, and professional installation services to perfectly match your interior design preferences.
+        AL MAWASIM DECOR & CURTAINS provides custom curtains, office curtains, and motorized curtain solutions with premium fabrics and professional installation services across Abu Dhabi. Our curtain solutions are designed to enhance privacy, improve comfort, and complement modern interior styles. We serve homes, villas, offices, hotels, and commercial spaces with customized designs and quality craftsmanship.
       </>
     ),
     image: "/service-curtains-main.jpg",
@@ -56,37 +56,37 @@ const servicesData: ServiceSection[] = [
     subCards: [
       {
         title: "Curtains",
-        desc: "Classic and contemporary fabric curtains designed to add warmth and elegance to any room.",
+        desc: "Custom curtain solutions designed to enhance privacy, comfort, and interior elegance for homes, villas, offices, hotels, and commercial spaces. We offer premium fabrics, stylish finishes, and customized designs tailored to every requirement.",
         img: "/curtain-type-1.jpg",
       },
       {
         title: "Office Curtains",
-        desc: "Professional and sleek window coverings optimized for light control in corporate environments.",
+        desc: "Professional office curtain systems providing excellent light control, privacy, and stylish finishes for productive workspaces. We create customized solutions suitable for offices, meeting rooms, and commercial environments.",
         img: "/curtain-type-2.jpg",
       },
       {
         title: "Motorized Curtains",
-        desc: "Convenient and modern automated curtain systems for seamless operation.",
+        desc: "Modern motorized curtain systems designed for convenience, comfort, and effortless operation. These smart solutions are ideal for luxury homes, hotels, and offices and professional installation services across Abu Dhabi.",
         img: "/curtain-type-3.jpg",
       },
       {
         title: "Roller Blinds",
-        desc: "Simple, effective, and stylish roller blinds available in various opacities.",
+        desc: "Stylish roller blinds offering effective light control, privacy, and modern functionality. Available in various colors and fabrics, they are suitable for homes and offices. Our roller blinds combine practicality with elegant interior aesthetics.",
         img: "/curtain-type-4.jpg",
       },
       {
         title: "Zebra Blinds",
-        desc: "Adjustable light control with unique alternating sheer and solid stripes.",
+        desc: "Contemporary zebra blinds combine dual-layer fabrics with flexible light control and modern designs. They provide privacy while allowing natural light to enter interior spaces. These blinds are ideal for homes, villas, and offices.",
         img: "/curtain-type-5.jpg",
       },
       {
         title: "Vertical Blinds",
-        desc: "Perfect for large windows and sliding doors, offering excellent privacy and light management.",
+        desc: "Practical vertical blinds designed for offices, commercial spaces, and large windows. They offer smooth operation, privacy, and effective sunlight control. Our customized vertical blinds are available in different materials and finishes.",
         img: "/curtain-type-6.jpg",
       },
       {
         title: "Aluminum Venetian Blinds",
-        desc: "Durable, moisture-resistant, and stylish metallic blinds for a modern touch.",
+        desc: "Durable aluminum Venetian blinds provide precise light control and adjustable privacy. Their sleek appearance makes them suitable for modern interiors and workspaces. They are easy to maintain and designed for long-lasting performance.",
         img: "/curtain-type-7.jpg",
       },
     ],
@@ -102,7 +102,7 @@ const servicesData: ServiceSection[] = [
     ),
     description: (
       <>
-        AL MAWASIM DECOR & CURTAINS offers specialized furniture upholstery and restoration services. We breathe new life into your sofas, chairs, and custom seating with high-quality fabrics, expert craftsmanship, and meticulous attention to detail, ensuring comfort and elegance.
+        We provide sofa upholstery and custom furniture solutions using premium materials and expert craftsmanship. Our upholstery services help restore comfort, improve durability, and enhance interior aesthetics. We serve residential, commercial, hospitality, and office environments throughout Abu Dhabi.
       </>
     ),
     image: "/service-upholstery-main.jpg",
@@ -111,12 +111,12 @@ const servicesData: ServiceSection[] = [
     subCards: [
       {
         title: "Sofa Upholstery",
-        desc: "Revitalize your living room with custom sofa reupholstery using premium fabrics and materials.",
+        desc: "Professional sofa upholstery services designed to restore furniture with premium fabrics and elegant finishes. We help improve comfort, appearance, and durability for homes, offices, and hotels.",
         img: "/upholstery-1.jpg",
       },
       {
         title: "Custom Furniture & Upholstery Solutions",
-        desc: "Bespoke furniture pieces tailored to your exact comfort and aesthetic requirements.",
+        desc: "Customized furniture upholstery solutions designed to complement different interior styles. We use quality materials and modern designs to create stylish and comfortable furniture. ",
         img: "/upholstery-2.jpg",
       },
     ],
@@ -132,7 +132,7 @@ const servicesData: ServiceSection[] = [
     ),
     description: (
       <>
-        AL MAWASIM DECOR & CURTAINS provides a wide range of premium flooring solutions to suit any style and requirement. From laminate and hardwood to luxury vinyl and SPC flooring, we deliver flawless installation services that add warmth, character, and lasting value to your spaces.
+        AL MAWASIM DECOR & CURTAINS provides SPC flooring, laminate flooring, and LVT flooring solutions for residential and commercial interiors. Our flooring systems combine durability, comfort, and stylish finishes. We deliver professional installation services tailored to every project.
       </>
     ),
     image: "/service-flooring-main.jpg",
@@ -141,17 +141,17 @@ const servicesData: ServiceSection[] = [
     subCards: [
       {
         title: "Laminate/Wood Flooring",
-        desc: "Classic and elegant wood finishes that bring natural warmth to any room.",
+        desc: "Elegant laminate flooring that combines natural wood aesthetics with easy maintenance and durability. It is suitable for homes, offices, and apartments. Our flooring solutions provide long-lasting value and attractive finishes.",
         img: "/flooring-1.jpg",
       },
       {
         title: "SPC Flooring",
-        desc: "Stone Plastic Composite flooring offering superior durability and water resistance.",
+        desc: "Waterproof SPC flooring designed for homes, offices, hotels, and commercial spaces. Its durability and resistance to wear make it ideal for high-traffic areas. We provide professional installation and premium materials for lasting performance.",
         img: "/flooring-2.jpg",
       },
       {
         title: "LVT Flooring",
-        desc: "Luxury Vinyl Tiles that beautifully mimic natural materials with easy maintenance.",
+        desc: "Luxury vinyl tile flooring offers exceptional durability and modern aesthetics. It combines comfort, easy maintenance, and stylish finishes for residential and commercial interiors. Our LVT flooring solutions provide long-term value and performance.",
         img: "/flooring-3.jpg",
       },
     ],
@@ -167,7 +167,7 @@ const servicesData: ServiceSection[] = [
     ),
     description: (
       <>
-        Transform your walls into stunning focal points with our extensive range of wallpapers and decorative wall finishes. We offer customized designs, varied textures, and professional installation to elevate the ambiance of any room.
+        Our wallpaper installation and wall finishing services add character, texture, and sophistication to interior spaces. We provide premium materials and professional workmanship for residential and commercial projects. Our solutions help create stylish and welcoming environments.
       </>
     ),
     image: "/service-wall-main.jpg",
@@ -175,13 +175,13 @@ const servicesData: ServiceSection[] = [
     subSectionTitle: "Available Wall Finishes Types",
     subCards: [
       {
-        title: "Wallpaper & Wallcoverings",
-        desc: "A vast selection of patterns, textures, and murals to instantly upgrade your interiors.",
+        title: "Decorative Wallpaper",
+        desc: "Premium wallpaper solutions available in various textures, colors, and patterns. They add elegance and personality to homes, offices, hotels, and commercial spaces. We provide expert installation services for flawless finishes.",
         img: "/wall-1.jpg",
       },
       {
         title: "Painting Services",
-        desc: "Professional interior painting services for a fresh, vibrant, and flawless finish.",
+        desc: "Professional painting services delivering smooth finishes and long-lasting visual appeal. Our experienced team uses quality materials and modern techniques to achieve excellent results. We provide solutions for residential and commercial properties.",
         img: "/wall-2.jpg",
       },
     ],
@@ -197,7 +197,7 @@ const servicesData: ServiceSection[] = [
     ),
     description: (
       <>
-        Enhance comfort and acoustics with our premium carpet and rug collections. Whether you need wall-to-wall carpeting for commercial spaces or customized rugs for residential living areas, we provide high-quality materials and expert fitting.
+        We provide quality carpets and custom carpet solutions designed to improve comfort and interior aesthetics. Our products are suitable for homes, offices, hotels, and commercial environments. We offer a variety of styles, textures, and finishes.
       </>
     ),
     image: "/service-carpets-main.jpg",
@@ -206,12 +206,12 @@ const servicesData: ServiceSection[] = [
     subCards: [
       {
         title: "Carpets",
-        desc: "Plush and durable broadloom carpets ideal for bedrooms, offices, and hotels.",
+        desc: "Durable and comfortable carpet solutions designed to provide warmth and style. Our carpets are suitable for residential and commercial spaces. They are available in different colors, textures, and materials.",
         img: "/carpet-1.jpg",
       },
       {
         title: "Custom Carpet Solutions",
-        desc: "Bespoke rugs and carpets designed to fit your unique dimensions and style.",
+        desc: "Customized carpet options created to complement different interior designs and requirements. Our solutions enhance comfort while adding elegance to every environment. We provide quality materials and professional installation services.",
         img: "/carpet-2.jpg",
       },
     ],
@@ -227,21 +227,21 @@ const servicesData: ServiceSection[] = [
     ),
     description: (
       <>
-        Maximize your space with our custom cupboards, wardrobes, and interior storage solutions. We design and install functional, aesthetically pleasing storage units tailored to your specific organizational needs and interior aesthetics.
+        AL MAWASIM DECOR & CURTAINS provides custom cupboards and wardrobe solutions designed to maximize storage and improve organization. Our solutions combine practicality, durability, and attractive finishes. We help create organized and functional interiors.
       </>
     ),
     image: "/service-storage-main.jpg",
     layout: "imageLeft",
-    subSectionTitle: "Available Storage & Interior Types",
+    subSectionTitle: "Available Storage Solutions",
     subCards: [
       {
-        title: "Custom Media Cabinets",
-        desc: "Sleek and functional entertainment units designed for modern living rooms.",
+        title: "Custom- Made Cupboards",
+        desc: "Custom cupboard solutions designed to optimize storage space and improve functionality. Our designs are tailored to suit modern homes and offices. We provide quality materials and professional workmanship.",
         img: "/storage-1.jpg",
       },
       {
-        title: "Functional Storage Units",
-        desc: "Smart shelving and wardrobe systems that optimize your available space.",
+        title: "Wardrobes & Storage Units",
+        desc: "Modern wardrobes and storage units created to maximize space utilization and organization. They are available in various styles and finishes to complement different interiors. Our solutions combine aesthetics with practical functionality.",
         img: "/storage-2.jpg",
       },
     ],

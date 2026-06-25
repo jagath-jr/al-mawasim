@@ -80,7 +80,7 @@ export default function ContactPage() {
             className="mt-6 md:mt-0 md:text-right max-w-md lg:max-w-lg"
           >
             <p className="text-lg md:text-xl font-medium leading-snug drop-shadow-md text-[#3b3470]">
-              Premium Curtains, Blinds & Interior Solutions
+              Premium Curtains, Blinds & Interior Solutions Abu Dhabi
             </p>
           </motion.div>
         </motion.div>
@@ -116,10 +116,10 @@ export default function ContactPage() {
             className="lg:col-span-2 bg-[#f8f9fc] p-8 md:p-12 rounded-[2rem]"
           >
             <h2 className="text-2xl md:text-3xl font-semibold text-[#4a398c] mb-4">
-              Need Interior Decor or Furnishing Support?
+             Need Curtains, Blinds & Flooring Solutions in Abu Dhabi?
             </h2>
             <p className="text-slate-600 mb-10 text-sm md:text-base leading-relaxed">
-              We specialize in delivering premium curtains, flooring, blinds, upholstery, and wall finishing solutions tailored to residential, commercial, hospitality, and office projects. Our skilled team is dedicated to providing elegant designs, quality workmanship, and professional installation services that transform spaces and ensure exceptional customer satisfaction.
+              AL MAWASIM DECOR & CURTAINS provides custom curtains, roller blinds, zebra blinds, SPC flooring, wallpaper installation, and upholstery solutions for residential, commercial, hospitality, and office spaces across Abu Dhabi. Our experienced team delivers premium materials, elegant designs, and professional installation services tailored to transform every space with style, comfort, and functionality.
             </p>
 
             <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -215,7 +215,7 @@ export default function ContactPage() {
               <motion.div variants={fadeInUp} className="flex gap-3 items-start group">
                 <MapPin className="w-5 h-5 text-[#1e293b] mt-0.5" strokeWidth={2} />
                 <div>
-                  <h4 className="font-semibold text-[#1e293b] text-sm mb-1">Office Location</h4>
+                  <h4 className="font-semibold text-[#1e293b] text-sm mb-1">Visit Our Office</h4>
                   <p className="text-slate-600 text-sm leading-relaxed">
                     Al Mawasim Decor<br />
                     Business Bay, Dubai, UAE
@@ -238,7 +238,10 @@ export default function ContactPage() {
                 <div>
                   <h4 className="font-semibold text-[#1e293b] text-sm mb-1">Call Us Directly</h4>
                   <p className="text-slate-600 text-sm">
-                    +971 XX XXX XXXX
+                    +971 56 677 3793
+                  </p>
+                  <p className="text-slate-600 text-sm">
+                    +971 55 521 8804
                   </p>
                 </div>
               </motion.div>

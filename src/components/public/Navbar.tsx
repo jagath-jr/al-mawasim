@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image'
 import { usePathname } from 'next/navigation';
 import { Phone, Mail, Clock, Menu, X } from 'lucide-react';
 import gsap from 'gsap';
@@ -93,7 +94,7 @@ export default function Navbar() {
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'About Us', href: '/about' },
-    { name: 'Expertise', href: '/expertise' },
+    // { name: 'Expertise', href: '/expertise' },
     { name: 'Services', href: '/services' },
     { name: 'Projects', href: '/projects' },
     { name: 'Sectors', href: '/sectors' },
@@ -137,17 +138,22 @@ export default function Navbar() {
         }}
       >
         
-        {/* 1. Left Side: Logo */}
-        <div className="flex-shrink-0 lg:w-[200px] nav-item opacity-0">
-           <Link 
-            href="/" 
-            className={`text-2xl font-bold tracking-wider transition-colors duration-300 ${
-              isTransparent ? 'text-white [text-shadow:_0_2px_4px_rgb(0_0_0_/_0.8)]' : 'text-[#1a202c]'
-            }`}
-           >
-             LOGO
-           </Link>
-        </div>
+       {/* 1. Left Side: Logo */}
+<div className="flex-shrink-0 lg:w-[200px] nav-item opacity-0">
+   <Link 
+    href="/" 
+    className="block transition-colors duration-300"
+   >
+     <Image 
+  src="/AL MAWASIM LOGO (1).png"
+  alt="Company Logo"
+  width={200}
+  height={60}
+  className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto transition-all duration-300"
+  priority
+/>
+   </Link>
+</div>
 
         {/* 2. Center: Desktop Links */}
         <div className="hidden lg:flex flex-1 justify-center items-center gap-8">
@@ -176,7 +182,7 @@ export default function Navbar() {
         {/* 3. Right Side: CTA Button & Mobile Toggle */}
         <div className="flex justify-end items-center lg:w-[200px]">
           <Link 
-            href="/schedule" 
+            href="/contact" 
             className={`hidden lg:flex nav-item opacity-0 px-6 py-2.5 rounded-md font-medium shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg active:scale-95 ${
               isTransparent
                 ? 'bg-white text-[#3b3470] hover:bg-gray-100'

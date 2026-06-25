@@ -41,37 +41,37 @@ const expertiseAreas = [
     id: 1,
     title: "Curtains & Motorized Curtain Solutions",
     description: "Beautiful window treatments require precision, quality materials, and professional installation. Our curtain solutions provide elegant designs, seamless operation, and customized finishes for homes, offices, hotels, and commercial interiors.",
-    image: "/expertise-curtains.jpg",
+    image: "/expertise/expertise-Curtains-MotorizedCurtainSolutions.webp",
   },
   {
     id: 2,
     title: "Blinds & Window Covering Solutions",
     description: "Effective light control and privacy are essential for modern interiors. Our roller, zebra, vertical, and Venetian blinds help create comfortable spaces while maintaining style, functionality, and long-lasting performance.",
-    image: "/expertise-blinds.jpg",
+    image: "/expertise/expertise-Blinds-WindowCoveringSolutions.webp",
   },
   {
     id: 3,
     title: "Flooring Solutions",
     description: "The right flooring enhances both aesthetics and durability. We provide laminate wood, SPC, and luxury vinyl flooring solutions designed to improve interior spaces while ensuring easy maintenance and lasting value.",
-    image: "/expertise-flooring.jpg",
+    image: "/expertise/expertise-FlooringSolutions.webp",
   },
   {
     id: 4,
     title: "Sofa Upholstery Solutions",
     description: "We restore and customize furniture with premium upholstery materials, expert craftsmanship, and stylish finishes that improve comfort, appearance, and durability for residential and commercial environments.",
-    image: "/expertise-upholstery.jpg",
+    image: "/expertise/expertise-SofaUpholsterySolutions.webp",
   },
   {
     id: 5,
     title: "Wallpaper & Wall Finishing Solutions",
     description: "Our wallpaper and decorative wall finishing services add character, texture, and sophistication to interior spaces while creating unique environments that reflect modern design preferences.",
-    image: "/expertise-wallpaper.jpg",
+    image: "/expertise/expertise-Wallpaper-WallFinishingSolutions.webp",
   },
   {
     id: 6,
     title: "Custom Cupboards & Interior Furnishings",
     description: "We provide practical storage and furnishing solutions designed to maximize space utilization, improve organization, and enhance the overall functionality and appearance of interior environments.",
-    image: "/expertise-cupboards.jpg",
+    image: "/expertise/expertise-CustomCupboards-InteriorFurnishings.webp",
   },
 ];
 
@@ -85,7 +85,7 @@ export default function ExpertisePage() {
       <div className="fixed top-0 left-0 w-full h-screen -z-10 bg-[linear-gradient(90deg,rgba(110,95,165,0.75)_0%,rgba(255,255,255,0)_100%)]">
         {/* Recommend replacing with a bright window/interior background as seen in the design */}
         <Image
-          src="/expertise-page-hero.webp" 
+          src="/expertise/expertise-bg-img.webp" 
           alt="Expertise Background"
           fill
           className="object-cover opacity-40 mix-blend-multiply"
@@ -163,7 +163,7 @@ export default function ExpertisePage() {
                 className="relative w-full h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-sm"
               >
                 <Image 
-                  src="/expertise-intro.jpg" // Update with the drywall installation image or similar
+                  src="/expertise/expertise-ourexpertise-img.webp" // Update with the drywall installation image or similar
                   alt="Team installing interior elements" 
                   fill 
                   className="object-cover" 
