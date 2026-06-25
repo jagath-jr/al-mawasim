@@ -37,62 +37,62 @@ const sectors = [
     title: "Residential",
     subtitle: "Transforming Homes with Elegant Interior Solutions",
     description: "AL MAWASIM DECOR & CURTAINS provides custom curtains, motorized curtains, roller blinds, zebra blinds, SPC flooring, wallpaper installation, and furniture upholstery solutions for villas, apartments, and residential properties across Abu Dhabi, creating stylish and comfortable living spaces.",
-    image: "/sector-residential.jpg",
+    image: "/sectors/Residential-sectors.webp",
   },
   {
     id: 2,
     title: "Commercial Offices",
     subtitle: "Professional Interior Solutions for Offices & Workspaces",
     description: "We provide office curtains, roller blinds, vertical blinds, SPC flooring, and customized furnishing solutions for offices, business centers, and commercial facilities across Abu Dhabi, creating functional and professional workspaces.",
-    image: "/sector-commercial.jpg",
+    image: "/sectors/CommercialOffices-sectors.webp",
   },
   {
     id: 3,
     title: "Hospitality",
     subtitle: "Premium Décor Solutions for Hotels & Hospitality Spaces",
     description: "The hospitality sector requires attractive interiors that combine style, comfort, and durability. AL MAWASIM DECOR & CURTAINS provides hotel curtains, motorized curtains, upholstery, SPC flooring, wallpaper installation, and decorative solutions for hotels, resorts, serviced apartments, and hospitality venues throughout Abu Dhabi.",
-    image: "/sector-hospitality.jpg",
+    image: "/sectors/Hospitality-sectors.webp",
   },
   {
     id: 4,
     title: "Hotels & Resorts",
     subtitle: "Luxury Interior Solutions for Hotels & Resorts",
     description: "We provide motorized curtains, window treatments, upholstery, flooring, and wall finishing solutions for hotels and resorts across Abu Dhabi, creating elegant interiors that enhance guest comfort and experience.",
-    image: "/sector-hotels.jpg",
+    image: "/sectors/Hotels-Resorts-sectors.webp",
   },
   {
     id: 5,
     title: "Retail & Showrooms",
     subtitle: "Stylish Interiors for Retail Stores & Showrooms",
     description: "We provide custom curtains, roller blinds, flooring, wallpaper installation, and decorative solutions for retail stores, boutiques, and showrooms across Abu Dhabi, helping create attractive and functional commercial spaces.",
-    image: "/sector-retail.jpg",
+    image: "/sectors/Retail-Showrooms-sectors.webp",
   },
   {
     id: 6,
     title: "Educational Institutions",
     subtitle: "Interior Solutions for Schools & Educational Facilities",
     description: "AL MAWASIM DECOR & CURTAINS provides curtains, roller blinds, flooring, and furnishing solutions for schools, colleges, and educational facilities across Abu Dhabi, helping create comfortable and productive learning environments.",
-    image: "/sector-education.jpg",
+    image: "/sectors/EducationalInstitutions-sectors.webp",
   },
   {
     id: 7,
     title: "Healthcare Facilities",
     subtitle: "Specialized Interior Solutions for Healthcare Facilities",
     description: "We provide privacy curtains, roller blinds, flooring systems, wallpaper installation, and wall finishing solutions for clinics, hospitals, and medical centers across Abu Dhabi, improving comfort, hygiene, and functionality.",
-    image: "/sector-healthcare.jpg",
+    image: "/sectors/HealthcareFacilities-sectors.webp",
   },
 ];
 
 export default function SectorPage() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden w-full bg-white">      
+    <main className="relative min-h-screen overflow-x-hidden w-full bg-[#f8f9fc4e]">      
       {/* ========================================
         1. FIXED BACKGROUND IMAGE (Parallax)
         ========================================
       */}
       <div className="fixed top-0 left-0 w-full h-screen -z-10 bg-[linear-gradient(90deg,rgba(110,95,165,0.75)_0%,rgba(255,255,255,0)_100%)]">
         <Image
-          src="/sector-page-hero.webp" // Recommend replacing with an interior living space image
+          src="/sectors/bg-sectors.webp" // Recommend replacing with an interior living space image
           alt="Interior Sector Overview"
           fill
           className="object-cover opacity-40 mix-blend-multiply"
@@ -169,7 +169,7 @@ export default function SectorPage() {
                 className="relative w-full h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-sm"
               >
                 <Image 
-                  src="/sector-intro-curtains.jpg" // Update with curtain close-up image
+                  src="/sectors/OurSector-sectors.webp" // Update with curtain close-up image
                   alt="Industries We Serve" 
                   fill 
                   className="object-cover" 

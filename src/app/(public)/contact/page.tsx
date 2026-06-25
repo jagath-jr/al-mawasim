@@ -32,14 +32,14 @@ const slideInRight: Variants = {
 
 export default function ContactPage() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden w-full bg-white">      
+    <main className="relative min-h-screen overflow-x-hidden w-full bg-[#f8f9fc56]">      
       {/* ========================================
         1. FIXED BACKGROUND IMAGE 
         ========================================
       */}
       <div className="fixed top-0 left-0 w-full h-screen -z-10 bg-[linear-gradient(90deg,rgba(110,95,165,0.75)_0%,rgba(255,255,255,0)_100%)]">
         <Image
-          src="/contact-page-hero.webp" // Update with a suitable interior/team hero image
+          src="/contact/bg-contact.webp" // Update with a suitable interior/team hero image
           alt="Contact Us Background"
           fill
           className="object-cover opacity-40 mix-blend-multiply"
@@ -191,7 +191,7 @@ export default function ContactPage() {
               className="relative w-full h-[220px] rounded-2xl overflow-hidden shadow-sm"
             >
               <Image 
-                src="/office-building.jpg" // Update with suitable office/building image
+                src="/contact/leftcontact.webp" // Update with suitable office/building image
                 alt="Our Office Building" 
                 fill 
                 className="object-cover transition-transform duration-700 hover:scale-105" 
