@@ -223,19 +223,15 @@ export const Pages: CollectionConfig = {
       admin: { condition: (_, siblingData) => siblingData.pageType === 'contact' },
       fields: [
         {
-          name: 'globalSettingsReminder',
-          type: 'ui',
-          admin: {
-            components: {
-              Field: () => {
-                // Using a generic function for the copy-paste requirement. 
-                // In an actual React component you'd render UI.
-                return null; 
-              },
-            },
-            description: 'NOTE: Phone numbers, emails, and address are pulled directly from the Global Site Settings and displayed on the frontend automatically.',
-          }
-        },
+  name: 'globalSettingsNote',
+  type: 'textarea',
+  admin: {
+    readOnly: true,
+    description: 'This is an informational field.',
+  },
+  defaultValue:
+    'Phone numbers, email addresses, and the company address are managed in Global Site Settings. Changes there are reflected automatically on this page.',
+},
         { name: 'pageIntroduction', type: 'richText' },
         {
           name: 'contactForm',
