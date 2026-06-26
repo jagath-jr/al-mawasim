@@ -88,6 +88,7 @@ export const metadata: Metadata = {
 
   category: "Business",
 };
+
 export default function RootLayout({
   children,
 }: {

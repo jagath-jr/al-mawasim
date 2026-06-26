@@ -1,0 +1,204 @@
+"use client";
+
+import Image from "next/image";
+import { Image as ImageIcon } from "lucide-react"; // Renamed to avoid conflict with next/image
+import { motion, Variants } from "framer-motion";
+
+// --- Explicitly Typed Animation Variants ---
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
+const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardVariant: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+};
+
+// --- Dummy Data for Projects (Fallback if CMS is empty) ---
+const fallbackProjects = [
+  {
+    id: 1,
+    title: "Custom Curtains & Motorized Curtain Solutions",
+    location: "Residential Villa • Abu Dhabi, UAE",
+    image: "/projects/projects.webp", 
+  },
+  {
+    id: 2,
+    title: "Roller & Zebra Blinds for Office Interiors",
+    location: "Office Space • Abu Dhabi, UAE",
+    image: "/projects/projects.webp", 
+  },
+  {
+    id: 3,
+    title: "SPC Flooring Solutions for Commercial Spaces",
+    location: "Commercial Space • Abu Dhabi, UAE",
+    image: "/projects/projects.webp",
+  },
+  {
+    id: 4,
+    title: "Wallpaper Installation & Decorative Wall Finishes",
+    location: "Residential Apartment • Abu Dhabi, UAE",
+    image: "/projects/projects.webp",
+  },
+  {
+    id: 5,
+    title: "Furniture & Sofa Upholstery Solutions",
+    location: "Residential Property • Abu Dhabi, UAE",
+    image: "/projects/projects.webp",
+  },
+  {
+    id: 6,
+    title: "Hotel Curtains & Interior Décor Solutions",
+    location: "Hospitality Project • Abu Dhabi, UAE",
+    image: "/projects/projects.webp",
+  },
+];
+
+export interface ProjectsClientProps {
+  initialData?: any;
+}
+
+export default function ProjectsClient({ initialData }: ProjectsClientProps) {
+  
+  // Extract CMS Data
+  const cmsProjects = initialData?.projectsConfig?.projects || [];
+
+  // Map CMS data to UI format, falling back to static data if no projects are published yet
+  const displayProjects = cmsProjects.length > 0 
+    ? cmsProjects.map((p: any) => ({
+        id: p.id || Math.random().toString(),
+        title: p.title,
+        // Combine Client Name and Category for the location/subtitle string
+        location: p.clientName ? `${p.clientName} ${p.category ? `• ${p.category}` : ''}` : (p.category || 'Abu Dhabi, UAE'),
+        image: p.featuredImage?.url || "/projects/projects.webp"
+      }))
+    : fallbackProjects;
+
+  return (
+    <main className="relative min-h-screen overflow-x-hidden w-full bg-[#f8f9fc4e]">      
+      {/* ========================================
+        1. FIXED BACKGROUND IMAGE (Parallax)
+        ========================================
+      */}
+      <div className="fixed top-0 left-0 w-full h-screen -z-10 bg-[linear-gradient(90deg,rgba(110,95,165,0.75)_0%,rgba(255,255,255,0)_100%)]">
+        <Image
+          src="/projects/bg-project.webp" // Recommend replacing with an interior/curtain hero shot
+          alt="Interior Projects"
+          fill
+          className="object-cover opacity-40 mix-blend-multiply"
+          priority
+        />
+      </div>
+
+      {/* ========================================
+        2. HERO TEXT CONTENT
+        ========================================
+      */}
+      <section className="relative w-full h-[350px] md:h-[450px] flex items-center pt-10">
+        <motion.div 
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
+          className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col md:flex-row justify-between items-start md:items-center"
+        >
+          {/* Left Side: Badge and Title */}
+          <div className="space-y-4">
+            <motion.span 
+              variants={fadeInUp}
+              className="inline-block bg-white/20 backdrop-blur-sm text-white px-5 py-1.5 rounded-full text-sm font-medium"
+            >
+              Discover
+            </motion.span>
+            <motion.h1 
+              variants={fadeInUp}
+              className="text-4xl md:text-5xl lg:text-7xl font-semibold text-white tracking-wide"
+            >
+              {initialData?.title || "Our Projects"}
+            </motion.h1>
+          </div>
+
+          {/* Right Side: Description */}
+          <motion.div 
+            variants={fadeInUp}
+            className="mt-6 md:mt-0 md:text-right max-w-md lg:max-w-lg"
+          >
+            <p className="text-lg md:text-xl font-medium leading-snug drop-shadow-md text-[#3b3470]">
+              Premium Curtains, Blinds & Interior Solutions
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* ========================================
+        3. MAIN CONTENT (Solid Background)
+        ========================================
+      */}
+      <div className="relative z-20 bg-white rounded-t-[2.5rem] shadow-[0_-10px_40px_rgba(0,0,0,0.05)] pb-32">
+        
+        {/* Decorative Top Overlap Icon */}
+        <motion.div 
+          initial={{ scale: 0, x: "-50%", y: "-50%" }}
+          animate={{ scale: 1, x: "-50%", y: "-50%" }}
+          transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.5 }}
+          className="absolute top-0 left-1/2 z-30 origin-center"
+        >
+          <div className="bg-[#4a398c] p-4 rounded-full border-[6px] border-white shadow-sm flex items-center justify-center">
+            <ImageIcon className="w-7 h-7 text-white" strokeWidth={2} />
+          </div>
+        </motion.div>
+
+        {/* Projects Grid Section */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32">
+          
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.05 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12"
+          >
+            {displayProjects.map((project: any) => (
+              <motion.div 
+                key={project.id}
+                variants={cardVariant}
+                className="flex flex-col group cursor-pointer"
+              >
+                {/* Image Container with Hover Zoom */}
+                <div className="relative w-full h-[280px] rounded-[1.25rem] overflow-hidden mb-5 shadow-sm">
+                  <Image 
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+
+                {/* Content Container (Centered matching the mockup) */}
+                <div className="text-center px-2">
+                  <h3 className="text-2xl font-semibold text-[#112440] mb-1">
+                    {project.title}
+                  </h3>
+                  <p className="text-slate-500 text-sm">
+                    {project.location}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+        </section>
+      </div>
+    </main>
+  );
+}

@@ -57,7 +57,12 @@ const TikTokIcon = ({ size = 18 }) => (
   </svg>
 );
 
-export default function Footer() {
+// Define Interface for the payload settings
+export interface FooterProps {
+  settings?: any;
+}
+
+export default function Footer({ settings }: FooterProps) {
   const footerRef = useRef<HTMLElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const columnsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -65,6 +70,10 @@ export default function Footer() {
   
   // 1. Get the current pathname to detect route changes
   const pathname = usePathname();
+
+  // Extract dynamic data with fallbacks
+  const phones = settings?.phones?.map((p: any) => p.number) || ['+971 56 677 3793', '+971 55 521 8804'];
+  const primaryEmail = settings?.emails?.[0]?.email || 'info@almawasimdecor.com';
 
   useEffect(() => {
     if (!footerRef.current) return;
@@ -127,7 +136,7 @@ export default function Footer() {
   }, [pathname]);
 
   const socialLinks = [
-    { name: 'WhatsApp', icon: <WhatsAppIcon size={18} />, href: 'https://wa.me/971566773793' },
+    { name: 'WhatsApp', icon: <WhatsAppIcon size={18} />, href: `https://wa.me/${phones[0]?.replace(/\D/g,'') || '971566773793'}` },
     { name: 'Instagram', icon: <InstagramIcon size={18} />, href: 'https://www.instagram.com/almawasimdecore_curtains' },
     { name: 'Facebook', icon: <FacebookIcon size={18} />, href: 'https://www.facebook.com/share/1E6L4Dd9i8/' },
     { name: 'TikTok', icon: <TikTokIcon size={18} />, href: 'https://www.tiktok.com/@almawasimdecore_curtains' },
@@ -196,11 +205,6 @@ export default function Footer() {
                   <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> About Us
                 </Link>
               </li>
-              {/* <li>
-                <Link href="/expertise" className="hover:text-white transition-colors flex items-center gap-3 group">
-                  <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> Expertise
-                </Link>
-              </li> */}
               <li>
                 <Link href="/services" className="hover:text-white transition-colors flex items-center gap-3 group">
                   <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> Services
@@ -256,7 +260,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Contact Info (UPDATED) */}
+          {/* Column 4: Contact Info (UPDATED FOR DYNAMIC DATA) */}
           <div ref={(el) => { columnsRef.current[3] = el; }} className="text-center md:text-left flex flex-col items-center md:items-start space-y-8">
             
             {/* Contact Us */}
@@ -266,8 +270,9 @@ export default function Footer() {
                 <h4 className="text-base font-medium">Contact Us</h4>
               </div>
               <div className="text-gray-300 text-sm pl-0 md:pl-6 space-y-2 group-hover:text-white transition-colors">
-                <p>+971 56 677 3793</p>
-                <p>+971 55 521 8804</p>
+                {phones.map((phone: string, idx: number) => (
+                  <p key={idx}>{phone}</p>
+                ))}
               </div>
             </div>
 
@@ -278,7 +283,15 @@ export default function Footer() {
                 <h4 className="text-base font-medium">Office Location</h4>
               </div>
               <p className="text-gray-300 text-sm pl-0 md:pl-6 group-hover:text-white transition-colors">
-                Abu Dhabi, UAE
+                {settings?.address ? (
+                  <>
+                    {settings.address.street}<br />
+                    {settings.address.city}, {settings.address.state} {settings.address.zip}<br />
+                    {settings.address.country}
+                  </>
+                ) : (
+                  'Abu Dhabi, UAE'
+                )}
               </p>
             </div>
 
@@ -289,7 +302,7 @@ export default function Footer() {
                 <h4 className="text-base font-medium">Send a Message</h4>
               </div>
               <p className="text-gray-300 text-sm pl-0 md:pl-6 group-hover:text-white transition-colors break-all sm:break-normal">
-                info@almawasimdecor.com
+                {primaryEmail}
               </p>
             </div>
             
@@ -303,7 +316,7 @@ export default function Footer() {
         ref={bottomBarRef}
         className="bg-[#1f1b36] border-t border-white/5 py-6 px-6 lg:px-16 flex flex-col md:flex-row justify-between items-center text-sm text-gray-300 gap-4"
       >
-        <p className="text-center md:text-left">© 2026 AL MAWASIM DECOR & CURTAINS. All Rights Reserved.</p>
+        <p className="text-center md:text-left">© {new Date().getFullYear()} AL MAWASIM DECOR & CURTAINS. All Rights Reserved.</p>
         <div className="flex flex-wrap justify-center items-center gap-6 mt-2 md:mt-0">
           <Link href="/terms" className="hover:text-white transition-colors whitespace-nowrap">Terms & Conditions</Link>
           <Link href="/privacy" className="hover:text-white transition-colors whitespace-nowrap">Privacy Policy</Link>
