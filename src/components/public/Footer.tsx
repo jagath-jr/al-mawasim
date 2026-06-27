@@ -127,7 +127,7 @@ export default function Footer() {
   }, [pathname]);
 
   const socialLinks = [
-    { name: 'WhatsApp', icon: <WhatsAppIcon size={18} />, href: 'https://wa.me/971566773793' },
+    { name: 'WhatsApp', icon: <WhatsAppIcon size={18} />, href: 'https://wa.me/971566773793?text=Hello!%20I%20am%20interested%20in%20your%20services.%20I%20found%20you%20through%20your%20website' },
     { name: 'Instagram', icon: <InstagramIcon size={18} />, href: 'https://www.instagram.com/almawasimdecore_curtains' },
     { name: 'Facebook', icon: <FacebookIcon size={18} />, href: 'https://www.facebook.com/share/1E6L4Dd9i8/' },
     { name: 'TikTok', icon: <TikTokIcon size={18} />, href: 'https://www.tiktok.com/@almawasimdecore_curtains' },
@@ -196,11 +196,6 @@ export default function Footer() {
                   <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> About Us
                 </Link>
               </li>
-              {/* <li>
-                <Link href="/expertise" className="hover:text-white transition-colors flex items-center gap-3 group">
-                  <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> Expertise
-                </Link>
-              </li> */}
               <li>
                 <Link href="/services" className="hover:text-white transition-colors flex items-center gap-3 group">
                   <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> Services
