@@ -402,9 +402,11 @@ export default function ServicesPage() {
             return (
               <section
                 key={section.id}
+                id={section.id} 
                 className={
                   !hasSubCards ? "grid grid-cols-1 lg:grid-cols-2 gap-10 items-center" : ""
                 }
+                 style={{ scrollMarginTop: '150px' }}
               >
                 {/* Main Row Layer */}
                 {hasSubCards ? (
