@@ -224,27 +224,27 @@ export default function Footer() {
             <h3 className="text-white font-medium text-lg mb-6">Our Services</h3>
             <ul className="space-y-3 text-gray-200 text-sm inline-block text-left">
               <li>
-                <Link href="/services/curtains" className="hover:text-white transition-colors flex items-center gap-3 group">
+                <Link href="/services/#curtains" className="hover:text-white transition-colors flex items-center gap-3 group">
                   <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> Curtains
                 </Link>
               </li>
               <li>
-                <Link href="/services/blinds" className="hover:text-white transition-colors flex items-center gap-3 group">
+                <Link href="/services/#furniture-upholstery" className="hover:text-white transition-colors flex items-center gap-3 group">
                   <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> Blinds
                 </Link>
               </li>
               <li>
-                <Link href="/services/flooring" className="hover:text-white transition-colors flex items-center gap-3 group">
+                <Link href="/services/#flooring" className="hover:text-white transition-colors flex items-center gap-3 group">
                   <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> Flooring
                 </Link>
               </li>
               <li>
-                <Link href="/services/upholstery" className="hover:text-white transition-colors flex items-center gap-3 group">
-                  <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> Upholstery
+                <Link href="/services/#carpets" className="hover:text-white transition-colors flex items-center gap-3 group">
+                  <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> Carpets
                 </Link>
               </li>
               <li>
-                <Link href="/services/wall-finishes" className="hover:text-white transition-colors flex items-center gap-3 group">
+                <Link href="/services/#wall-finishes" className="hover:text-white transition-colors flex items-center gap-3 group">
                   <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> Wall Finishes
                 </Link>
               </li>
