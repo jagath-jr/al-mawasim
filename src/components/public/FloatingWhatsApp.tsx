@@ -26,7 +26,7 @@ const CloseIcon = () => (
   </svg>
 );
 
-// Close Icon for Header (slightly thinner)
+// Close Icon for Header
 const HeaderCloseIcon = () => (
   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -165,6 +165,27 @@ export default function FloatingWhatsApp() {
 
   return (
     <>
+      {/* 
+        INJECTED NATIVE CSS FOR PERFECT WAVES
+        This prevents Framer Motion from stuttering/blinking on React state changes
+      */}
+      <style>{`
+        @keyframes smoothWave {
+          0% { transform: scale(1); opacity: 0.8; }
+          100% { transform: scale(1.6); opacity: 0; }
+        }
+        .wave-ring {
+          position: absolute;
+          inset: 0;
+          border: 3px solid #25D366;
+          border-radius: 50%;
+          animation: smoothWave 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+        .wave-ring-delayed {
+          animation-delay: 1s;
+        }
+      `}</style>
+
       {/* Mobile Backdrop - Click to close */}
       <AnimatePresence>
         {isOpen && (
@@ -193,7 +214,6 @@ export default function FloatingWhatsApp() {
               <div className="flex-none bg-gradient-to-r from-[#25D366] to-[#128C7E] p-3 sm:p-4 text-white">
                 <div className="flex items-center gap-3">
                   <div className="relative">
-                    {/* UPDATED: Replaced the emoji with the logo image */}
                     <div className="w-10 h-10 rounded-full bg-white overflow-hidden shadow-inner flex items-center justify-center border border-white/20 p-0.5">
                       <img 
                         src="/AL MAWASIM LOGO (1).png" 
@@ -225,7 +245,6 @@ export default function FloatingWhatsApp() {
               <div className="p-3 sm:p-4 flex-1 overflow-y-auto overscroll-none bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 scrollbar-hide">
                 {/* Bot Message */}
                 <div className="flex items-start gap-2 sm:gap-3 mb-4">
-                  {/* UPDATED: Also added the logo here for the bot icon to make it consistent */}
                   <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-md border border-gray-100 dark:border-gray-700 overflow-hidden p-0.5">
                     <img 
                       src="/AL MAWASIM LOGO (1).png" 
@@ -388,19 +407,11 @@ export default function FloatingWhatsApp() {
             <div className="absolute top-1/2 -right-1 -translate-y-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
           </div>
 
-          {/* Framer Motion Rings */}
+          {/* FLAWLESS NATIVE CSS RINGS (No Blinking/Stuttering) */}
           {!isOpen && (
             <div className="absolute inset-0 -z-10 flex items-center justify-center pointer-events-none">
-              <motion.div
-                animate={{ opacity: [0.6, 0], scale: [1, 1.8] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
-                className="absolute w-14 h-14 sm:w-16 sm:h-16 bg-[#25D366] rounded-full"
-              />
-              <motion.div
-                animate={{ opacity: [0.6, 0], scale: [1, 1.8] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeOut", delay: 1 }}
-                className="absolute w-14 h-14 sm:w-16 sm:h-16 bg-[#25D366] rounded-full"
-              />
+              <div className="wave-ring"></div>
+              <div className="wave-ring wave-ring-delayed"></div>
             </div>
           )}
         </div>

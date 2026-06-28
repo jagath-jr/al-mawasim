@@ -289,8 +289,9 @@ export default function ServicesPage() {
       <div className="fixed top-0 left-0 w-full h-screen -z-10 bg-[linear-gradient(90deg,rgba(110,95,165,0.75)_0%,rgba(255,255,255,0)_100%)]">
         <Image
           src={heroData.backgroundImage}
-          alt="Services Hero"
+          alt="Services Hero - Al Mawasim Decor Abu Dhabi"
           fill
+          sizes="100vw"
           className="object-cover opacity-60 mix-blend-multiply"
           priority
         />
@@ -392,8 +393,9 @@ export default function ServicesPage() {
               >
                 <Image
                   src={section.image}
-                  alt={section.title}
+                  alt={`${section.title} Installation Services in Abu Dhabi`}
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
                 />
               </motion.div>
@@ -467,8 +469,9 @@ export default function ServicesPage() {
                           <div className="relative h-48 w-full overflow-hidden">
                             <Image
                               src={card.img}
-                              alt={card.title}
+                              alt={`Custom ${card.title} in Abu Dhabi`}
                               fill
+                              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                               className="object-cover transition-transform duration-500 group-hover:scale-105"
                             />
                           </div>
