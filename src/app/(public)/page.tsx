@@ -288,7 +288,7 @@ export default function HomePage() {
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-center pt-24 pb-16">
           
           <div ref={heroTextRef} className="text-white space-y-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight drop-shadow-lg tracking-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold leading-tight drop-shadow-lg tracking-tight">
               Premium Curtains, Blinds, Flooring & Wallpaper Services in Abu Dhabi
             </h1>
             <p className="text-lg md:text-xl text-gray-100 max-w-lg drop-shadow-md leading-relaxed">

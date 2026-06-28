@@ -230,7 +230,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/services/#furniture-upholstery" className="hover:text-white transition-colors flex items-center gap-3 group">
-                  <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> Blinds
+                  <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> Furniture & Upholstery
                 </Link>
               </li>
               <li>
