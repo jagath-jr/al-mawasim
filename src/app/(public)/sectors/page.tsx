@@ -85,17 +85,17 @@ const sectors = [
 
 export default function SectorPage() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden w-full bg-[#f8f9fc4e]">      
+    <main className="relative min-h-screen overflow-x-hidden w-full bg-[#fdfbf74e]">      
       {/* ========================================
         1. FIXED BACKGROUND IMAGE (Parallax)
         ========================================
       */}
-      <div className="fixed top-0 left-0 w-full h-screen -z-10 bg-[linear-gradient(90deg,rgba(110,95,165,0.75)_0%,rgba(255,255,255,0)_100%)]">
+      <div className="fixed top-0 left-0 w-full h-screen -z-10 bg-[linear-gradient(90deg,rgba(26,26,26,0.85)_0%,rgba(255,255,255,0)_100%)]">
         <Image
           src="/sectors/bg-sectors.webp" // Recommend replacing with an interior living space image
           alt="Interior Sector Overview"
           fill
-          className="object-cover opacity-40 mix-blend-multiply"
+          className="object-cover opacity-60 mix-blend-multiply"
           priority
         />
       </div>
@@ -115,7 +115,7 @@ export default function SectorPage() {
           <div className="space-y-4">
             <motion.span 
               variants={fadeInUp}
-              className="inline-block bg-white/20 backdrop-blur-sm text-white px-5 py-1.5 rounded-full text-sm font-medium tracking-wide"
+              className="inline-block bg-[#C5A869]/80 backdrop-blur-sm text-[#1A1A1A] px-5 py-1.5 rounded-full text-sm font-semibold tracking-wide"
             >
               Our Service
             </motion.span>
@@ -132,7 +132,7 @@ export default function SectorPage() {
             variants={fadeInUp}
             className="mt-6 md:mt-0 md:text-right max-w-md lg:max-w-lg"
           >
-            <p className="text-lg md:text-xl font-medium leading-snug drop-shadow-md text-[#3b3470]">
+            <p className="text-lg md:text-xl font-medium leading-snug drop-shadow-md text-gray-200">
               Premium Curtains, Blinds & Interior Solutions Abu Dhabi
             </p>
           </motion.div>
@@ -143,7 +143,7 @@ export default function SectorPage() {
         3. MAIN CONTENT
         ========================================
       */}
-      <div className="relative z-20 bg-white rounded-t-[2.5rem] shadow-[0_-10px_40px_rgba(0,0,0,0.05)] pb-0">
+      <div className="relative z-20 bg-[#FDFBF7] rounded-t-[2.5rem] shadow-[0_-10px_40px_rgba(0,0,0,0.05)] pb-0">
         
         {/* Decorative Top Overlap Icon */}
         <motion.div 
@@ -152,8 +152,8 @@ export default function SectorPage() {
           transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.5 }}
           className="absolute top-0 left-1/2 z-30 origin-center"
         >
-          <div className="bg-[#4a398c] p-4 rounded-full border-[6px] border-white shadow-sm flex items-center justify-center">
-            <Briefcase className="w-7 h-7 text-white" strokeWidth={1.5} />
+          <div className="bg-[#C5A869] p-4 rounded-full border-[6px] border-[#FDFBF7] shadow-sm flex items-center justify-center">
+            <Briefcase className="w-7 h-7 text-[#1A1A1A]" strokeWidth={1.5} />
           </div>
         </motion.div>
 
@@ -166,7 +166,7 @@ export default function SectorPage() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
-                className="relative w-full h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-sm"
+                className="relative w-full h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-sm border border-[#EAE1D0]"
               >
                 <Image 
                   src="/sectors/OurSector-sectors.webp" // Update with curtain close-up image
@@ -183,13 +183,13 @@ export default function SectorPage() {
                 viewport={{ once: true, amount: 0.2 }}
                 className="space-y-5"
               >
-                <h2 className="text-3xl md:text-4xl font-semibold text-[#4a398c]">
+                <h2 className="text-3xl md:text-4xl font-semibold text-[#1A1A1A]">
                   Our Sector
                 </h2>
-                <h3 className="text-xl md:text-2xl font-medium text-[#1e293b] leading-snug">
+                <h3 className="text-xl md:text-2xl font-medium text-[#9C7C3E] leading-snug">
                   Interior Solutions for Residential, Commercial & Hospitality Spaces in Abu Dhabi
                 </h3>
-                <p className="text-slate-500 text-sm md:text-base leading-relaxed">
+                <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                   AL MAWASIM DECOR & CURTAINS provides premium curtains, blinds, flooring, wallpaper installation, upholstery, and interior décor solutions for residential, commercial, hospitality, retail, educational, and healthcare sectors across Abu Dhabi. Our experienced team delivers customized solutions, premium materials, and professional installation services tailored to the unique requirements of every space.
                 </p>
               </motion.div>
@@ -204,10 +204,10 @@ export default function SectorPage() {
             transition={{ duration: 0.6 }}
             className="text-center py-8"
           >
-            <h2 className="text-3xl md:text-5xl font-semibold text-[#4a398c]">
+            <h2 className="text-3xl md:text-5xl font-semibold text-[#1A1A1A]">
               Industries We Serve
             </h2>
-            <div className="w-24 h-1.5 bg-[#4a398c] mx-auto mt-6 rounded-full"></div>
+            <div className="w-24 h-1.5 bg-[#C5A869] mx-auto mt-6 rounded-full"></div>
           </motion.div>
         </div>
 
@@ -216,8 +216,8 @@ export default function SectorPage() {
           {sectors.map((sector, index) => {
             // Determine if the layout should be reversed (Image on left, Text on right)
             const isReversed = index % 2 !== 0;
-            // Alternating background colors to match the mockup style
-            const bgClass = isReversed ? "bg-[#f8f9fc]" : "bg-white";
+            // Alternating background colors matching the new cream palette
+            const bgClass = isReversed ? "bg-[#F5F0E6]" : "bg-[#FDFBF7]";
 
             return (
               <div 
@@ -235,13 +235,13 @@ export default function SectorPage() {
                       viewport={{ once: true, amount: 0.2 }}
                       className={`space-y-4 ${isReversed ? 'lg:order-2' : 'lg:order-1'}`}
                     >
-                      <h3 className="text-2xl md:text-4xl font-semibold text-[#4a398c]">
+                      <h3 className="text-2xl md:text-4xl font-semibold text-[#1A1A1A]">
                         {sector.title}
                       </h3>
-                      <h4 className="text-lg md:text-xl font-medium text-[#1e293b]">
+                      <h4 className="text-lg md:text-xl font-medium text-[#9C7C3E]">
                         {sector.subtitle}
                       </h4>
-                      <p className="text-slate-500 text-sm md:text-base leading-relaxed pt-2">
+                      <p className="text-gray-600 text-sm md:text-base leading-relaxed pt-2">
                         {sector.description}
                       </p>
                     </motion.div>
@@ -252,7 +252,7 @@ export default function SectorPage() {
                       initial="hidden"
                       whileInView="visible"
                       viewport={{ once: true, amount: 0.2 }}
-                      className={`relative w-full h-[250px] md:h-[320px] rounded-[1.25rem] overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 ${isReversed ? 'lg:order-1' : 'lg:order-2'}`}
+                      className={`relative w-full h-[250px] md:h-[320px] rounded-[1.25rem] overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-[#EAE1D0] ${isReversed ? 'lg:order-1' : 'lg:order-2'}`}
                     >
                       <Image 
                         src={sector.image} 

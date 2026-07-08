@@ -67,17 +67,17 @@ const projects = [
 
 export default function ProjectsPage() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden w-full bg-[#f8f9fc4e]">      
+    <main className="relative min-h-screen overflow-x-hidden w-full bg-[#fdfbf74e]">      
       {/* ========================================
         1. FIXED BACKGROUND IMAGE (Parallax)
         ========================================
       */}
-      <div className="fixed top-0 left-0 w-full h-screen -z-10 bg-[linear-gradient(90deg,rgba(110,95,165,0.75)_0%,rgba(255,255,255,0)_100%)]">
+      <div className="fixed top-0 left-0 w-full h-screen -z-10 bg-[linear-gradient(90deg,rgba(26,26,26,0.85)_0%,rgba(255,255,255,0)_100%)]">
         <Image
           src="/projects/bg-project.webp" // Recommend replacing with an interior/curtain hero shot
           alt="Interior Projects"
           fill
-          className="object-cover opacity-40 mix-blend-multiply"
+          className="object-cover opacity-60 mix-blend-multiply"
           priority
         />
       </div>
@@ -97,7 +97,7 @@ export default function ProjectsPage() {
           <div className="space-y-4">
             <motion.span 
               variants={fadeInUp}
-              className="inline-block bg-white/20 backdrop-blur-sm text-white px-5 py-1.5 rounded-full text-sm font-medium"
+              className="inline-block bg-[#C5A869]/80 backdrop-blur-sm text-[#1A1A1A] px-5 py-1.5 rounded-full text-sm font-semibold"
             >
               Discover
             </motion.span>
@@ -114,7 +114,7 @@ export default function ProjectsPage() {
             variants={fadeInUp}
             className="mt-6 md:mt-0 md:text-right max-w-md lg:max-w-lg"
           >
-            <p className="text-lg md:text-xl font-medium leading-snug drop-shadow-md text-[#3b3470]">
+            <p className="text-lg md:text-xl font-medium leading-snug drop-shadow-md text-gray-200">
               Premium Curtains, Blinds & Interior Solutions
             </p>
           </motion.div>
@@ -125,7 +125,7 @@ export default function ProjectsPage() {
         3. MAIN CONTENT (Solid Background)
         ========================================
       */}
-      <div className="relative z-20 bg-white rounded-t-[2.5rem] shadow-[0_-10px_40px_rgba(0,0,0,0.05)] pb-32">
+      <div className="relative z-20 bg-[#FDFBF7] rounded-t-[2.5rem] shadow-[0_-10px_40px_rgba(0,0,0,0.05)] pb-32">
         
         {/* Decorative Top Overlap Icon */}
         <motion.div 
@@ -134,8 +134,8 @@ export default function ProjectsPage() {
           transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.5 }}
           className="absolute top-0 left-1/2 z-30 origin-center"
         >
-          <div className="bg-[#4a398c] p-4 rounded-full border-[6px] border-white shadow-sm flex items-center justify-center">
-            <ImageIcon className="w-7 h-7 text-white" strokeWidth={2} />
+          <div className="bg-[#C5A869] p-4 rounded-full border-[6px] border-[#FDFBF7] shadow-sm flex items-center justify-center">
+            <ImageIcon className="w-7 h-7 text-[#1A1A1A]" strokeWidth={2} />
           </div>
         </motion.div>
 
@@ -156,7 +156,7 @@ export default function ProjectsPage() {
                 className="flex flex-col group cursor-pointer"
               >
                 {/* Image Container with Hover Zoom */}
-                <div className="relative w-full h-[280px] rounded-[1.25rem] overflow-hidden mb-5 shadow-sm">
+                <div className="relative w-full h-[280px] rounded-[1.25rem] overflow-hidden mb-5 shadow-sm border border-[#EAE1D0]">
                   <Image 
                     src={project.image}
                     alt={project.title}
@@ -167,10 +167,10 @@ export default function ProjectsPage() {
 
                 {/* Content Container (Centered matching the mockup) */}
                 <div className="text-center px-2">
-                  <h3 className="text-2xl font-semibold text-[#112440] mb-1">
+                  <h3 className="text-2xl font-semibold text-[#1A1A1A] mb-1">
                     {project.title}
                   </h3>
-                  <p className="text-slate-500 text-sm">
+                  <p className="text-gray-600 text-sm">
                     {project.location}
                   </p>
                 </div>

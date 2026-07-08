@@ -279,14 +279,15 @@ const slideInRight: Variants = {
 // 3. PAGE COMPONENT
 // ========================================
 
+
 export default function ServicesPage() {
   return (
-    <main className="relative min-h-screen bg-[#f8f9fc38] overflow-x-hidden">      
+    <main className="relative min-h-screen bg-[#fdfbf74e] overflow-x-hidden">      
       {/* ========================================
         FIXED BACKGROUND IMAGE (Parallax)
         ========================================
       */}
-      <div className="fixed top-0 left-0 w-full h-screen -z-10 bg-[linear-gradient(90deg,rgba(110,95,165,0.75)_0%,rgba(255,255,255,0)_100%)]">
+      <div className="fixed top-0 left-0 w-full h-screen -z-10 bg-[linear-gradient(90deg,rgba(26,26,26,0.85)_0%,rgba(255,255,255,0)_100%)]">
         <Image
           src={heroData.backgroundImage}
           alt="Services Hero - Al Mawasim Decor Abu Dhabi"
@@ -312,7 +313,7 @@ export default function ServicesPage() {
           <div className="space-y-4">
             <motion.span
               variants={fadeInUp}
-              className="inline-block bg-white/20 backdrop-blur-sm text-white px-5 py-1.5 rounded-full text-sm font-medium"
+              className="inline-block bg-[#C5A869]/80 backdrop-blur-sm text-[#1A1A1A] px-5 py-1.5 rounded-full text-sm font-semibold"
             >
               {heroData.tagline}
             </motion.span>
@@ -329,7 +330,7 @@ export default function ServicesPage() {
             variants={fadeInUp}
             className="mt-6 md:mt-0 text-white md:text-right max-w-md lg:max-w-lg"
           >
-            <p className="text-lg md:text-xl font-medium leading-snug drop-shadow-md lg:text-[#3b3470]">
+            <p className="text-lg md:text-xl font-medium leading-snug drop-shadow-md text-gray-200">
               {heroData.description}
             </p>
           </motion.div>
@@ -340,7 +341,7 @@ export default function ServicesPage() {
         MAIN CONTENT
         ========================================
       */}
-      <div className="relative z-20 bg-white rounded-t-[2.5rem] shadow-[0_-10px_40px_rgba(0,0,0,0.05)] pb-32">
+      <div className="relative z-20 bg-[#FDFBF7] rounded-t-[2.5rem] shadow-[0_-10px_40px_rgba(0,0,0,0.05)] pb-32">
         {/* Decorative Top Overlap Icon */}
         <motion.div
           initial={{ scale: 0, x: "-50%", y: "-50%" }}
@@ -348,8 +349,8 @@ export default function ServicesPage() {
           transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.5 }}
           className="absolute top-0 left-1/2 z-30 origin-center"
         >
-          <div className="bg-[#4a398c] p-4 rounded-full border-[6px] border-white shadow-sm flex items-center justify-center">
-            <Palette className="w-6 h-6 text-white" strokeWidth={2} />
+          <div className="bg-[#C5A869] p-4 rounded-full border-[6px] border-[#FDFBF7] shadow-sm flex items-center justify-center">
+            <Palette className="w-6 h-6 text-[#1A1A1A]" strokeWidth={2} />
           </div>
         </motion.div>
 
@@ -357,7 +358,6 @@ export default function ServicesPage() {
           {servicesData.map((section) => {
             const hasSubCards = section.subCards && section.subCards.length > 0;
 
-            // Generate Layout specific classes based on enum
             const isResponsiveTextLeft = section.layout === "textLeftResponsive";
             const isImageLeft = section.layout === "imageLeft";
 
@@ -369,13 +369,13 @@ export default function ServicesPage() {
                 viewport={{ once: true, amount: 0.2 }}
                 className={isResponsiveTextLeft ? "order-2 lg:order-1" : undefined}
               >
-                <h2 className="text-3xl font-bold text-[#4a398c] mb-2">
+                <h2 className="text-3xl font-bold text-[#9C7C3E] mb-2">
                   {section.title}
                 </h2>
-                <h3 className="text-lg font-semibold text-[#1e293b] mb-4">
+                <h3 className="text-lg font-semibold text-[#1A1A1A] mb-4">
                   {section.subtitle}
                 </h3>
-                <p className="text-slate-500 text-sm leading-relaxed">
+                <p className="text-slate-600 text-sm leading-relaxed">
                   {section.description}
                 </p>
               </motion.div>
@@ -437,14 +437,14 @@ export default function ServicesPage() {
                   </>
                 )}
 
-                {/* Sub-Cards Layer (Rendered conditionally) */}
+                {/* Sub-Cards Layer */}
                 {hasSubCards && (
                   <div className="pt-8">
                     <motion.h4
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       viewport={{ once: true }}
-                      className="text-2xl font-semibold text-[#4a398c] text-center mb-10"
+                      className="text-2xl font-semibold text-[#9C7C3E] text-center mb-10"
                     >
                       {section.subSectionTitle}
                     </motion.h4>
@@ -464,7 +464,7 @@ export default function ServicesPage() {
                         <motion.div
                           key={idx}
                           variants={fadeInUp}
-                          className="border border-[#e4e6fb] rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow group"
+                          className="border border-[#EAE1D0] rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow group"
                         >
                           <div className="relative h-48 w-full overflow-hidden">
                             <Image
@@ -476,10 +476,10 @@ export default function ServicesPage() {
                             />
                           </div>
                           <div className="p-5 text-center">
-                            <h5 className="font-semibold text-[#1e293b] text-base mb-2">
+                            <h5 className="font-semibold text-[#1A1A1A] text-base mb-2">
                               {card.title}
                             </h5>
-                            <p className="text-xs text-slate-500 leading-relaxed">{card.desc}</p>
+                            <p className="text-xs text-slate-600 leading-relaxed">{card.desc}</p>
                           </div>
                         </motion.div>
                       ))}

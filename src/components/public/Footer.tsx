@@ -136,32 +136,33 @@ export default function Footer() {
     { name: 'X', icon: <XIcon size={18} />, href: 'https://x.com/almawasim7737' },
   ];
 
+
   return (
     <footer ref={footerRef} className="w-full font-sans flex flex-col overflow-hidden">
       
       {/* Top CTA Banner */}
       <div 
         ref={ctaRef}
-        className="bg-[#4d3c8c] py-8 px-6 lg:px-16 flex flex-col md:flex-row justify-between items-center gap-6"
+        className="bg-[#C5A869] py-8 px-6 lg:px-16 flex flex-col md:flex-row justify-between items-center gap-6"
       >
-        <h2 className="text-white text-2xl sm:text-3xl font-medium tracking-wide text-center md:text-left">
+        <h2 className="text-[#1A1A1A] text-2xl sm:text-3xl font-medium tracking-wide text-center md:text-left">
           Get a Free Quote for Curtains, Blinds & Flooring Services in Abu Dhabi
         </h2>
         <Link 
           href="/schedule" 
-          className="w-full md:w-auto text-center bg-[#3b3470] text-white px-8 py-3.5 rounded-md font-medium hover:bg-[#2d2757] transition-colors shadow-md"
+          className="w-full md:w-auto text-center bg-[#1A1A1A] text-[#C5A869] px-8 py-3.5 rounded-md font-medium hover:bg-[#2A2A2A] transition-colors shadow-md"
         >
           Call Us Now
         </Link>
       </div>
 
       {/* Main Footer Content */}
-      <div className="bg-[#262140] pt-16 pb-16 px-6 lg:px-16">
+      <div className="bg-[#1A1A1A] pt-16 pb-16 px-6 lg:px-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           
           {/* Column 1: Description & Social Icons */}
           <div ref={(el) => { columnsRef.current[0] = el; }} className="lg:pr-6 flex flex-col h-full">
-            <p className="text-gray-200 text-sm leading-relaxed text-center md:text-left mb-8">
+            <p className="text-gray-300 text-sm leading-relaxed text-center md:text-left mb-8">
               AL MAWASIM DECOR & CURTAINS provides custom curtains, roller blinds, zebra blinds, vertical blinds, Venetian blinds, motorized curtains, SPC flooring, laminate flooring, wallpaper installation, and sofa upholstery services across Abu Dhabi, UAE.
             </p>
             
@@ -174,7 +175,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.name}
-                  className="social-icon flex items-center justify-center w-9 h-9 rounded-full border border-gray-400 text-gray-300 hover:bg-white hover:text-[#262140] hover:border-white transition-all duration-300 shadow-sm"
+                  className="social-icon flex items-center justify-center w-9 h-9 rounded-full border border-gray-500 text-gray-300 hover:bg-[#C5A869] hover:text-[#1A1A1A] hover:border-[#C5A869] transition-all duration-300 shadow-sm"
                 >
                   {social.icon}
                 </Link>
@@ -184,36 +185,41 @@ export default function Footer() {
 
           {/* Column 2: Company Links */}
           <div ref={(el) => { columnsRef.current[1] = el; }} className="text-center md:text-left">
-            <h3 className="text-white font-medium text-lg mb-6">Company</h3>
-            <ul className="space-y-3 text-gray-200 text-sm inline-block text-left">
+            <h3 className="text-[#C5A869] font-medium text-lg mb-6">Company</h3>
+            <ul className="space-y-3 text-gray-300 text-sm inline-block text-left">
               <li>
                 <Link href="/" className="hover:text-white transition-colors flex items-center gap-3 group">
-                  <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> Home
+                  <span className="w-1 h-1 rounded-full bg-[#C5A869] opacity-70 group-hover:opacity-100 transition-opacity"></span> Home
                 </Link>
               </li>
               <li>
                 <Link href="/about" className="hover:text-white transition-colors flex items-center gap-3 group">
-                  <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> About Us
+                  <span className="w-1 h-1 rounded-full bg-[#C5A869] opacity-70 group-hover:opacity-100 transition-opacity"></span> About Us
                 </Link>
               </li>
               <li>
                 <Link href="/services" className="hover:text-white transition-colors flex items-center gap-3 group">
-                  <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> Services
+                  <span className="w-1 h-1 rounded-full bg-[#C5A869] opacity-70 group-hover:opacity-100 transition-opacity"></span> Services
+                </Link>
+              </li>
+              <li>
+                <Link href="/gallery" className="hover:text-white transition-colors flex items-center gap-3 group">
+                  <span className="w-1 h-1 rounded-full bg-[#C5A869] opacity-70 group-hover:opacity-100 transition-opacity"></span> Gallery
                 </Link>
               </li>
               <li>
                 <Link href="/projects" className="hover:text-white transition-colors flex items-center gap-3 group">
-                  <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> Projects
+                  <span className="w-1 h-1 rounded-full bg-[#C5A869] opacity-70 group-hover:opacity-100 transition-opacity"></span> Projects
                 </Link>
               </li>
               <li>
                 <Link href="/sectors" className="hover:text-white transition-colors flex items-center gap-3 group">
-                  <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> Sectors
+                  <span className="w-1 h-1 rounded-full bg-[#C5A869] opacity-70 group-hover:opacity-100 transition-opacity"></span> Sectors
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="hover:text-white transition-colors flex items-center gap-3 group">
-                  <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> Contact
+                  <span className="w-1 h-1 rounded-full bg-[#C5A869] opacity-70 group-hover:opacity-100 transition-opacity"></span> Contact
                 </Link>
               </li>
             </ul>
@@ -221,43 +227,42 @@ export default function Footer() {
 
           {/* Column 3: Services Links */}
           <div ref={(el) => { columnsRef.current[2] = el; }} className="text-center md:text-left">
-            <h3 className="text-white font-medium text-lg mb-6">Our Services</h3>
-            <ul className="space-y-3 text-gray-200 text-sm inline-block text-left">
+            <h3 className="text-[#C5A869] font-medium text-lg mb-6">Our Services</h3>
+            <ul className="space-y-3 text-gray-300 text-sm inline-block text-left">
               <li>
                 <Link href="/services/#curtains" className="hover:text-white transition-colors flex items-center gap-3 group">
-                  <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> Curtains
+                  <span className="w-1 h-1 rounded-full bg-[#C5A869] opacity-70 group-hover:opacity-100 transition-opacity"></span> Curtains
                 </Link>
               </li>
               <li>
                 <Link href="/services/#furniture-upholstery" className="hover:text-white transition-colors flex items-center gap-3 group">
-                  <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> Furniture & Upholstery
+                  <span className="w-1 h-1 rounded-full bg-[#C5A869] opacity-70 group-hover:opacity-100 transition-opacity"></span> Furniture & Upholstery
                 </Link>
               </li>
               <li>
                 <Link href="/services/#flooring" className="hover:text-white transition-colors flex items-center gap-3 group">
-                  <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> Flooring
+                  <span className="w-1 h-1 rounded-full bg-[#C5A869] opacity-70 group-hover:opacity-100 transition-opacity"></span> Flooring
                 </Link>
               </li>
               <li>
                 <Link href="/services/#carpets" className="hover:text-white transition-colors flex items-center gap-3 group">
-                  <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> Carpets
+                  <span className="w-1 h-1 rounded-full bg-[#C5A869] opacity-70 group-hover:opacity-100 transition-opacity"></span> Carpets
                 </Link>
               </li>
               <li>
                 <Link href="/services/#wall-finishes" className="hover:text-white transition-colors flex items-center gap-3 group">
-                  <span className="w-1 h-1 rounded-full bg-white opacity-70 group-hover:opacity-100 transition-opacity"></span> Wall Finishes
+                  <span className="w-1 h-1 rounded-full bg-[#C5A869] opacity-70 group-hover:opacity-100 transition-opacity"></span> Wall Finishes
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Contact Info (UPDATED) */}
+          {/* Column 4: Contact Info */}
           <div ref={(el) => { columnsRef.current[3] = el; }} className="text-center md:text-left flex flex-col items-center md:items-start space-y-8">
             
-            {/* Contact Us */}
             <div className="group cursor-pointer flex flex-col gap-3">
               <div className="flex items-center justify-center md:justify-start gap-2 text-white font-medium">
-                <Phone size={16} className="text-white group-hover:scale-110 transition-transform shrink-0" />
+                <Phone size={16} className="text-[#C5A869] group-hover:scale-110 transition-transform shrink-0" />
                 <h4 className="text-base font-medium">Contact Us</h4>
               </div>
               <div className="text-gray-300 text-sm pl-0 md:pl-6 space-y-2 group-hover:text-white transition-colors">
@@ -266,10 +271,9 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Office Location */}
             <div className="group cursor-pointer flex flex-col gap-3">
               <div className="flex items-center justify-center md:justify-start gap-2 text-white font-medium">
-                <MapPin size={16} className="text-white group-hover:scale-110 transition-transform shrink-0" />
+                <MapPin size={16} className="text-[#C5A869] group-hover:scale-110 transition-transform shrink-0" />
                 <h4 className="text-base font-medium">Office Location</h4>
               </div>
               <p className="text-gray-300 text-sm pl-0 md:pl-6 group-hover:text-white transition-colors">
@@ -277,10 +281,9 @@ export default function Footer() {
               </p>
             </div>
 
-            {/* Send a Message */}
             <div className="group cursor-pointer flex flex-col gap-3">
               <div className="flex items-center justify-center md:justify-start gap-2 text-white font-medium">
-                <Mail size={16} className="text-white group-hover:scale-110 transition-transform shrink-0" />
+                <Mail size={16} className="text-[#C5A869] group-hover:scale-110 transition-transform shrink-0" />
                 <h4 className="text-base font-medium">Send a Message</h4>
               </div>
               <p className="text-gray-300 text-sm pl-0 md:pl-6 group-hover:text-white transition-colors break-all sm:break-normal">
@@ -289,19 +292,18 @@ export default function Footer() {
             </div>
             
           </div>
-
         </div>
       </div>
 
-      {/* Bottom Bar - Copyright (UPDATED) */}
+      {/* Bottom Bar - Copyright */}
       <div 
         ref={bottomBarRef}
-        className="bg-[#1f1b36] border-t border-white/5 py-6 px-6 lg:px-16 flex flex-col md:flex-row justify-between items-center text-sm text-gray-300 gap-4"
+        className="bg-[#111111] border-t border-white/5 py-6 px-6 lg:px-16 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400 gap-4"
       >
         <p className="text-center md:text-left">© 2026 AL MAWASIM DECOR & CURTAINS. All Rights Reserved.</p>
         <div className="flex flex-wrap justify-center items-center gap-6 mt-2 md:mt-0">
-          <Link href="/terms" className="hover:text-white transition-colors whitespace-nowrap">Terms & Conditions</Link>
-          <Link href="/privacy" className="hover:text-white transition-colors whitespace-nowrap">Privacy Policy</Link>
+          <Link href="/terms" className="hover:text-[#C5A869] transition-colors whitespace-nowrap">Terms & Conditions</Link>
+          <Link href="/privacy" className="hover:text-[#C5A869] transition-colors whitespace-nowrap">Privacy Policy</Link>
         </div>
       </div>
     </footer>

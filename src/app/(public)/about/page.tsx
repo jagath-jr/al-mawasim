@@ -95,17 +95,17 @@ const features = [
 
 export default function AboutPage() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden w-full bg-[#f8f9fc56]">      
+    <main className="relative min-h-screen overflow-x-hidden w-full bg-[#fdfbf74e]">      
       {/* ========================================
         1. FIXED BACKGROUND IMAGE (Parallax)
         ========================================
       */}
-      <div className="fixed top-0 left-0 w-full h-screen -z-10 bg-[linear-gradient(90deg,rgba(110,95,165,0.75)_0%,rgba(255,255,255,0)_100%)]">
+      <div className="fixed top-0 left-0 w-full h-screen -z-10 bg-[linear-gradient(90deg,rgba(26,26,26,0.85)_0%,rgba(255,255,255,0)_100%)]">
         <Image
           src="/about-us/aboutus-bg-img.webp" // Recommend replacing with a curtain/interior wide shot
           alt="About Us Background"
           fill
-          className="object-cover opacity-40 mix-blend-multiply"
+          className="object-cover opacity-60 mix-blend-multiply"
           priority
         />
       </div>
@@ -124,7 +124,7 @@ export default function AboutPage() {
           <div className="space-y-4">
             <motion.span 
               variants={fadeInUp}
-              className="inline-block bg-white/20 backdrop-blur-sm text-white px-5 py-1.5 rounded-full text-sm font-medium"
+              className="inline-block bg-[#C5A869]/80 backdrop-blur-sm text-[#1A1A1A] px-5 py-1.5 rounded-full text-sm font-semibold"
             >
               Discover
             </motion.span>
@@ -140,7 +140,7 @@ export default function AboutPage() {
             variants={fadeInUp}
             className="mt-6 md:mt-0 text-white md:text-right max-w-md lg:max-w-lg"
           >
-            <p className="text-lg md:text-xl font-medium leading-snug drop-shadow-md lg:text-[#3b3470]">
+            <p className="text-lg md:text-xl font-medium leading-snug drop-shadow-md text-gray-200">
              Premium Curtains, Blinds & Interior Solutions Abu Dhabi
             </p>
           </motion.div>
@@ -151,7 +151,7 @@ export default function AboutPage() {
         3. MAIN CONTENT
         ========================================
       */}
-      <div className="relative z-20 bg-white rounded-t-[2.5rem] shadow-[0_-10px_40px_rgba(0,0,0,0.05)] pb-32">
+      <div className="relative z-20 bg-[#FDFBF7] rounded-t-[2.5rem] shadow-[0_-10px_40px_rgba(0,0,0,0.05)] pb-32">
         
         {/* Decorative Top Overlap Icon */}
         <motion.div 
@@ -160,8 +160,8 @@ export default function AboutPage() {
           transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.5 }}
           className="absolute top-0 left-1/2 z-30 origin-center"
         >
-          <div className="bg-[#4a398c] p-4 rounded-full border-[6px] border-white shadow-sm flex items-center justify-center">
-            <Users className="w-6 h-6 text-white" strokeWidth={2} />
+          <div className="bg-[#C5A869] p-4 rounded-full border-[6px] border-[#FDFBF7] shadow-sm flex items-center justify-center">
+            <Users className="w-6 h-6 text-[#1A1A1A]" strokeWidth={2} />
           </div>
         </motion.div>
 
@@ -178,13 +178,13 @@ export default function AboutPage() {
               viewport={{ once: true, amount: 0.2 }}
               className="space-y-6"
             >
-              <span className="inline-block bg-[#e4e6fb] text-[#4a398c] px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase">
+              <span className="inline-block bg-[#EAE1D0] text-[#1A1A1A] px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase">
                 Welcome
               </span>
-              <h2 className="text-3xl md:text-4xl font-semibold text-[#1e293b] leading-tight">
+              <h2 className="text-3xl md:text-4xl font-semibold text-[#1A1A1A] leading-tight">
                 Professional Curtains, Flooring & Wallpaper Services in Abu Dhabi
               </h2>
-              <div className="space-y-4 text-slate-500 text-sm md:text-base leading-relaxed">
+              <div className="space-y-4 text-gray-600 text-sm md:text-base leading-relaxed">
                 <p>
                   Welcome to AL MAWASIM DECOR & CURTAINS LLC, a trusted provider of premium curtains, blinds, flooring, upholstery, wallpaper, and interior décor solutions in Abu Dhabi, UAE. We specialize in custom curtains, motorized curtains, roller blinds, zebra blinds, vertical blinds, Venetian blinds, SPC flooring, laminate flooring, wallpaper installation, and furniture upholstery services for residential, commercial, hospitality, and office spaces. Our experienced team delivers stylish designs, premium materials, and professional installation services to create elegant, functional, and comfortable interiors. With a strong commitment to quality, reliability, and customer satisfaction, we help transform homes, villas, offices, hotels, and commercial spaces across Abu Dhabi.
                 </p>
@@ -203,31 +203,31 @@ export default function AboutPage() {
               <div className="flex flex-col gap-4 lg:gap-6">
                 <motion.div variants={zoomInBox} className="relative w-full h-48 md:h-56 rounded-xl overflow-hidden shadow-sm">
                   <Image 
-                    src="/about-us/aboutus-Welcome-img01.webp" // Update image path
+                    src="/about-us/aboutus-Welcome-img01.webp" 
                     alt="Team installing flooring" 
                     fill 
                     className="object-cover" 
                   />
                 </motion.div>
-                <motion.div variants={zoomInBox} className="bg-[#4a398c] rounded-xl p-6 md:p-8 flex flex-col justify-center items-center text-white shadow-sm h-36 md:h-40">
+                <motion.div variants={zoomInBox} className="bg-[#1A1A1A] rounded-xl p-6 md:p-8 flex flex-col justify-center items-center text-[#C5A869] shadow-sm h-36 md:h-40 border border-white/5">
                   <h4 className="text-4xl md:text-5xl font-bold mb-1 flex items-center">
                     <AnimatedNumber to={500} /><span className="text-2xl md:text-3xl ml-1">+</span>
                   </h4>
-                  <p className="text-xs md:text-sm font-medium text-white/90">Projects Completed</p>
+                  <p className="text-xs md:text-sm font-medium text-[#C5A869]/80">Projects Completed</p>
                 </motion.div>
               </div>
 
               {/* Column 2 (Offset downwards) */}
               <div className="flex flex-col gap-4 lg:gap-6 pt-8 md:pt-12">
-                <motion.div variants={zoomInBox} className="bg-[#eff0fc] rounded-xl p-6 md:p-8 flex flex-col justify-center items-center text-[#1e293b] shadow-sm h-36 md:h-40">
+                <motion.div variants={zoomInBox} className="bg-[#C5A869] rounded-xl p-6 md:p-8 flex flex-col justify-center items-center text-[#1A1A1A] shadow-sm h-36 md:h-40">
                   <h4 className="text-4xl md:text-5xl font-bold mb-1 flex items-baseline">
                     <AnimatedNumber to={100} /><span className="text-2xl md:text-3xl ml-1">%</span>
                   </h4>
-                  <p className="text-xs md:text-sm font-medium text-slate-600">Customer Satisification</p>
+                  <p className="text-xs md:text-sm font-medium text-[#1A1A1A]/80">Customer Satisfaction</p>
                 </motion.div>
                 <motion.div variants={zoomInBox} className="relative w-full h-48 md:h-56 rounded-xl overflow-hidden shadow-sm">
                   <Image 
-                    src="/about-us/aboutus-Welcome-img02.webp" // Update image path
+                    src="/about-us/aboutus-Welcome-img02.webp" 
                     alt="Living room interior" 
                     fill 
                     className="object-cover" 
@@ -244,29 +244,29 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="bg-[#f2f4fb] rounded-3xl p-8 md:p-16 shadow-sm"
+            className="bg-[#F5F0E6] rounded-3xl p-8 md:p-16 shadow-sm border border-[#EAE1D0]"
           >
             <div className="text-center mb-16 flex flex-col items-center">
-              <span className="bg-[#e4e6fb] text-[#4a398c] px-5 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase mb-6">
+              <span className="bg-[#EAE1D0] text-[#1A1A1A] px-5 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase mb-6">
                 Top 6 Reasons
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#1e293b] mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-6">
                 Why Choose Us
               </h2>
-              <p className="text-slate-600 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+              <p className="text-gray-600 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
                 Whether you are looking for custom curtains, roller blinds, zebra blinds, motorized curtains, SPC flooring, laminate flooring, wallpaper installation, or sofa upholstery services in Abu Dhabi, our experienced team provides premium materials, customized designs, and professional installation to enhance every space.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-x-12 md:gap-y-12">
               {features.map((feature, index) => (
-                <div key={index} className="flex gap-4 items-start">
-                  <div className="bg-[#4a398c] p-2 rounded-lg shrink-0 mt-1 shadow-sm">
-                    <Check className="w-5 h-5 text-white" strokeWidth={3} />
+                <div key={index} className="flex gap-4 items-start group">
+                  <div className="bg-[#C5A869] p-2 rounded-lg shrink-0 mt-1 shadow-sm transition-transform duration-300 group-hover:scale-110">
+                    <Check className="w-5 h-5 text-[#1A1A1A]" strokeWidth={3} />
                   </div>
                   <div>
-                    <h4 className="text-[#1e293b] font-semibold text-lg mb-2">{feature.title}</h4>
-                    <p className="text-slate-500 text-sm leading-relaxed">{feature.description}</p>
+                    <h4 className="text-[#1A1A1A] font-semibold text-lg mb-2">{feature.title}</h4>
+                    <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
                   </div>
                 </div>
               ))}
@@ -282,12 +282,12 @@ export default function AboutPage() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
-              className="order-2 lg:order-1 relative w-full h-[300px] lg:h-[400px] flex items-center justify-center bg-[#f8f9fc] rounded-2xl p-6"
+              className="order-2 lg:order-1 relative w-full h-[300px] lg:h-[400px] flex items-center justify-center bg-[#F5F0E6] border border-[#EAE1D0] rounded-2xl p-6"
             >
               {/* Replace this block with your actual grouped logos image if preferred */}
               <div className="relative w-full h-full opacity-90 transition-transform duration-700 hover:scale-105">
                 <Image 
-                  src="/about-us/aboutl-us-services.png" // Update with the actual logos compilation image
+                  src="/about-us/aboutl-us-services.png" 
                   alt="Brands We Work With" 
                   fill 
                   className="object-contain" 
@@ -303,13 +303,13 @@ export default function AboutPage() {
               viewport={{ once: true, amount: 0.2 }}
               className="order-1 lg:order-2 space-y-6"
             >
-              <span className="inline-block bg-[#e4e6fb] text-[#4a398c] px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase">
+              <span className="inline-block bg-[#EAE1D0] text-[#1A1A1A] px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase">
                 Services Process
               </span>
-              <h2 className="text-3xl md:text-4xl font-semibold text-[#1e293b] leading-tight">
-               Industries We Serve in Abu Dhabi
+              <h2 className="text-3xl md:text-4xl font-semibold text-[#1A1A1A] leading-tight">
+                Industries We Serve in Abu Dhabi
               </h2>
-              <p className="text-slate-500 text-sm md:text-base leading-relaxed">
+              <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                 AL MAWASIM DECOR & CURTAINS provides custom curtains, motorized curtains, roller blinds, zebra blinds, vertical blinds, Venetian blinds, SPC flooring, laminate flooring, wallpaper installation, and furniture upholstery solutions for homes, villas, offices, hotels, retail outlets, and commercial spaces across Abu Dhabi. Our experienced team delivers premium materials, professional installation, and customized interior solutions designed to enhance comfort, style, and functionality while creating elegant and practical spaces tailored to every requirement.
               </p>
             </motion.div>
