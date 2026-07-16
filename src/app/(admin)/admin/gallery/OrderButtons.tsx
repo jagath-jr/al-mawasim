@@ -11,20 +11,24 @@ export default function OrderButtons({ id, isFirst, isLast }: { id: string, isFi
       <button 
         disabled={isFirst || isPending}
         onClick={() => startTransition(() => { moveImageUp(id) })}
-        className="text-gray-500 hover:text-gray-900 disabled:opacity-30 transition-colors duration-200 text-lg font-bold"
+        className="text-[#9C7C3E] hover:text-[#C5A869] disabled:opacity-30 transition-colors duration-200"
         title="Move Up"
         aria-label="Move image up"
       >
-        ▲
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 15l7-7 7 7" />
+        </svg>
       </button>
       <button 
         disabled={isLast || isPending}
         onClick={() => startTransition(() => { moveImageDown(id) })}
-        className="text-gray-500 hover:text-gray-900 disabled:opacity-30 transition-colors duration-200 text-lg font-bold"
+        className="text-[#9C7C3E] hover:text-[#C5A869] disabled:opacity-30 transition-colors duration-200"
         title="Move Down"
         aria-label="Move image down"
       >
-        ▼
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+        </svg>
       </button>
     </div>
   );

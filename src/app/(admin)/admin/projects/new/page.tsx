@@ -3,51 +3,37 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { updateGalleryImage } from "@/actions/gallery";
-import Image from "next/image";
+import { createProject } from "@/actions/projects";
 
-export default function EditGalleryForm({ project }: { project: any }) {
+export default function NewProjectPage() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [file, setFile] = useState<File | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!file) return alert("Select an image.");
     setIsSubmitting(true);
-
+    
     try {
       const formData = new FormData(e.currentTarget);
-      let imageUrl = project.imageUrl;
+      const uploadData = new FormData();
+      uploadData.append("file", file);
+      
+      const res = await fetch("/api/upload", { method: "POST", body: uploadData });
+      if (!res.ok) throw new Error("Upload failed");
+      const { url } = await res.json();
 
-      if (file) {
-        const MAX_FILE_SIZE = 5 * 1024 * 1024;
-        if (file.size > MAX_FILE_SIZE) {
-          alert("Image is too large. Max 5MB.");
-          setIsSubmitting(false);
-          return;
-        }
-
-        const uploadData = new FormData();
-        uploadData.append("file", file);
-        const uploadRes = await fetch("/api/upload", { method: "POST", body: uploadData });
-
-        if (!uploadRes.ok) throw new Error("Upload failed");
-        const uploadJson = await uploadRes.json();
-        imageUrl = uploadJson.url;
-      }
-
-      await updateGalleryImage(project.id, {
+      await createProject({
         title: formData.get("title") as string,
-        category: formData.get("category") as string,
-        imageUrl: imageUrl,
-        isPublished: formData.get("isPublished") === "on",
+        location: formData.get("location") as string,
+        image: url,
+        isActive: formData.get("isActive") === "on",
       });
 
-      router.push("/admin/gallery");
-      router.refresh();
-    } catch (error) {
-      console.error(error);
-      alert("Failed to update image.");
+      router.push("/admin/projects");
+    } catch (err) {
+      alert("Failed to save project.");
     } finally {
       setIsSubmitting(false);
     }
@@ -63,16 +49,16 @@ export default function EditGalleryForm({ project }: { project: any }) {
       <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#1A1A1A] via-[#1A1A1A] to-[#9C7C3E]/40 p-6 sm:p-8 text-white shadow-lg border border-[#9C7C3E]/30 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
         <div className="relative z-10">
           <span className="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-widest bg-[#C5A869] text-[#1A1A1A] rounded-full mb-3">
-            Media Editor
+            Project Creator
           </span>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white">Edit Gallery Image</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white">Add Project</h2>
         </div>
         
         <Link 
-          href="/admin/gallery" 
+          href="/admin/projects" 
           className="relative z-10 bg-[#FFFFFF]/10 text-white px-5 py-2.5 rounded-xl hover:bg-[#C5A869] hover:text-[#1A1A1A] transition-all font-semibold backdrop-blur-sm border border-[#FFFFFF]/20 hover:border-[#C5A869] flex items-center gap-2 text-sm"
         >
-          &larr; Back to Gallery
+          &larr; Back to Projects
         </Link>
         
         {/* Decorative background element */}
@@ -81,63 +67,39 @@ export default function EditGalleryForm({ project }: { project: any }) {
 
       <form onSubmit={handleSubmit} className="bg-[#FFFFFF] p-6 sm:p-10 rounded-2xl shadow-sm border border-[#9C7C3E]/20 space-y-6">
         <div>
-          <label className={labelStyles}>Image Title (Used for SEO / Lightbox)</label>
+          <label className={labelStyles}>Project Title</label>
           <input 
-            type="text" 
-            name="title" 
-            required 
-            defaultValue={project.title} 
+            type="text" name="title" required placeholder="e.g. Custom Curtains & Motorized Curtain Solutions" 
             className={inputStyles} 
           />
         </div>
-
+        
         <div>
-          <label className={labelStyles}>Category</label>
-          <select 
-            name="category" 
-            defaultValue={project.category} 
-            className={inputStyles}
-          >
-            <option value="Curtains">Curtains</option>
-            <option value="Blinds">Blinds</option>
-            <option value="Flooring">Flooring</option>
-            <option value="Upholstery">Upholstery</option>
-            <option value="Other">Other</option>
-          </select>
+          <label className={labelStyles}>Location</label>
+          <input 
+            type="text" name="location" required placeholder="e.g. Residential Villa • Abu Dhabi, UAE" 
+            className={inputStyles} 
+          />
         </div>
-
-        <div className="p-6 border-2 border-dashed border-[#9C7C3E]/30 rounded-xl bg-[#FDFBF7] flex flex-col sm:flex-row gap-6 items-start sm:items-center">
-          <div className="relative h-28 w-28 rounded-lg overflow-hidden shadow-md flex-shrink-0 border border-[#9C7C3E]/20">
-             <Image src={project.imageUrl} alt="Current" fill className="object-cover" />
-          </div>
-          <div className="w-full">
-            <label className="block text-sm font-semibold text-[#1A1A1A] mb-3">Update Image File (Leave blank to keep current)</label>
-            <input 
-              type="file" 
-              accept="image/*" 
-              onChange={(e) => setFile(e.target.files?.[0] || null)} 
-              className={fileInputStyles} 
-            />
-          </div>
+        
+        <div className="p-6 border-2 border-dashed border-[#9C7C3E]/30 rounded-xl bg-[#FDFBF7]">
+          <label className="block text-sm font-semibold text-[#1A1A1A] mb-3">Display Image</label>
+          <input 
+            type="file" accept="image/*" required onChange={(e) => setFile(e.target.files?.[0] || null)} 
+            className={fileInputStyles} 
+          />
         </div>
-
-        {/* Status Toggle */}
+        
         <div className="flex items-center space-x-4 bg-[#FDFBF7] p-5 rounded-xl border border-[#9C7C3E]/30">
           <input 
-            type="checkbox" 
-            name="isPublished" 
-            id="isPublished" 
-            defaultChecked={project.isPublished} 
+            type="checkbox" name="isActive" id="isActive" defaultChecked 
             className="h-5 w-5 text-[#C5A869] focus:ring-[#C5A869] border-[#9C7C3E]/40 rounded cursor-pointer accent-[#C5A869]" 
           />
-          <label htmlFor="isPublished" className="text-sm font-bold text-[#1A1A1A] cursor-pointer select-none">
-            Publish Image to Public Gallery
-          </label>
+          <label htmlFor="isActive" className="text-sm font-bold text-[#1A1A1A] cursor-pointer select-none">Publish Project</label>
         </div>
-
+        
         <button 
-          type="submit" 
-          disabled={isSubmitting} 
+          type="submit" disabled={isSubmitting} 
           className="w-full bg-[#1A1A1A] text-[#C5A869] py-4 rounded-xl hover:bg-[#C5A869] hover:text-[#1A1A1A] transition-all font-bold disabled:opacity-70 disabled:cursor-not-allowed text-lg shadow-md border border-[#9C7C3E]/30 flex justify-center items-center gap-3 mt-4"
         >
           {isSubmitting ? (
@@ -146,9 +108,9 @@ export default function EditGalleryForm({ project }: { project: any }) {
                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                </svg>
-               Updating...
+               Saving & Uploading...
              </>
-          ) : "Update Image"}
+          ) : "Save Project"}
         </button>
       </form>
     </div>

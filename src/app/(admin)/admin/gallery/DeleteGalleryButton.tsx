@@ -18,7 +18,7 @@ export default function DeleteGalleryButton({ id }: { id: string }) {
     <button
       onClick={handleDelete}
       disabled={isPending}
-      className="text-white hover:text-red-100 disabled:text-red-300 transition-colors duration-200"
+      className="text-white hover:text-red-100 disabled:text-red-200 transition-colors duration-200 w-full h-full flex items-center justify-center"
       aria-label="Delete image"
     >
       {isPending ? (

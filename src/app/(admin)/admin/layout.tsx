@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import Link from "next/link";
+import Sidebar from "./Sidebar";
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   // Check if the user is logged in
@@ -11,21 +11,16 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   }
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
-      {/* Sidebar */}
-      <aside className="w-64 bg-slate-900 text-white p-6">
-        <h1 className="text-2xl font-bold mb-8">CMS Panel</h1>
-        <nav className="space-y-4">
-          <Link href="/admin" className="block hover:text-gray-300">Dashboard</Link>
-          <Link href="/admin/services" className="block hover:text-gray-300">Services</Link>
-          <Link href="/admin/gallery" className="block hover:text-gray-300">Gallery</Link>
-          <Link href="/admin/sectors" className="block hover:text-gray-300">Sectors</Link>
-        </nav>
-      </aside>
+    // Background (Light): Warm Cream #FDFBF7
+    <div className="flex min-h-screen bg-[#FDFBF7]">
+      {/* Client-side Sidebar for Mobile Responsiveness */}
+      <Sidebar />
 
-      {/* Main Content */}
-      <main className="flex-1 p-8">
-        {children}
+      {/* Main Content Area */}
+      <main className="flex-1 w-full md:ml-64 transition-all duration-300">
+        <div className="p-4 md:p-8 pt-20 md:pt-8 max-w-7xl mx-auto">
+          {children}
+        </div>
       </main>
     </div>
   );

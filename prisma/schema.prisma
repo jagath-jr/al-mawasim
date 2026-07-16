@@ -78,3 +78,96 @@ model Sector {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
+// Projects Table
+model ClientProject {
+  id        String   @id @default(uuid())
+  title     String
+  location  String
+  image     String
+  order     Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Contact Page & Footer Settings
+model ContactSettings {
+  id           String   @id @default("default") 
+  heroImage    String   @default("/contact/bg-contact.webp")
+  officeImage  String   @default("/contact/leftcontact.webp")
+  formTitle    String   @default("Need Curtains, Blinds & Flooring Solutions in Abu Dhabi?")
+  formText     String   @default("AL MAWASIM DECOR & CURTAINS provides custom curtains...")
+  address      String   @default("Al Mawasim Decor\nBusiness Bay, Dubai, UAE")
+  email        String   @default("info@almawasimdecor.com")
+  phone1       String   @default("+971 56 677 3793")
+  phone2       String   @default("+971 55 521 8804")
+  workingHours String   @default("Mon - Fri 08.00 - 18.00")
+  
+  // NEW: Footer & Social Media Fields
+  footerText   String   @default("AL MAWASIM DECOR & CURTAINS provides custom curtains, roller blinds, zebra blinds, vertical blinds, Venetian blinds, motorized curtains, SPC flooring, laminate flooring, wallpaper installation, and sofa upholstery services across Abu Dhabi, UAE.")
+  whatsapp     String   @default("https://wa.me/971566773793")
+  instagram    String   @default("https://www.instagram.com/almawasimdecore_curtains")
+  facebook     String   @default("https://www.facebook.com/share/1E6L4Dd9i8/")
+  tiktok       String   @default("https://www.tiktok.com/@almawasimdecore_curtains")
+  youtube      String   @default("https://youtube.com/@almawasimdecoreandcurtains-llc")
+  linkedin     String   @default("https://www.linkedin.com/in/almawasim-curtains-7737b5394")
+  xUrl         String   @default("https://x.com/almawasim7737")
+
+  updatedAt    DateTime @updatedAt
+}
+
+// Home Page Settings (Text & Main Images)
+model HomeSettings {
+  id               String   @id @default("default")
+  heroImage        String   @default("/herobg-img.webp")
+  heroTitle        String   @default("Premium Curtains & Blinds in Abu Dhabi")
+  heroSubtitle     String   @default("AL MAWASIM DECOR & CURTAINS provides custom curtains...")
+  aboutImage1      String   @default("/home/home-Our-Specialize-01.webp")
+  aboutImage2      String   @default("/home/home-Our-Specialize-02.webp")
+  aboutTitle       String   @default("Trusted Curtains & Interior Decor Company in Abu Dhabi")
+  aboutDescription String   @default("AL MAWASIM DECOR & CURTAINS specializes in premium...")
+  statsProjects    Int      @default(500)
+  statsSatisfaction Int     @default(100)
+  updatedAt        DateTime @updatedAt
+}
+
+// Scrolling Client Logos
+model ClientLogo {
+  id        String   @id @default(uuid())
+  name      String
+  image     String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
+// About Page Settings
+model AboutSettings {
+  id               String   @id @default("default")
+  
+  // Hero Section
+  heroImage        String   @default("/about-us/aboutus-bg-img.webp")
+  heroTitle        String   @default("About Us")
+  heroSubtitle     String   @default("Premium Curtains, Blinds & Interior Solutions Abu Dhabi")
+
+  // Section 1: Welcome & Grid
+  welcomeBadge     String   @default("Welcome")
+  welcomeTitle     String   @default("Professional Curtains, Flooring & Wallpaper Services in Abu Dhabi")
+  welcomeText      String   @default("Welcome to AL MAWASIM DECOR & CURTAINS LLC...")
+  gridImage1       String   @default("/about-us/aboutus-Welcome-img01.webp")
+  gridImage2       String   @default("/about-us/aboutus-Welcome-img02.webp")
+  statsProjects    Int      @default(500)
+  statsSatisfaction Int     @default(100)
+
+  // Section 2: Why Choose Us
+  reasonsBadge     String   @default("Top 6 Reasons")
+  reasonsTitle     String   @default("Why Choose Us")
+  reasonsText      String   @default("Whether you are looking for custom curtains, roller blinds...")
+
+  // Section 3: Services Process
+  servicesBadge    String   @default("Services Process")
+  servicesTitle    String   @default("Industries We Serve in Abu Dhabi")
+  servicesText     String   @default("AL MAWASIM DECOR & CURTAINS provides custom curtains...")
+  servicesImage    String   @default("/about-us/aboutl-us-services.png")
+
+  updatedAt        DateTime @updatedAt
+}

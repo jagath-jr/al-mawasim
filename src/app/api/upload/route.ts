@@ -1,44 +1,48 @@
-import { NextResponse } from "next/server";
-import { writeFile, mkdir } from "fs/promises";
-import { join } from "path";
-import { existsSync } from "fs";
+import { NextRequest, NextResponse } from "next/server";
+import { promises as fs } from "fs";
+import path from "path";
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
-    const data = await request.formData();
-    const file: File | null = data.get("file") as unknown as File;
+    const formData = await request.formData();
+    const file = formData.get("file") as File | null;
 
     if (!file) {
-      return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
+      return NextResponse.json({ error: "No file received." }, { status: 400 });
     }
 
-    // Convert the file to a Node.js Buffer
+    // 1. Convert the file into a Node.js Buffer
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    // Create a unique filename so we don't overwrite existing files
-    const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
-    // Clean the filename by replacing spaces with dashes
-    const filename = `${uniqueSuffix}-${file.name.replace(/\s+/g, '-')}`;
-
-    // Define where to save the file (public/uploads)
-    const uploadDir = join(process.cwd(), "public/uploads");
+    // 2. Clean up the filename to prevent URL issues (removes spaces and weird characters)
+    const originalName = file.name.replace(/[^a-zA-Z0-9.\-_]/g, "");
     
-    // Create the directory if it doesn't exist
-    if (!existsSync(uploadDir)) {
-      await mkdir(uploadDir, { recursive: true });
+    // 3. Create a highly unique filename so we never overwrite existing files
+    const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
+    const uniqueFilename = `${uniqueSuffix}-${originalName}`;
+
+    // 4. Define where the file will be saved (public/uploads)
+    const uploadDir = path.join(process.cwd(), "public", "uploads");
+    const filePath = path.join(uploadDir, uniqueFilename);
+
+    // 5. Ensure the "public/uploads" directory exists. If it doesn't, create it automatically.
+    try {
+      await fs.access(uploadDir);
+    } catch {
+      await fs.mkdir(uploadDir, { recursive: true });
     }
 
-    // Save the file to the disk
-    const filepath = join(uploadDir, filename);
-    await writeFile(filepath, buffer);
+    // 6. Save the physical file to the disk
+    await fs.writeFile(filePath, buffer);
 
-    // Return the URL that Next.js will use to display the image
-    const fileUrl = `/uploads/${filename}`;
+    // 7. Return the public URL so the Next.js frontend and Database can use it
+    const publicUrl = `/uploads/${uniqueFilename}`;
+
+    return NextResponse.json({ url: publicUrl, success: true });
     
-    return NextResponse.json({ url: fileUrl });
   } catch (error) {
     console.error("Upload error:", error);
-    return NextResponse.json({ error: "Upload failed" }, { status: 500 });
+    return NextResponse.json({ error: "Failed to upload file." }, { status: 500 });
   }
 }
