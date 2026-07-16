@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  // Notice the url line is gone!
+}
+
+// ========================================
+// 1. Admin Users Table
+// ========================================
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String   
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ========================================
+// 2.Gallery Table
+// ========================================
+model Project {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  imageUrl    String   
+  category    String   
+  isPublished Boolean  @default(true)
+  order       Int      @default(0) // NEW: Keeps track of arrangement
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// ========================================
+// 3. Services Table (UPGRADED)
+// ========================================
+model Service {
+  id              String    @id @default(uuid())
+  title           String    // e.g., "Curtains"
+  subtitle        String?   // e.g., "Elegant Curtain Solutions..."
+  description     String
+  image           String?   // URL for the main side image
+  layout          String    @default("textLeft") // textLeft, textLeftResponsive, imageLeft
+  subSectionTitle String?   // e.g., "Available Curtain Types"
+  isActive        Boolean   @default(true)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  // Relationship to SubCards
+  subCards        SubCard[]
+}
+
+// ========================================
+// 4. SubCards Table (NEW)
+// ========================================
+model SubCard {
+  id          String   @id @default(uuid())
+  title       String
+  desc        String
+  img         String   // URL for the card image
+  
+  // Connects this card to a specific Service
+  serviceId   String
+  service     Service  @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+}
+
+// Sectors Table
+model Sector {
+  id          String   @id @default(uuid())
+  title       String
+  subtitle    String
+  description String
+  image       String
+  order       Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
