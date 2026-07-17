@@ -142,8 +142,8 @@ export default function FooterClient({ settings }: { settings: any }) {
       <div ref={bottomBarRef} className="bg-[#111111] border-t border-white/5 py-6 px-6 lg:px-16 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400 gap-4">
         <p className="text-center md:text-left">© {new Date().getFullYear()} AL MAWASIM DECOR & CURTAINS. All Rights Reserved.</p>
         <div className="flex flex-wrap justify-center items-center gap-6 mt-2 md:mt-0">
-          <Link href="/terms" className="hover:text-[#C5A869] transition-colors whitespace-nowrap">Terms & Conditions</Link>
-          <Link href="/privacy" className="hover:text-[#C5A869] transition-colors whitespace-nowrap">Privacy Policy</Link>
+          {/* <Link href="/terms" className="hover:text-[#C5A869] transition-colors whitespace-nowrap">Terms & Conditions</Link>
+          <Link href="/privacy" className="hover:text-[#C5A869] transition-colors whitespace-nowrap">Privacy Policy</Link> */}
         </div>
       </div>
     </footer>
