@@ -46,7 +46,7 @@ export default async function AdminProjectsPage() {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 bg-[#FFFFFF] p-6 sm:p-8 rounded-2xl shadow-sm border border-[#9C7C3E]/20">
-          {projects.map((project, index) => (
+          {projects.map((project: any, index: number) => (
             <div key={project.id} className="group relative w-full h-[280px] overflow-hidden rounded-[1.25rem] border border-[#9C7C3E]/30 bg-[#FDFBF7] shadow-sm hover:shadow-md transition-shadow">
               <Image src={project.image} alt={project.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
               
