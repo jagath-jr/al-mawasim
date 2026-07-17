@@ -36,12 +36,15 @@ export async function POST(request: NextRequest) {
       url: result.secure_url,
     });
 
-  } catch (error) {
-    console.error(error);
+ } catch (error) {
+  console.error("Cloudinary Upload Error:", error);
 
-    return NextResponse.json(
-      { error: "Upload failed" },
-      { status: 500 }
-    );
-  }
+  return NextResponse.json(
+    {
+      success: false,
+      error: error instanceof Error ? error.message : String(error),
+    },
+    { status: 500 }
+  );
+}
 }
