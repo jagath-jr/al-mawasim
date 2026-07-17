@@ -49,7 +49,7 @@ export default async function AdminGalleryPage() {
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 bg-[#FFFFFF] p-6 sm:p-8 rounded-2xl shadow-sm border border-[#9C7C3E]/20">
-          {images.map((img, index) => (
+          {images.map((img: any, index: number) => (
             <div 
               key={img.id} 
               className="group relative w-full aspect-square overflow-hidden rounded-2xl border border-[#9C7C3E]/30 bg-[#FDFBF7] shadow-sm hover:shadow-md transition-shadow"
