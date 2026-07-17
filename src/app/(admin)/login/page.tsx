@@ -37,13 +37,13 @@ export default function LoginPage() {
 
       <div className="w-full max-w-md bg-[#FFFFFF] p-8 sm:p-10 rounded-3xl shadow-2xl border border-[#9C7C3E]/20 relative z-10">
         <div className="flex justify-center mb-8">
-          <div className="bg-[#1A1A1A] p-5 rounded-2xl shadow-inner border border-[#9C7C3E]/30">
+          <div className="bg-[#f9f1d1] p-5 rounded-2xl shadow-inner border border-[#9C7C3E]">
             <Image src="/AL MAWASIM LOGO (1).png" alt="Logo" width={160} height={45} className="object-contain" priority />
           </div>
         </div>
 
         <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold text-[#1A1A1A] tracking-wide">CMS Portal</h2>
+          <h2 className="text-2xl font-bold text-[#1A1A1A] tracking-wide">Admin Portal</h2>
           <p className="text-[#9C7C3E] text-sm mt-1.5 font-medium">Sign in to manage your digital presence</p>
         </div>
         
