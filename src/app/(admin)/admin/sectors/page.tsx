@@ -62,8 +62,8 @@ export default async function AdminSectorsPage() {
                   </td>
                 </tr>
               ) : (
-                sectors.map((sector, index) => (
-                  <tr key={sector.id} className="border-b border-[#9C7C3E]/10 hover:bg-[#FDFBF7] transition-colors">
+                  sectors.map((sector: any, index: number) => (
+                    <tr key={sector.id} className="border-b border-[#9C7C3E]/10 hover:bg-[#FDFBF7] transition-colors">
                     <td className="p-5">
                       <SectorOrderButtons id={sector.id} isFirst={index === 0} isLast={index === sectors.length - 1} />
                     </td>
