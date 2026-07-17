@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { getHomeSettings, updateHomeSettings, getClientLogos, addClientLogo, deleteClientLogo } from "@/actions/home";
 import Image from "next/image";
+import type { NextConfig } from "next";
 
 export default function AdminHomePage() {
   const [settings, setSettings] = useState<any>(null);
