@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import type { NextConfig } from "next";
 import Image from 'next/image';
 import { Mail, Phone, Calculator, Award, Wrench, Palette, Clock } from 'lucide-react';
 import gsap from 'gsap';
