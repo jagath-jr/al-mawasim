@@ -64,7 +64,7 @@ export default async function AdminServicesPage() {
                   </td>
                 </tr>
               ) : (
-                services.map((service) => (
+                services.map((service: any) => (
                   <tr key={service.id} className="border-b border-[#9C7C3E]/10 hover:bg-[#FDFBF7] transition-colors">
                     <td className="p-5">
                       {service.image ? (
