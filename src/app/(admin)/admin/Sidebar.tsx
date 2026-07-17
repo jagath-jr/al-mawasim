@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { logoutAction } from "@/actions/auth"; // IMPORT THE LOGOUT ACTION
 
 const navLinks = [
   { 
@@ -96,7 +97,7 @@ export default function Sidebar() {
             height={32} 
             className="object-contain"
           />
-          <span className="font-bold text-[#C5A869]">CMS Panel</span>
+          <span className="font-bold text-[#C5A869]">Admin Panel</span>
         </div>
         <button 
           onClick={() => setIsOpen(!isOpen)} 
@@ -112,55 +113,69 @@ export default function Sidebar() {
 
       {/* Sidebar (Fixed on Desktop, Off-canvas on Mobile) */}
       <aside className={`
-        fixed top-0 left-0 z-40 h-screen w-64 bg-[#1A1A1A] text-white transition-transform duration-300 ease-in-out
+        fixed top-0 left-0 z-40 h-screen w-64 bg-[#1A1A1A] text-white transition-transform duration-300 ease-in-out flex flex-col
         ${isOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full"}
         md:translate-x-0 md:shadow-none
       `}>
-        <div className="flex flex-col h-full">
-          {/* Logo Section */}
-          <div className="p-6 hidden md:flex flex-col items-center border-b border-[#9C7C3E]/30">
-            <div className="bg-[#f6f4e5] p-4 rounded-xl mb-4 border border-[#9C7C3E]/20">
-              <Image 
-                src="/AL MAWASIM LOGO (1).png" 
-                alt="Al Mawasim Logo" 
-                width={100} 
-                height={100} 
-                className="object-contain drop-shadow-md"
-              />
-            </div>
-            <h1 className="text-xl font-bold text-[#C5A869] tracking-wider uppercase text-center">
-              CMS Panel
-            </h1>
+        {/* Logo Section */}
+        <div className="p-6 hidden md:flex flex-col items-center border-b border-[#9C7C3E]/30 shrink-0">
+          <div className="bg-[#f6f4e5] p-4 rounded-xl mb-4 border border-[#9C7C3E]/20">
+            <Image 
+              src="/AL MAWASIM LOGO (1).png" 
+              alt="Al Mawasim Logo" 
+              width={100} 
+              height={100} 
+              className="object-contain drop-shadow-md"
+            />
           </div>
+          <h1 className="text-xl font-bold text-[#C5A869] tracking-wider uppercase text-center">
+            Admin Panel
+          </h1>
+        </div>
 
-          {/* Spacer for mobile topbar */}
-          <div className="md:hidden h-16 border-b border-[#9C7C3E]/30 bg-[#1A1A1A]"></div>
+        {/* Spacer for mobile topbar */}
+        <div className="md:hidden h-16 border-b border-[#9C7C3E]/30 bg-[#1A1A1A] shrink-0"></div>
 
-          {/* Navigation Links */}
-          <nav className="flex-1 overflow-y-auto py-6 px-4 space-y-2">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className={`
-                    flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200
-                    ${isActive 
-                      ? "bg-[#C5A869] text-[#1A1A1A] font-bold shadow-md" // Active state
-                      : "text-gray-300 hover:bg-[#9C7C3E]/20 hover:text-[#C5A869] hover:translate-x-1" // Inactive hover
-                    }
-                  `}
-                >
-                  <span className={`${isActive ? "text-[#1A1A1A]" : "text-[#C5A869]"}`}>
-                    {link.icon}
-                  </span>
-                  <span>{link.name}</span>
-                </Link>
-              );
-            })}
-          </nav>
+        {/* Navigation Links */}
+        <nav className="flex-1 overflow-y-auto py-6 px-4 space-y-2">
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className={`
+                  flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200
+                  ${isActive 
+                    ? "bg-[#C5A869] text-[#1A1A1A] font-bold shadow-md" // Active state
+                    : "text-gray-300 hover:bg-[#9C7C3E]/20 hover:text-[#C5A869] hover:translate-x-1" // Inactive hover
+                  }
+                `}
+              >
+                <span className={`${isActive ? "text-[#1A1A1A]" : "text-[#C5A869]"}`}>
+                  {link.icon}
+                </span>
+                <span>{link.name}</span>
+              </Link>
+            );
+          })}
+        </nav>
+
+        {/* Logout Button (Pinned to Bottom) */}
+        <div className="p-4 border-t border-[#9C7C3E]/30 shrink-0 mt-auto bg-[#1A1A1A]">
+          <button 
+            onClick={async () => {
+              setIsOpen(false);
+              await logoutAction();
+            }}
+            className="flex items-center gap-3 w-full px-4 py-3 rounded-lg text-gray-300 hover:bg-red-500/10 hover:text-red-400 hover:border-red-500/30 border border-transparent transition-all duration-200"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            </svg>
+            <span className="font-medium tracking-wide">Logout</span>
+          </button>
         </div>
       </aside>
 

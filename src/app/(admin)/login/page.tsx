@@ -1,65 +1,70 @@
 "use client";
 
-import { signIn } from "next-auth/react";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { loginAction } from "@/actions/auth"; // Import our server action
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
+    setIsLoading(true);
 
-    const res = await signIn("credentials", {
-      email,
-      password,
-      redirect: false,
-    });
+    try {
+      const formData = new FormData(e.currentTarget);
+      const result = await loginAction(formData);
 
-    if (res?.error) {
-      setError("Invalid email or password");
-    } else {
-      router.push("/admin"); // Redirect to dashboard on success
+      if (result?.error) {
+        setError(result.error);
+      }
+    } catch (err) {
+      setError("An unexpected error occurred.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Admin Login</h2>
-        
-        {error && <p className="text-red-500 text-sm text-center mb-4">{error}</p>}
+  const inputStyles = "mt-1.5 w-full px-4 py-3 border border-[#9C7C3E]/30 rounded-xl text-[#1A1A1A] bg-[#FDFBF7] outline-none focus:ring-2 focus:ring-[#C5A869]/50 focus:border-[#C5A869] transition-all placeholder-gray-400";
+  const labelStyles = "block text-sm font-bold text-[#1A1A1A]";
 
-        <form onSubmit={handleLogin} className="space-y-4">
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-[#FDFBF7] p-4 relative overflow-hidden">
+      <div className="absolute top-[-10%] right-[-5%] w-96 h-96 bg-[#C5A869]/15 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] left-[-5%] w-96 h-96 bg-[#9C7C3E]/10 rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="w-full max-w-md bg-[#FFFFFF] p-8 sm:p-10 rounded-3xl shadow-2xl border border-[#9C7C3E]/20 relative z-10">
+        <div className="flex justify-center mb-8">
+          <div className="bg-[#1A1A1A] p-5 rounded-2xl shadow-inner border border-[#9C7C3E]/30">
+            <Image src="/AL MAWASIM LOGO (1).png" alt="Logo" width={160} height={45} className="object-contain" priority />
+          </div>
+        </div>
+
+        <div className="text-center mb-8">
+          <h2 className="text-2xl font-bold text-[#1A1A1A] tracking-wide">CMS Portal</h2>
+          <p className="text-[#9C7C3E] text-sm mt-1.5 font-medium">Sign in to manage your digital presence</p>
+        </div>
+        
+        {error && (
+          <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm text-center mb-6 border border-red-100 flex items-center justify-center gap-2">
+            {error}
+          </div>
+        )}
+
+        <form onSubmit={handleLogin} className="space-y-5">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Email</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
-              required
-            />
+            <label className={labelStyles}>Username</label>
+            <input name="username" type="text" className={inputStyles} placeholder="admin" required disabled={isLoading} />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
-              required
-            />
+            <label className={labelStyles}>Password</label>
+            <input name="password" type="password" className={inputStyles} placeholder="••••••••" required disabled={isLoading} />
           </div>
-          <button
-            type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
-          >
-            Sign In
+          
+          <button type="submit" disabled={isLoading} className="w-full bg-[#1A1A1A] text-[#C5A869] py-3.5 rounded-xl hover:bg-[#C5A869] hover:text-[#1A1A1A] transition-all font-bold text-lg border border-[#9C7C3E]/30 mt-4 disabled:opacity-70 flex items-center justify-center gap-2">
+            {isLoading ? "Authenticating..." : "Sign In to Admin"}
           </button>
         </form>
       </div>

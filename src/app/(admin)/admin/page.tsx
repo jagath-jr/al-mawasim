@@ -1,11 +1,19 @@
 import Link from "next/link";
+import { prisma } from "@/lib/prisma";
 
-export default function AdminDashboard() {
+export default async function AdminDashboard() {
+  
+  // Fetching counts using the EXACT model names from your schema.prisma
+  const projectsCount = prisma.clientProject ? await prisma.clientProject.count() : 0;
+  const servicesCount = prisma.service ? await prisma.service.count({ where: { isActive: true } }) : 0;
+  const galleryCount = prisma.project ? await prisma.project.count() : 0; // Your schema names the Gallery table "Project"
+  const sectorsCount = prisma.sector ? await prisma.sector.count() : 0;
+
   const quickStats = [
-    { label: "Total Projects", value: "24", change: "+3 this month" },
-    { label: "Active Services", value: "8", change: "All operational" },
-    { label: "Gallery Media", value: "142", change: "+18 new images" },
-    { label: "Pending Inquiries", value: "5", change: "Needs attention" },
+    { label: "Total Projects", value: projectsCount.toString(), change: "Published in portfolio" },
+    { label: "Active Services", value: servicesCount.toString(), change: "Currently offered" },
+    { label: "Gallery Media", value: galleryCount.toString(), change: "Images in showcase" },
+    { label: "Total Sectors", value: sectorsCount.toString(), change: "Industries served" },
   ];
 
   return (
@@ -20,10 +28,9 @@ export default function AdminDashboard() {
             Welcome to the Admin Dashboard
           </h1>
           <p className="mt-2 text-sm sm:text-base text-gray-300 leading-relaxed">
-            Manage your corporate web presence, update project portfolios, and monitor client inquiries seamlessly from one location.
+            Manage your corporate web presence, update project portfolios, and monitor your digital content seamlessly from one location.
           </p>
         </div>
-        {/* Decorative background element */}
         <div className="absolute -right-10 -bottom-10 w-64 h-64 bg-[#C5A869]/10 rounded-full blur-3xl pointer-events-none" />
       </div>
 
@@ -50,6 +57,7 @@ export default function AdminDashboard() {
           Quick Shortcuts
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          
           <Link
             href="/admin/projects"
             className="group bg-[#FFFFFF] p-6 rounded-xl border border-[#9C7C3E]/20 shadow-sm hover:border-[#C5A869] hover:shadow-md transition-all flex flex-col justify-between"
@@ -95,26 +103,27 @@ export default function AdminDashboard() {
           </Link>
 
           <Link
-            href="/admin/contact"
+            href="/admin/sectors"
             className="group bg-[#FFFFFF] p-6 rounded-xl border border-[#9C7C3E]/20 shadow-sm hover:border-[#C5A869] hover:shadow-md transition-all flex flex-col justify-between"
           >
             <div>
               <div className="w-10 h-10 rounded-lg bg-[#FDFBF7] border border-[#9C7C3E]/30 flex items-center justify-center text-[#9C7C3E] group-hover:bg-[#C5A869] group-hover:text-[#1A1A1A] transition-colors mb-4">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
               </div>
               <h3 className="font-bold text-[#1A1A1A] group-hover:text-[#9C7C3E] transition-colors">
-                View Inquiries
+                Manage Sectors
               </h3>
               <p className="text-sm text-gray-600 mt-1">
-                Check client messages, quote requests, and consultation submissions.
+                Update the industries you serve and showcase relevant expertise.
               </p>
             </div>
             <span className="mt-4 text-xs font-semibold text-[#9C7C3E] group-hover:underline flex items-center gap-1">
-              Check Messages &rarr;
+              Edit Sectors &rarr;
             </span>
           </Link>
+
         </div>
       </div>
     </div>

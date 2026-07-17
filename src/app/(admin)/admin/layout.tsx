@@ -1,10 +1,11 @@
-import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 import Sidebar from "./Sidebar";
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
-  // Check if the user is logged in
-  const session = await getServerSession();
+  // Check if the user is logged in using our custom secure cookie
+  const cookieStore = await cookies();
+  const session = cookieStore.get("admin_session");
 
   if (!session) {
     redirect("/login");
