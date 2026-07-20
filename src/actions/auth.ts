@@ -26,7 +26,7 @@ export async function loginAction(formData: FormData) {
     });
     
     // 4. Redirect to the admin dashboard
-    redirect("/admin/home");
+    redirect("/admin");
   } else {
     // If login fails, return an error state
     return { error: "Invalid username or password" };
