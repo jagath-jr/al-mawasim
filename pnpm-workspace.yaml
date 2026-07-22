@@ -1,4 +1,6 @@
-ignoredBuiltDependencies:
-  - '@prisma/engines'
-  - bcrypt
+onlyBuiltDependencies:
+  - "@prisma/client"
+  - "@prisma/engines"
   - prisma
+  - bcrypt
+  - sharp

@@ -1,18 +1,57 @@
-version: '3.8'
-
 services:
   postgres:
     image: postgres:15-alpine
     container_name: almawasim-postgres
-    restart: always
+    restart: unless-stopped
+
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: password123
       POSTGRES_DB: almawasim_db
+
     ports:
       - "5432:5432"
+
     volumes:
       - almawasim_pgdata:/var/lib/postgresql/data
 
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d almawasim_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+    networks:
+      - almawasim-network
+
+  website:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: almawasim-web
+    restart: unless-stopped
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+    env_file:
+      - .env
+
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://admin:password123@postgres:5432/almawasim_db
+
+    ports:
+      - "3000:3000"
+
+    networks:
+      - almawasim-network
+
 volumes:
   almawasim_pgdata:
+
+networks:
+  almawasim-network:
+    driver: bridge
