@@ -26,14 +26,22 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
+# Create uploads directory with proper permissions
+RUN mkdir -p public/uploads
+
 # Copy package files
 COPY package*.json ./
 
 # Install production dependencies (don't run lifecycle scripts)
 RUN npm ci --omit=dev --ignore-scripts
 
-# Copy the application from the builder
-COPY --from=builder /app ./
+# Copy only necessary files from builder (avoid overwriting node_modules)
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
+COPY --from=builder /app/prisma ./prisma
+COPY --from=builder /app/package.json ./
+COPY --from=builder /app/next.config.* ./
 
 EXPOSE 3000
 

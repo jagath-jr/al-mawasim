@@ -46,11 +46,15 @@ services:
     ports:
       - "3000:3000"
 
+    volumes:
+      - almawasim_uploads:/app/public/uploads  # Persist uploaded images
+
     networks:
       - almawasim-network
 
 volumes:
   almawasim_pgdata:
+  almawasim_uploads:  # Named volume for image uploads
 
 networks:
   almawasim-network:
