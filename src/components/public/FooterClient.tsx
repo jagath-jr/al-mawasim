@@ -59,7 +59,7 @@ export default function FooterClient({ settings }: { settings: any }) {
         <h2 className="text-[#1A1A1A] text-2xl sm:text-3xl font-medium tracking-wide text-center md:text-left">
           Get a Free Quote for Curtains, Blinds & Flooring Services in Abu Dhabi
         </h2>
-        <Link href="/schedule" className="w-full md:w-auto text-center bg-[#1A1A1A] text-[#C5A869] px-8 py-3.5 rounded-md font-medium hover:bg-[#2A2A2A] transition-colors shadow-md">
+        <Link href="/contact" className="w-full md:w-auto text-center bg-[#1A1A1A] text-[#C5A869] px-8 py-3.5 rounded-md font-medium hover:bg-[#2A2A2A] transition-colors shadow-md">
           Call Us Now
         </Link>
       </div>
