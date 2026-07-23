@@ -18,10 +18,11 @@ async function deleteImageFile(imageUrl: string | null) {
 
 // --- 1. HOME SETTINGS ACTIONS ---
 export async function getHomeSettings() {
-  let settings = await prisma.homeSettings.findUnique({ where: { id: "default" } });
-  if (!settings) {
-    settings = await prisma.homeSettings.create({ data: { id: "default" } });
-  }
+  const settings = await prisma.homeSettings.upsert({
+    where: { id: "default" },
+    update: {},
+    create: { id: "default" },
+  });
   return settings;
 }
 

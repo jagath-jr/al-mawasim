@@ -222,10 +222,11 @@ async function deleteImageFile(imageUrl: string | null) {
 }
 
 export async function getContactSettings() {
-  let settings = await prisma.contactSettings.findUnique({ where: { id: "default" } });
-  if (!settings) {
-    settings = await prisma.contactSettings.create({ data: { id: "default" } });
-  }
+  const settings = await prisma.contactSettings.upsert({
+    where: { id: "default" },
+    update: {},
+    create: { id: "default" },
+  });
   return settings;
 }
 
