@@ -289,7 +289,7 @@ export default function HomeClient({ homeSettings, contactSettings, logos, servi
             </div>
           </div>
         ) : (
-          <p className="text-center text-gray-400 text-sm">No partner logos uploaded yet.</p>
+          <p className="text-center text-gray-400 text-sm"></p>
         )}
       </section>
 
