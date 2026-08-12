@@ -91,6 +91,7 @@ export default function NavbarClient({ settings }: { settings: any }) {
     { name: 'Gallery', href: '/gallery' },
     { name: 'Projects', href: '/projects' },
     { name: 'Sectors', href: '/sectors' },
+     { name: 'Catalog', href: '/catalog' },
     { name: 'Contact', href: '/contact' },
   ];
 

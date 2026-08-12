@@ -35,6 +35,7 @@ model Service {
   layout          String    @default("textLeft")
   subSectionTitle String?
   isActive        Boolean   @default(true)
+  order           Int       @default(0)
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
   subCards        SubCard[]
@@ -136,4 +137,14 @@ model AboutSettings {
   servicesText      String   @default("AL MAWASIM DECOR & CURTAINS provides custom curtains...")
   servicesImage     String   @default("/about-us/aboutl-us-services.png")
   updatedAt         DateTime @updatedAt
+}
+model Catalog {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  pdfUrl      String   // This will store the Google Drive file link
+  thumbnail   String?  // Optional: an image for the catalog cover
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
