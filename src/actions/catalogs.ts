@@ -64,11 +64,58 @@ export async function createCatalog(data: {
   thumbnail: string;
   isActive: boolean;
 }) {
-  await prisma.catalog.create({ data });
+  const catalogCount = await prisma.catalog.count();
+  if (catalogCount >= 6) {
+    throw new Error("Maximum limit of 6 catalogs reached. Please delete an existing catalog first.");
+  }
+
+  // Find the highest current order number so we can put the new one at the bottom
+  const lastCatalog = await prisma.catalog.findFirst({
+    orderBy: { order: 'desc' }
+  });
+  const nextOrder = lastCatalog ? lastCatalog.order + 1 : 0;
+
+  await prisma.catalog.create({ 
+    data: { ...data, order: nextOrder } 
+  });
+  
   revalidatePath("/catalog");
   revalidatePath("/admin/catalog");
 }
 
+
+// ADD THIS NEW FUNCTION TO THE BOTTOM OF THE FILE:
+export async function moveCatalog(id: string, direction: 'up' | 'down') {
+  // 1. Get all catalogs ordered by current order
+  const catalogs = await prisma.catalog.findMany({ orderBy: { order: 'asc' } });
+  
+  // 2. Ensure they have sequential order numbers (fixes existing items that all have 0)
+  const currentOrder = catalogs.map((c, index) => ({ ...c, order: index }));
+
+  // 3. Find the item we want to move
+  const currentIndex = currentOrder.findIndex(c => c.id === id);
+  if (currentIndex === -1) return;
+
+  // 4. Find the item we are swapping with
+  const swapIndex = direction === 'up' ? currentIndex - 1 : currentIndex + 1;
+  if (swapIndex < 0 || swapIndex >= currentOrder.length) return;
+
+  // 5. Swap the order numbers
+  const tempOrder = currentOrder[currentIndex].order;
+  currentOrder[currentIndex].order = currentOrder[swapIndex].order;
+  currentOrder[swapIndex].order = tempOrder;
+
+  // 6. Save the new orders to the database in a single transaction
+  await prisma.$transaction(
+    currentOrder.map(c => prisma.catalog.update({
+      where: { id: c.id },
+      data: { order: c.order }
+    }))
+  );
+
+  revalidatePath("/catalog");
+  revalidatePath("/admin/catalog");
+}
 // -----------------------------------------
 // 2. UPDATE CATALOG
 // -----------------------------------------

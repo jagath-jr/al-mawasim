@@ -99,7 +99,7 @@ export default function EditCatalogPage({ params }: { params: Promise<{ id: stri
         <div className="p-6 border-2 border-dashed border-[#9C7C3E]/30 rounded-xl bg-[#FDFBF7]">
           <label className={labelStyles}>Replace PDF (Leave blank to keep current)</label>
           <input type="file" accept="application/pdf" onChange={(e) => setPdfFile(e.target.files?.[0] || null)} className={fileInputStyles} />
-          <p className="text-xs mt-2 text-gray-500">Current PDF: <a href={catalog.pdfUrl} target="_blank" className="text-blue-500 underline">View File</a></p>
+          <p className="text-xs mt-2 text-gray-500">Current PDF: <a href={catalog.pdfUrl} className="text-blue-500 underline">View File</a></p>
         </div>
 
         <div className="p-6 border-2 border-dashed border-[#9C7C3E]/30 rounded-xl bg-[#FDFBF7]">

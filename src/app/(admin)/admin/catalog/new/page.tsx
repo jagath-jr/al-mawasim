@@ -48,15 +48,20 @@ export default function NewCatalogPage() {
       await createCatalog({
         title: formData.get("title") as string,
         description: formData.get("description") as string,
-        pdfUrl: driveJson.url,
+        pdfUrl: driveJson.url, 
         thumbnail: imageUrl,
         isActive: formData.get("isActive") === "on",
       });
       
       router.push("/admin/catalog");
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      alert("Failed to save catalog.");
+      // Show the specific limit error message, or a general failure message
+      if (error.message && error.message.includes("limit")) {
+        alert(error.message);
+      } else {
+        alert("Failed to save catalog.");
+      }
     } finally {
       setIsSubmitting(false);
     }

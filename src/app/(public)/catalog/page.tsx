@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 export default async function CatalogPage() {
   const catalogs = await prisma.catalog.findMany({
     where: { isActive: true },
-    orderBy: { createdAt: "desc" },
+    orderBy: { order: 'asc' },
   });
 
   return (
