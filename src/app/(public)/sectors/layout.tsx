@@ -1,35 +1,44 @@
 import type { Metadata } from "next";
 
+const siteUrl = "https://almawasim.ae";
+
 export const metadata: Metadata = {
-  title: "Industries We Serve",
+  title: "Commercial Interior Solutions & Office Blinds Abu Dhabi",
   description:
-    "Discover the industries Al Mawasim Decor & Curtains serves in Abu Dhabi, including residential, commercial, hospitality, office spaces, retail outlets, and healthcare facilities with premium interior solutions.",
+    "B2B commercial interior solutions for offices, hotels, and retail in Abu Dhabi. Specializing in office curtains, office blinds, and commercial flooring.",
   keywords: [
-    "Al Mawasim sectors",
-    "industries served Abu Dhabi",
-    "residential curtains Abu Dhabi",
-    "commercial blinds Abu Dhabi",
-    "hospitality interior solutions",
-    "office curtains Abu Dhabi",
-    "retail flooring Abu Dhabi",
-    "healthcare blinds",
-    "hotel curtains Abu Dhabi",
-    "villa interior decoration",
-    "restaurant blinds Abu Dhabi",
-    "corporate interior solutions",
+    "commercial interior solutions abu dhabi",
+    "office curtains abu dhabi",
+    "office blinds abu dhabi",
+    "meeting room curtains abu dhabi",
+    "hospitality interior solutions uae",
   ],
+  alternates: {
+    canonical: `${siteUrl}/sectors`,
+  },
   openGraph: {
-    title: "Industries We Serve | Al Mawasim Decor & Curtains",
+    title: "Commercial Interior Solutions & Office Blinds Abu Dhabi",
     description:
-      "Discover the industries Al Mawasim Decor & Curtains serves in Abu Dhabi, including residential, commercial, hospitality, office spaces, retail outlets, and healthcare facilities with premium interior solutions.",
+      "B2B commercial interior solutions for offices, hotels, and retail in Abu Dhabi. Specializing in office curtains, office blinds, and commercial flooring.",
+    url: `${siteUrl}/sectors`,
+    siteName: "Al Mawasim Decor & Curtains",
+    locale: "en_AE",
+    type: "website",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Al Mawasim Industries We Serve",
+        alt: "Commercial Interior Solutions Abu Dhabi",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Commercial Interior Solutions & Office Blinds Abu Dhabi",
+    description:
+      "B2B commercial interior solutions for offices, hotels, and retail in Abu Dhabi.",
+    images: ["/og-image.jpg"],
   },
 };
 

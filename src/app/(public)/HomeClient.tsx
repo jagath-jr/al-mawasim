@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Mail, Phone, Calculator, Award, Wrench, Palette, Clock } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { sendQuoteEmail } from '@/actions/contact'; // IMPORT THE NEW ACTION
+import { sendQuoteEmail } from '@/actions/contact';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -140,18 +140,23 @@ export default function HomeClient({ homeSettings, contactSettings, logos, servi
 
   return (
     <div className="w-full flex flex-col font-sans">
-      
+
       {/* 1. HERO SECTION */}
       <section ref={heroSectionRef} className="relative w-full min-h-[85vh] flex items-center justify-center overflow-hidden bg-[#111111]">
         <div ref={heroBgRef} className="absolute -top-[15%] left-0 w-full h-[130%] bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url('${homeSettings.heroImage}')` }}></div>
         <div className="absolute inset-0 bg-[#00000079] mix-blend-multiply" style={{ backdropFilter: 'blur(var(--blur-amount, 2px))' }}></div>
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-center pt-24 pb-16">
           <div ref={heroTextRef} className="text-[#FDFBF7] space-y-6">
-            <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold leading-tight drop-shadow-lg tracking-tight whitespace-pre-line">{homeSettings.heroTitle}</h1>
-            <p className="text-lg md:text-l text-gray-200 max-w-lg drop-shadow-md leading-relaxed whitespace-pre-line">{homeSettings.heroSubtitle}</p>
+            {/* SEO OPTIMIZATION: Dynamic H1 from CMS, with SEO-friendly fallback */}
+            <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold leading-tight drop-shadow-lg tracking-tight whitespace-pre-line">
+              {homeSettings.heroTitle || "Premium Curtains & Blinds in Abu Dhabi"}
+            </h1>
+            <p className="text-lg md:text-xl text-gray-200 max-w-lg drop-shadow-md leading-relaxed whitespace-pre-line">
+              {homeSettings.heroSubtitle}
+            </p>
           </div>
           <div ref={heroFormRef} id="quote" className="bg-[#FDFBF7]/95 backdrop-blur-sm p-8 md:p-10 rounded-xl shadow-2xl max-w-md ml-auto w-full scroll-mt-24">
-            <h3 className="text-xl font-bold text-[#1A1A1A] mb-6">Request a Quote</h3>
+            <h3 className="text-xl font-bold text-[#1A1A1A] mb-6">Request a Free Quote</h3>
             <form onSubmit={handleQuoteSubmit} className="space-y-4">
               <input type="text" name="name" required placeholder="Name" className="w-full px-4 py-3 rounded-md bg-white border border-[#EAE1D0] text-[#1A1A1A] focus:ring-2 focus:ring-[#C5A869] outline-none transition-shadow" />
               <input type="email" name="email" required placeholder="Email" className="w-full px-4 py-3 rounded-md bg-white border border-[#EAE1D0] text-[#1A1A1A] focus:ring-2 focus:ring-[#C5A869] outline-none transition-shadow" />
@@ -163,9 +168,9 @@ export default function HomeClient({ homeSettings, contactSettings, logos, servi
                 <option value="Upholstery" className="text-[#1A1A1A]">Upholstery</option>
                 <option value="Wall Finishing" className="text-[#1A1A1A]">Wall Finishing</option>
               </select>
-              
+
               <button type="submit" disabled={isSubmittingQuote} className="w-full bg-[#C5A869] hover:bg-[#9C7C3E] text-[#1A1A1A] hover:text-[#FDFBF7] font-medium py-3.5 rounded-md transition-colors mt-2 shadow-md disabled:opacity-50">
-                {isSubmittingQuote ? "Sending Request..." : "Send Request"}
+                {isSubmittingQuote ? "Sending Request..." : "Get Local Estimate"}
               </button>
 
               {/* Status Messages */}
@@ -177,19 +182,20 @@ export default function HomeClient({ homeSettings, contactSettings, logos, servi
         </div>
       </section>
 
-      {/* 2. SERVICES SECTION (Pulls Dynamically from Services CMS) */}
+      {/* 2. SERVICES SECTION */}
       <section ref={servicesSectionRef} className="bg-[#F5F0E6] py-24 px-6 lg:px-12 w-full">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service: any, idx: number) => (
             <div key={service.id} ref={(el) => { servicesCardsRef.current[idx] = el; }} className="bg-[#FDFBF7] rounded-xl overflow-hidden shadow-lg flex flex-col group border border-[#EAE1D0]">
               <div className="h-56 relative overflow-hidden bg-gray-200">
-                <div className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style={{ backgroundImage: `url(${service.image})` }}></div>
+                <div className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style={{ backgroundImage: `url(${service.image})` }} aria-label={service.title} role="img"></div>
               </div>
               <div className="p-8 flex flex-col flex-grow bg-[#FDFBF7]">
                 <h3 className="text-[#1A1A1A] text-xl font-bold mb-4">{service.title}</h3>
                 <p className="text-gray-600 text-sm mb-8 flex-grow leading-relaxed line-clamp-3">{service.description}</p>
+                {/* SEO OPTIMIZATION: Descriptive Anchor Text */}
                 <a href={`/services#${service.title.replace(/\s+/g, '-').toLowerCase()}`} className="w-full text-center block py-3 bg-[#C5A869] hover:bg-[#9C7C3E] text-[#1A1A1A] hover:text-white font-medium rounded-md text-sm transition-colors shadow-sm">
-                  Read more
+                  Explore {service.title} Services
                 </a>
               </div>
             </div>
@@ -202,7 +208,8 @@ export default function HomeClient({ homeSettings, contactSettings, logos, servi
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:gap-6">
             <div className="flex flex-col gap-4 sm:gap-6 lg:gap-6">
-              <div ref={(el) => { masonryBoxesRef.current[0] = el; }} className="h-48 sm:h-64 md:h-80 rounded-xl overflow-hidden bg-gray-200 bg-cover bg-center shadow-md" style={{ backgroundImage: `url('${homeSettings.aboutImage1}')` }} />
+              {/* SEO OPTIMIZATION: Added aria-labels for background images to provide context */}
+              <div ref={(el) => { masonryBoxesRef.current[0] = el; }} className="h-48 sm:h-64 md:h-80 rounded-xl overflow-hidden bg-gray-200 bg-cover bg-center shadow-md" style={{ backgroundImage: `url('${homeSettings.aboutImage1}')` }} role="img" aria-label="Interior Decoration Projects Abu Dhabi" />
               <div ref={(el) => { masonryBoxesRef.current[1] = el; }} className="bg-[#1A1A1A] h-32 sm:h-40 md:h-44 rounded-xl flex flex-col justify-center items-center text-[#C5A869] shadow-lg p-2 sm:p-4 text-center border border-white/5">
                 <h3 className="text-4xl sm:text-5xl font-bold flex items-center tracking-tight mb-1 sm:mb-2"><span ref={projectsRef}>0</span>+</h3>
                 <p className="text-xs sm:text-sm text-[#C5A869]/80 font-medium">Projects Completed</p>
@@ -213,7 +220,7 @@ export default function HomeClient({ homeSettings, contactSettings, logos, servi
                 <h3 className="text-4xl sm:text-6xl font-bold text-[#1A1A1A] flex items-baseline tracking-tight mb-1 sm:mb-2"><span ref={satisfactionRef}>0</span><span className="text-2xl sm:text-4xl ml-1">%</span></h3>
                 <p className="text-xs sm:text-sm text-[#1A1A1A]/80 font-medium">Customer Satisfaction</p>
               </div>
-              <div ref={(el) => { masonryBoxesRef.current[3] = el; }} className="h-48 sm:h-64 md:h-80 rounded-xl overflow-hidden bg-gray-200 bg-cover bg-center shadow-md" style={{ backgroundImage: `url('${homeSettings.aboutImage2}')` }} />
+              <div ref={(el) => { masonryBoxesRef.current[3] = el; }} className="h-48 sm:h-64 md:h-80 rounded-xl overflow-hidden bg-gray-200 bg-cover bg-center shadow-md" style={{ backgroundImage: `url('${homeSettings.aboutImage2}')` }} role="img" aria-label="Premium Curtains & Blinds Installation" />
             </div>
           </div>
           <div ref={aboutRightTextRef} className="lg:pl-8">
@@ -224,13 +231,13 @@ export default function HomeClient({ homeSettings, contactSettings, logos, servi
         </div>
       </section>
 
-      {/* CONTACT BANNER (Pulls from Contact Settings) */}
+      {/* CONTACT BANNER */}
       <section className="bg-[#F5F0E6] py-12 sm:py-16 px-6 lg:px-12 contact-banner-trigger overflow-hidden">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
           <div ref={(el) => { bannerCardsRef.current[0] = el; }} className="bg-[#1A1A1A] text-white p-6 sm:p-8 rounded-xl flex items-center gap-5 shadow-lg">
             <Mail className="text-[#C5A869]" size={40} strokeWidth={1.5} />
             <div>
-              <p className="text-sm text-gray-400 mb-1">Email Us</p>
+              <p className="text-sm text-gray-400 mb-1">Email Our Local Office</p>
               <p className="font-semibold text-sm lg:text-base text-gray-100">{contactSettings.email}</p>
             </div>
           </div>
@@ -245,8 +252,8 @@ export default function HomeClient({ homeSettings, contactSettings, logos, servi
           <div ref={(el) => { bannerCardsRef.current[2] = el; }} onClick={() => document.getElementById("quote")?.scrollIntoView({behavior:"smooth"})} className="bg-[#1A1A1A] text-white p-6 sm:p-8 rounded-xl flex items-center gap-5 shadow-lg cursor-pointer hover:bg-[#2A2A2A] transition-colors">
             <Calculator className="text-[#C5A869]" size={40} strokeWidth={1.5} />
             <div>
-              <p className="text-sm text-gray-400 mb-1">Request For</p>
-              <p className="font-semibold text-sm lg:text-base text-white">Free Estimation</p>
+              <p className="text-sm text-gray-400 mb-1">Request Quote</p>
+              <p className="font-semibold text-sm lg:text-base text-white">Free Abu Dhabi Estimation</p>
             </div>
           </div>
         </div>
@@ -255,7 +262,10 @@ export default function HomeClient({ homeSettings, contactSettings, logos, servi
       {/* 4. WHY CHOOSE US SECTION */}
       <section ref={whyChooseSectionRef} className="py-24 px-6 lg:px-12 bg-[#FDFBF7] overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          <h2 ref={whyChooseHeadingRef} className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A1A1A] text-center mb-16 sm:mb-20 tracking-tight">Why Choose Al Mawasim Decor</h2>
+          {/* SEO OPTIMIZATION: Updated H2 to capture local transactional intent */}
+          <h2 ref={whyChooseHeadingRef} className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A1A1A] text-center mb-16 sm:mb-20 tracking-tight">
+            Why Choose Our Curtain & Blinds Shop in Abu Dhabi
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-8 lg:gap-10">
             {features.map((feature, idx) => (
               <div key={idx} ref={(el) => { whyChooseCardsRef.current[idx] = el; }} className="flex flex-col items-start text-left group">
@@ -268,7 +278,7 @@ export default function HomeClient({ homeSettings, contactSettings, logos, servi
         </div>
       </section>
 
-      {/* 5. LOGO SLIDER SECTION (Pulls Dynamically) */}
+      {/* 5. LOGO SLIDER SECTION */}
       <section className="bg-[#FDFBF7] py-12 border-t border-[#EAE1D0] overflow-hidden">
         <style dangerouslySetInnerHTML={{__html: `@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } } .animate-scroll { animation: scroll 25s linear infinite; }`}} />
         {logos.length > 0 ? (
@@ -276,21 +286,19 @@ export default function HomeClient({ homeSettings, contactSettings, logos, servi
             <div className="flex animate-scroll group-hover:[animation-play-state:paused] w-max">
               {[...logos, ...logos, ...logos].map((client: any, idx: number) => (
                 <div key={idx} className="w-[120px] sm:w-[150px] mx-8 sm:mx-12 flex justify-center items-center transition-transform duration-300 hover:scale-105 relative h-16">
-                  <Image src={client.image} alt={client.name} fill className="object-contain" sizes="(max-width: 768px) 120px, 150px" />
+                  <Image src={client.image} alt={`${client.name} - Partner of Al Mawasim`} fill className="object-contain" sizes="(max-width: 768px) 120px, 150px" />
                 </div>
               ))}
             </div>
             <div className="flex animate-scroll group-hover:[animation-play-state:paused] w-max" aria-hidden="true">
               {[...logos, ...logos, ...logos].map((client: any, idx: number) => (
                 <div key={idx} className="w-[120px] sm:w-[150px] mx-8 sm:mx-12 flex justify-center items-center transition-transform duration-300 hover:scale-105 relative h-16">
-                  <Image src={client.image} alt={client.name} fill className="object-contain" sizes="(max-width: 768px) 120px, 150px" />
+                  <Image src={client.image} alt={`${client.name} - Partner of Al Mawasim`} fill className="object-contain" sizes="(max-width: 768px) 120px, 150px" />
                 </div>
               ))}
             </div>
           </div>
-        ) : (
-          <p className="text-center text-gray-400 text-sm"></p>
-        )}
+        ) : null}
       </section>
 
     </div>
