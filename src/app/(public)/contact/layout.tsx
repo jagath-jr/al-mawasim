@@ -1,21 +1,27 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Curtain & Blinds Shop in Abu Dhabi | Contact Al Mawasim",
   description:
-    "Get in touch with Al Mawasim Decor & Curtains LLC for premium curtains, blinds, flooring, wallpaper, and interior solutions in Abu Dhabi. Request a quote today.",
+    "Visit or contact Al Mawasim Decor & Curtains. Serving Abu Dhabi, Mohammed Bin Zayed City, and Mussafah. Free window measurements, quote requests, and fast installation.",
   keywords: [
-    "contact Al Mawasim",
-    "curtains Abu Dhabi contact",
-    "interior design Abu Dhabi",
-    "request quote curtains",
-    "curtain installation Abu Dhabi",
-    "blinds Abu Dhabi contact",
+    "curtain shop abu dhabi",
+    "curtains near me",
+    "curtain shop near me",
+    "best curtain shop near me",
+    "curtain shop mussafah",
+    "curtains Mohammed Bin Zayed City",
+    "blinds near me",
   ],
+  alternates: {
+    canonical: "/contact",
+  },
   openGraph: {
-    title: "Contact Us | Al Mawasim Decor & Curtains",
+    title: "Curtain & Blinds Shop in Abu Dhabi | Al Mawasim Contact",
     description:
-      "Get in touch with Al Mawasim Decor & Curtains LLC for premium curtains, blinds, flooring, wallpaper, and interior solutions in Abu Dhabi. Request a quote today.",
+      "Contact Al Mawasim Decor for custom curtains, blinds, and flooring in Abu Dhabi. Call or WhatsApp +971 56 677 3793 for free measurements.",
+    url: "https://almawasim.ae/contact",
+    images: ["/og-image.jpg"],
   },
 };
 

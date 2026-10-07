@@ -1,31 +1,44 @@
 import type { Metadata } from "next";
 
+const siteUrl = "https://almawasim.ae";
+
 export const metadata: Metadata = {
-  title: "Our Projects",
+  title: "Interior Decoration & Curtain Projects Abu Dhabi | Al Mawasim",
   description:
-    "Explore Al Mawasim Decor & Curtains' portfolio of completed residential, commercial, and hospitality projects in Abu Dhabi featuring premium curtains, blinds, flooring, and interior solutions.",
+    "Explore our portfolio of interior decoration projects in Abu Dhabi. See our completed villa curtains, motorized curtains, and flooring installations.",
   keywords: [
-    "Al Mawasim projects",
-    "curtain projects Abu Dhabi",
-    "interior design portfolio",
-    "flooring projects Abu Dhabi",
-    "wallpaper installation projects",
-    "blinds installation projects",
-    "commercial curtains Abu Dhabi",
-    "residential interior projects",
+    "interior decoration projects abu dhabi",
+    "villa curtains abu dhabi",
+    "motorized curtains abu dhabi",
+    "curtain projects abu dhabi",
+    "flooring projects abu dhabi",
   ],
+  alternates: {
+    canonical: `${siteUrl}/projects`,
+  },
   openGraph: {
-    title: "Our Projects | Al Mawasim Decor & Curtains",
+    title: "Interior Decoration & Curtain Projects Abu Dhabi | Al Mawasim",
     description:
-      "Explore Al Mawasim Decor & Curtains' portfolio of completed residential, commercial, and hospitality projects in Abu Dhabi featuring premium curtains, blinds, flooring, and interior solutions.",
+      "Explore our portfolio of interior decoration projects in Abu Dhabi. See our completed villa curtains, motorized curtains, and flooring installations.",
+    url: `${siteUrl}/projects`,
+    siteName: "Al Mawasim Decor & Curtains",
+    locale: "en_AE",
+    type: "website",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Al Mawasim Projects Portfolio",
+        alt: "Al Mawasim Interior Decoration Projects Portfolio",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Interior Decoration & Curtain Projects Abu Dhabi | Al Mawasim",
+    description:
+      "Explore our portfolio of completed villa curtains, motorized curtains, and flooring installations in Abu Dhabi.",
+    images: ["/og-image.jpg"],
   },
 };
 

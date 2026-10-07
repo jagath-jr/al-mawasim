@@ -1,32 +1,32 @@
 import type { Metadata } from "next";
 
-// Define your canonical URL base (Change this to your actual domain)
-const siteUrl = "https://www.almawasimdecor.com";
+// Changed to the official domain specified in the SEO strategy
+const siteUrl = "https://almawasim.ae";
 
 export const metadata: Metadata = {
-  // Enhanced Title: Includes primary keyword + location
-  title: "Premium Curtains, Blinds & Interior Services in Abu Dhabi",
+  // Enhanced Title: Protects core commercial targets and overall service intent
+  title: "Interior Decoration & Curtain Services Abu Dhabi | Al Mawasim",
   description:
-    "Professional interior solutions by Al Mawasim Decor. Explore custom curtains, motorized blinds, SPC flooring, wallpaper installation, and upholstery in Abu Dhabi.",
+    "Expert custom curtain design, blinds fitting, wallpaper fixing, SPC flooring, and sofa upholstery services across residential and commercial Abu Dhabi.",
   keywords: [
-    "Al Mawasim services",
-    "custom curtains Abu Dhabi",
-    "motorized curtains Abu Dhabi",
-    "roller blinds Abu Dhabi",
-    "zebra blinds",
-    "SPC flooring installation",
-    "laminate flooring Abu Dhabi",
-    "wallpaper installation Abu Dhabi",
-    "furniture upholstery Abu Dhabi",
-    "interior decoration UAE",
+    "interior decoration services abu dhabi",
+    "custom curtains abu dhabi",
+    "curtain installation abu dhabi",
+    "wallpaper abu dhabi",
+    "wallpaper installation abu dhabi",
+    "roller blinds abu dhabi",
+    "blinds installation abu dhabi",
+    "sofa upholstery abu dhabi",
+    "SPC flooring abu dhabi",
+    "bedroom curtains abu dhabi",
   ],
   alternates: {
     canonical: `${siteUrl}/services`,
   },
   openGraph: {
-    title: "Premium Curtains & Interior Services | Al Mawasim Decor",
+    title: "Interior Decoration & Curtain Services Abu Dhabi",
     description:
-      "Transform your space with Abu Dhabi's trusted interior experts. Custom curtains, flooring, wallpaper, and upholstery services.",
+      "Expert custom curtain design, blinds fitting, wallpaper fixing, SPC flooring, and sofa upholstery services across Abu Dhabi.",
     url: `${siteUrl}/services`,
     siteName: "Al Mawasim Decor & Curtains",
     locale: "en_AE", // Localized for UAE
@@ -36,14 +36,14 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Al Mawasim Services - Curtains, Blinds & Flooring Abu Dhabi",
+        alt: "Interior Decoration & Curtain Services Abu Dhabi",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Premium Curtains & Interior Services | Al Mawasim Decor",
-    description: "Transform your space with Abu Dhabi's trusted interior experts.",
+    title: "Interior Decoration & Curtain Services Abu Dhabi",
+    description: "Expert custom curtain design, blinds fitting, wallpaper fixing, and interior solutions.",
     images: ["/og-image.jpg"],
   },
 };
@@ -54,6 +54,7 @@ export default function ServicesLayout({
   children: React.ReactNode;
 }) {
   // Schema Markup (JSON-LD) for Local Services
+  // Expanded to hit specific high-priority transactional intents
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -63,8 +64,8 @@ export default function ServicesLayout({
         "position": 1,
         "item": {
           "@type": "Service",
-          "name": "Custom Curtains & Blinds",
-          "description": "Elegant curtain solutions, motorized systems, and premium blinds for residential and commercial spaces in Abu Dhabi.",
+          "name": "Custom Curtains & Installation Abu Dhabi",
+          "description": "Expert custom curtain design, measurement, and fitting for villas, bedrooms, and offices in Abu Dhabi.",
           "provider": {
             "@type": "LocalBusiness",
             "name": "Al Mawasim Decor & Curtains"
@@ -76,8 +77,8 @@ export default function ServicesLayout({
         "position": 2,
         "item": {
           "@type": "Service",
-          "name": "Furniture & Upholstery",
-          "description": "Premium sofa upholstery and custom furniture solutions in Abu Dhabi.",
+          "name": "Wallpaper Supply & Installation Abu Dhabi",
+          "description": "Premium wallpaper fixing and installation services for residential and commercial spaces.",
           "provider": {
             "@type": "LocalBusiness",
             "name": "Al Mawasim Decor & Curtains"
@@ -89,8 +90,21 @@ export default function ServicesLayout({
         "position": 3,
         "item": {
           "@type": "Service",
-          "name": "Flooring Solutions",
-          "description": "Durable SPC, LVT, and laminate flooring installation services.",
+          "name": "Window Blinds Fitting Abu Dhabi",
+          "description": "Roller blinds, zebra blinds, vertical blinds, and Venetian blinds installation near you.",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Al Mawasim Decor & Curtains"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "Service",
+          "name": "Flooring & Sofa Upholstery Abu Dhabi",
+          "description": "SPC flooring installation, carpets, and professional sofa upholstery services.",
           "provider": {
             "@type": "LocalBusiness",
             "name": "Al Mawasim Decor & Curtains"
