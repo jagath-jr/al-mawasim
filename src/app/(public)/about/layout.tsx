@@ -1,22 +1,27 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us | Interior Decoration Company in Abu Dhabi",
+  title: {
+    absolute: "About Al Mawasim | Interior Decoration Company in Abu Dhabi",
+  },
   description:
-    "Learn about Al Mawasim Decor LLC, a premier interior decoration company in Abu Dhabi specializing in custom curtains, blinds, flooring, and interior solutions.",
+    "Learn about Al Mawasim Decor LLC, a premier interior decoration company in Abu Dhabi providing custom curtains, blinds, and luxury interior solutions across MBZ City & UAE.",
   keywords: [
-    "interior decoration company abu dhabi",
-    "interior decor company abu dhabi",
-    "interior solutions abu dhabi",
+    "interior decoration company abu dhabi", // Core target from plan[cite: 1, 2]
+    "interior decor company abu dhabi",     // Core target from plan[cite: 1]
+    "interior solutions abu dhabi",         // Core target from plan[cite: 1]
+    "شركة ديكور أبوظبي",                    // Target Arabic company term
     "about al mawasim decor",
+    "curtain company abu dhabi",
+    "villa interior decoration abu dhabi",
   ],
   alternates: {
     canonical: "https://almawasim.ae/about",
   },
   openGraph: {
-    title: "About Us | Interior Decoration Company in Abu Dhabi",
+    title: "About Al Mawasim | Interior Decoration Company in Abu Dhabi",
     description:
-      "Learn about Al Mawasim Decor LLC, a premier interior decoration company in Abu Dhabi specializing in custom curtains, blinds, flooring, and interior solutions.",
+      "Premier interior decoration company in Abu Dhabi specializing in custom curtains, blinds, flooring, and bespoke interior solutions.",
     url: "https://almawasim.ae/about",
     siteName: "Al Mawasim Decor & Curtains",
     locale: "en_AE",
@@ -32,9 +37,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Us | Interior Decoration Company in Abu Dhabi",
+    title: "About Al Mawasim | Interior Decoration Company in Abu Dhabi",
     description:
-      "Premier interior decoration company in Abu Dhabi specializing in custom curtains, blinds, flooring, and interior solutions.",
+      "Premier interior decoration company in Abu Dhabi specializing in custom curtains, blinds, flooring, and bespoke interior solutions.",
     images: ["/og-image.jpg"],
   },
 };

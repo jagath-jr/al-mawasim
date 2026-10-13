@@ -8,18 +8,22 @@ export const metadata: Metadata = {
     template: "%s | Al Mawasim Abu Dhabi",
   },
   description:
-    "Leading curtain and blinds shop in Abu Dhabi. Custom curtains, roller blinds, zebra blinds, motorized curtains, SPC flooring, wallpaper, and upholstery across Mohammed Bin Zayed City, Mussafah & Abu Dhabi.",
+    "Custom curtains, motorized blinds, SPC flooring, and wallpaper across Abu Dhabi, MBZ City, Khalifa City & Mussafah. Free on-site consultation.",
   keywords: [
     "curtains abu dhabi",
     "blinds abu dhabi",
     "curtain shop abu dhabi",
-    "curtains near me",
     "custom curtains abu dhabi",
     "roller blinds abu dhabi",
+    "motorized curtains abu dhabi",
     "wallpaper abu dhabi",
-    "interior decoration company abu dhabi",
-    "curtain shop mussafah",
+    "spc flooring abu dhabi",
     "curtains Mohammed Bin Zayed City",
+    "curtains MBZ City",
+    "curtains Khalifa City",
+    "curtains Shakhbout City",
+    "curtains Madinat Al Riyad",
+    "curtain shop mussafah",
   ],
   authors: [{ name: "Al Mawasim Decor & Curtains LLC" }],
   creator: "Al Mawasim Decor & Curtains LLC",
@@ -35,9 +39,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     type: "website",
     locale: "en_AE",
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
     siteName: "Al Mawasim Decor & Curtains",
     title: "Al Mawasim | Curtains, Blinds & Interior Solutions Abu Dhabi",
     description:
-      "Custom curtains, motorized curtains, luxury blinds, wallpaper, and flooring solutions in Abu Dhabi, UAE.",
+      "Custom curtains, motorized blinds, luxury wallpaper, and SPC flooring solutions across Abu Dhabi and surrounding communities.",
     images: [
       {
         url: "/og-image.jpg",
@@ -59,26 +60,47 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Al Mawasim | Curtains, Blinds & Interior Solutions Abu Dhabi",
     description:
-      "Custom curtains, motorized curtains, luxury blinds, wallpaper, and flooring solutions in Abu Dhabi, UAE.",
+      "Custom curtains, motorized blinds, luxury wallpaper, and SPC flooring solutions across Abu Dhabi and surrounding communities.",
     images: ["/og-image.jpg"],
   },
 };
+
+const serviceAreas = [
+  "Abu Dhabi",
+  "Mohamed Bin Zayed City (MBZ City)",
+  "Khalifa City",
+  "Shakhbout City",
+  "Madinat Al Riyad",
+  "Al Shamkha",
+  "Al Shawamekh",
+  "Baniyas",
+  "Al Falah",
+  "Al Wathba",
+  "Al Bahia",
+  "Al Rahba",
+  "Al Bateen",
+  "Al Mushrif",
+  "Al Nahyan",
+  "Mussafah",
+];
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "HomeGoodsStore",
   name: "Al Mawasim Decor & Curtains LLC",
+  alternateName: ["Al Mawasim", "المواسم للستائر والديكور"],
   image: "https://almawasim.ae/og-image.jpg",
   "@id": "https://almawasim.ae/#store",
   url: "https://almawasim.ae/",
   telephone: "+971566773793",
   priceRange: "$$",
+  currenciesAccepted: "AED",
+  paymentAccepted: "Cash, Credit Card, Bank Transfer",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Mohammed Bin Zayed City / Mussafah",
     addressLocality: "Abu Dhabi",
     addressRegion: "Abu Dhabi",
-    postalCode: "00000",
     addressCountry: "AE",
   },
   geo: {
@@ -88,22 +110,24 @@ const jsonLd = {
   },
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",
-    dayOfWeek: [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ],
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     opens: "08:00",
     closes: "21:00",
   },
+  sameAs: [
+    "https://www.instagram.com/almawasimdecore_curtains",
+    "https://www.facebook.com/share/1E6L4Dd9i8/",
+    "https://www.tiktok.com/@almawasimdecore_curtains",
+    "https://youtube.com/@almawasimdecoreandcurtains-llc",
+    "https://www.linkedin.com/in/almawasim-curtains-7737b5394",
+    "https://x.com/almawasim7737",
+  ],
   areaServed: [
     { "@type": "City", name: "Abu Dhabi" },
-    { "@type": "AdministrativeArea", name: "Mohammed Bin Zayed City" },
-    { "@type": "AdministrativeArea", name: "Mussafah" },
-    { "@type": "Country", name: "United Arab Emirates" },
+    ...serviceAreas.slice(1).map((area) => ({
+      "@type": "AdministrativeArea",
+      name: area,
+    })),
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
@@ -117,21 +141,28 @@ const jsonLd = {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Window Blinds Installation Abu Dhabi",
+          name: "Motorized Curtains & Blinds Abu Dhabi",
         },
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Wallpaper Installation Abu Dhabi",
+          name: "Roller & Zebra Blinds Installation Abu Dhabi",
         },
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "SPC Flooring Installation Abu Dhabi",
+          name: "SPC & Laminate Flooring Abu Dhabi",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Wallpaper Fixing & Supply Abu Dhabi",
         },
       },
     ],
