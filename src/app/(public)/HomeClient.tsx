@@ -71,10 +71,12 @@ export default function HomeClient({ homeSettings, contactSettings, logos, servi
       gsap.fromTo(servicesCardsRef.current, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: 'power3.out', scrollTrigger: { trigger: servicesSectionRef.current, start: 'top 75%', toggleActions: 'play none none none' }});
     }
 
-    // --- ABOUT & STATS ANIMATIONS ---
+// --- ABOUT & STATS ANIMATIONS ---
     if (aboutSectionRef.current) {
-      if (satisfactionRef.current) satisfactionRef.current.innerText = '0';
-      if (projectsRef.current) projectsRef.current.innerText = '0';
+      // NOTE: Do NOT reset counters to '0' here on mount.
+      // The initial JSX renders the real values (1000+, 100%) for SEO
+      // and no-JS users. Reset happens inside the ScrollTrigger onEnter.
+
       scrollTriggers.current.forEach(st => st.kill());
       scrollTriggers.current = [];
 
@@ -91,18 +93,23 @@ export default function HomeClient({ homeSettings, contactSettings, logos, servi
       scrollTriggers.current.push(st2);
 
       const st3 = ScrollTrigger.create({ trigger: aboutSectionRef.current, start: 'top 75%', onEnter: () => {
+        // ✅ Reset to 0 ONLY when the animation is about to start.
+        // This prevents the "1000 -> 0 flash" on page load.
+        if (satisfactionRef.current) satisfactionRef.current.innerText = '0';
+        if (projectsRef.current) projectsRef.current.innerText = '0';
+
         const counterTarget = { sat: 0, proj: 0 };
         gsap.to(counterTarget, {
-          sat: homeSettings.statsSatisfaction,
-          proj: homeSettings.statsProjects,
+          sat: homeSettings.statsSatisfaction || 0,
+          proj: homeSettings.statsProjects || 0,
           duration: 2, ease: 'power2.out',
           onUpdate: () => {
             if (satisfactionRef.current) satisfactionRef.current.innerText = Math.floor(counterTarget.sat).toString();
             if (projectsRef.current) projectsRef.current.innerText = Math.floor(counterTarget.proj).toString();
           },
           onComplete: () => {
-            if (satisfactionRef.current) satisfactionRef.current.innerText = homeSettings.statsSatisfaction.toString();
-            if (projectsRef.current) projectsRef.current.innerText = homeSettings.statsProjects.toString();
+            if (satisfactionRef.current) satisfactionRef.current.innerText = (homeSettings.statsSatisfaction || 0).toString();
+            if (projectsRef.current) projectsRef.current.innerText = (homeSettings.statsProjects || 0).toString();
           }
         });
       }, once: true });
@@ -211,14 +218,19 @@ export default function HomeClient({ homeSettings, contactSettings, logos, servi
               {/* SEO OPTIMIZATION: Added aria-labels for background images to provide context */}
               <div ref={(el) => { masonryBoxesRef.current[0] = el; }} className="h-48 sm:h-64 md:h-80 rounded-xl overflow-hidden bg-gray-200 bg-cover bg-center shadow-md" style={{ backgroundImage: `url('${homeSettings.aboutImage1}')` }} role="img" aria-label="Interior Decoration Projects Abu Dhabi" />
               <div ref={(el) => { masonryBoxesRef.current[1] = el; }} className="bg-[#1A1A1A] h-32 sm:h-40 md:h-44 rounded-xl flex flex-col justify-center items-center text-[#C5A869] shadow-lg p-2 sm:p-4 text-center border border-white/5">
-                <h3 className="text-4xl sm:text-5xl font-bold flex items-center tracking-tight mb-1 sm:mb-2"><span ref={projectsRef}>0</span>+</h3>
-                <p className="text-xs sm:text-sm text-[#C5A869]/80 font-medium">Projects Completed</p>
+                <h3 className="text-4xl sm:text-5xl font-bold flex items-center tracking-tight mb-1 sm:mb-2">
+                <span ref={projectsRef}>{homeSettings.statsProjects || 0}</span>+
+                </h3>
+               <p className="text-xs sm:text-sm text-[#C5A869]/80 font-medium">Projects Completed</p>
               </div>
             </div>
             <div className="flex flex-col gap-4 sm:gap-6 lg:gap-6">
               <div ref={(el) => { masonryBoxesRef.current[2] = el; }} className="bg-[#C5A869] h-32 sm:h-40 md:h-44 rounded-xl flex flex-col justify-center items-center shadow-sm p-2 sm:p-4 text-center">
-                <h3 className="text-4xl sm:text-6xl font-bold text-[#1A1A1A] flex items-baseline tracking-tight mb-1 sm:mb-2"><span ref={satisfactionRef}>0</span><span className="text-2xl sm:text-4xl ml-1">%</span></h3>
-                <p className="text-xs sm:text-sm text-[#1A1A1A]/80 font-medium">Customer Satisfaction</p>
+                <h3 className="text-4xl sm:text-6xl font-bold text-[#1A1A1A] flex items-baseline tracking-tight mb-1 sm:mb-2">
+               <span ref={satisfactionRef}>{homeSettings.statsSatisfaction || 0}</span>
+                     <span className="text-2xl sm:text-4xl ml-1">%</span>
+                 </h3>
+                    <p className="text-xs sm:text-sm text-[#1A1A1A]/80 font-medium">Customer Satisfaction</p>
               </div>
               <div ref={(el) => { masonryBoxesRef.current[3] = el; }} className="h-48 sm:h-64 md:h-80 rounded-xl overflow-hidden bg-gray-200 bg-cover bg-center shadow-md" style={{ backgroundImage: `url('${homeSettings.aboutImage2}')` }} role="img" aria-label="Premium Curtains & Blinds Installation" />
             </div>
