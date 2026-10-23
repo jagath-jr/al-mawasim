@@ -47,18 +47,16 @@ export default async function CatalogPage() {
                 <h3 className="text-xl font-bold text-[#1A1A1A] mb-2">{catalog.title}</h3>
                 <p className="text-gray-600 text-sm mb-6 line-clamp-3">{catalog.description}</p>
                 
-                <Link 
-                  href={catalog.pdfUrl} 
-                  className="inline-flex w-full justify-center items-center gap-2 bg-[#1A1A1A] text-[#C5A869] py-3 rounded-xl hover:bg-[#C5A869] hover:text-[#1A1A1A] transition-colors font-bold"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                  </svg>
-                  View PDF Catalog
-                </Link>
+               <Link 
+  href={catalog.pdfUrl} 
+  className="inline-flex w-full justify-center items-center gap-2 bg-[#1A1A1A] text-[#C5A869] py-3 rounded-xl hover:bg-[#C5A869] hover:text-[#1A1A1A] transition-colors font-bold"
+>
+  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+  </svg>
+  View PDF Catalog
+</Link>
               </div>
             </div>
           ))}

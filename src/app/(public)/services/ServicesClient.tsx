@@ -1,9 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import { Palette } from "lucide-react";
-import { motion, Variants } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 // ========================================
 // 1. DATA TYPES (Matching Prisma Schema)
@@ -40,39 +45,115 @@ interface ServicesClientProps {
 }
 
 // ========================================
-// 2. ANIMATION VARIANTS
-// ========================================
-
-const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-};
-
-const staggerContainer: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 },
-  },
-};
-
-const slideInLeft: Variants = {
-  hidden: { opacity: 0, x: -40 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" } },
-};
-
-const slideInRight: Variants = {
-  hidden: { opacity: 0, x: 40 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" } },
-};
-
-// ========================================
-// 3. CLIENT COMPONENT
+// 2. CLIENT COMPONENT
 // ========================================
 
 export default function ServicesClient({ heroData, servicesData }: ServicesClientProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const ctx = gsap.context(() => {
+      // --- HERO ANIMATIONS (on load, not scroll) ---
+      gsap.fromTo(
+        "[data-hero-item]",
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: "power3.out",
+          delay: 0.2,
+        }
+      );
+
+      // Decorative palette icon
+      gsap.fromTo(
+        "[data-hero-icon]",
+        { opacity: 0, scale: 0 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.6,
+          ease: "back.out(2)",
+          delay: 0.6,
+        }
+      );
+
+      // --- SCROLL-TRIGGERED ANIMATIONS ---
+      // Every element with data-animate will fade up when scrolled into view
+      gsap.utils.toArray<HTMLElement>("[data-animate]").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+              once: true,
+            },
+          }
+        );
+      });
+
+      // Directional animations (slide in from left/right)
+      gsap.utils.toArray<HTMLElement>("[data-animate-left]").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, x: -40 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.7,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+              once: true,
+            },
+          }
+        );
+      });
+
+      gsap.utils.toArray<HTMLElement>("[data-animate-right]").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { opacity: 0, x: 40 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.7,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+              once: true,
+            },
+          }
+        );
+      });
+    }, containerRef);
+
+    // Refresh ScrollTrigger after images load / layout settles
+    const timeout = setTimeout(() => ScrollTrigger.refresh(), 200);
+
+    return () => {
+      clearTimeout(timeout);
+      ctx.revert();
+    };
+  }, []);
+
   return (
-    <main className="relative min-h-screen bg-[#fdfbf74e] overflow-x-hidden">
+    <main
+      ref={containerRef}
+      className="relative min-h-screen bg-[#fdfbf74e] overflow-x-hidden"
+    >
       {/* BACKGROUND IMAGE */}
       <div className="fixed top-0 left-0 w-full h-screen -z-10 bg-[linear-gradient(90deg,rgba(26,26,26,0.85)_0%,rgba(255,255,255,0)_100%)]">
         <Image
@@ -87,52 +168,45 @@ export default function ServicesClient({ heroData, servicesData }: ServicesClien
 
       {/* HERO SECTION */}
       <section className="relative w-full h-[300px] md:h-[400px] flex items-center pt-10">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          animate="visible"
-          className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col md:flex-row justify-between items-start md:items-center"
-        >
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col md:flex-row justify-between items-start md:items-center">
           <div className="space-y-4">
-            <motion.span
-              variants={fadeInUp}
+            <span
+              data-hero-item
               className="inline-block bg-[#C5A869]/80 backdrop-blur-sm text-[#1A1A1A] px-5 py-1.5 rounded-full text-sm font-semibold"
             >
               {heroData.tagline}
-            </motion.span>
-            <motion.h1
-              variants={fadeInUp}
+            </span>
+            <h1
+              data-hero-item
               className="text-4xl md:text-5xl lg:text-7xl font-semibold text-white tracking-wide"
             >
               {heroData.title}
-            </motion.h1>
+            </h1>
           </div>
 
-          <motion.div
-            variants={fadeInUp}
+          <div
+            data-hero-item
             className="mt-6 md:mt-0 text-white md:text-right max-w-md lg:max-w-lg"
           >
             <p className="text-lg md:text-xl font-medium leading-snug drop-shadow-md text-gray-200">
               {heroData.description}
             </p>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </section>
 
       {/* MAIN CONTENT */}
       <div className="relative z-20 bg-[#FDFBF7] rounded-t-[2.5rem] shadow-[0_-10px_40px_rgba(0,0,0,0.05)] pb-32">
-        
         {/* Decorative Top Overlap Icon */}
-        <motion.div
-          initial={{ scale: 0, x: "-50%", y: "-50%" }}
-          animate={{ scale: 1, x: "-50%", y: "-50%" }}
-          transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.5 }}
+        <div
+          data-hero-icon
           className="absolute top-0 left-1/2 z-30 origin-center"
+          style={{ transform: "translate(-50%, -50%)" }}
         >
           <div className="bg-[#C5A869] p-4 rounded-full border-[6px] border-[#FDFBF7] shadow-sm flex items-center justify-center">
             <Palette className="w-6 h-6 text-[#1A1A1A]" strokeWidth={2} />
           </div>
-        </motion.div>
+        </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 space-y-24">
           {servicesData.map((section) => {
@@ -140,33 +214,32 @@ export default function ServicesClient({ heroData, servicesData }: ServicesClien
             const isResponsiveTextLeft = section.layout === "textLeftResponsive";
             const isImageLeft = section.layout === "imageLeft";
 
+            // Text block with directional animation
             const textContent = (
-              <motion.div
-                variants={isImageLeft ? slideInRight : slideInLeft}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
+              <div
+                data-animate-left={!isImageLeft ? "" : undefined}
+                data-animate-right={isImageLeft ? "" : undefined}
+                data-animate={undefined}
                 className={isResponsiveTextLeft ? "order-2 lg:order-1" : undefined}
               >
                 <h2 className="text-3xl font-bold text-[#9C7C3E] mb-2">
                   {section.title}
                 </h2>
-                {/* whitespace-pre-line respects paragraph breaks from the database */}
                 <h3 className="text-lg font-semibold text-[#1A1A1A] mb-4 whitespace-pre-line">
                   {section.subtitle}
                 </h3>
                 <p className="text-slate-600 text-sm leading-relaxed whitespace-pre-line">
                   {section.description}
                 </p>
-              </motion.div>
+              </div>
             );
 
+            // Image block with directional animation (opposite of text)
             const imageContent = section.image && (
-              <motion.div
-                variants={isImageLeft ? slideInLeft : slideInRight}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
+              <div
+                data-animate-right={!isImageLeft ? "" : undefined}
+                data-animate-left={isImageLeft ? "" : undefined}
+                data-animate={undefined}
                 className={`relative h-[250px] lg:h-[300px] w-full rounded-2xl overflow-hidden shadow-sm ${
                   isResponsiveTextLeft ? "order-1 lg:order-2" : ""
                 }`}
@@ -178,14 +251,18 @@ export default function ServicesClient({ heroData, servicesData }: ServicesClien
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
                 />
-              </motion.div>
+              </div>
             );
 
             return (
               <section
                 key={section.id}
                 id={section.id}
-                className={!hasSubCards ? "grid grid-cols-1 lg:grid-cols-2 gap-10 items-center" : ""}
+                className={
+                  !hasSubCards
+                    ? "grid grid-cols-1 lg:grid-cols-2 gap-10 items-center"
+                    : ""
+                }
                 style={{ scrollMarginTop: "150px" }}
               >
                 {/* Main Row Layer */}
@@ -219,31 +296,26 @@ export default function ServicesClient({ heroData, servicesData }: ServicesClien
                 {hasSubCards && (
                   <div className="pt-8">
                     {section.subSectionTitle && (
-                      <motion.h4
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
+                      <h4
+                        data-animate
                         className="text-2xl font-semibold text-[#9C7C3E] text-center mb-10"
                       >
                         {section.subSectionTitle}
-                      </motion.h4>
+                      </h4>
                     )}
 
-                    <motion.div
-                      variants={staggerContainer}
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true }}
+                    <div
                       className={`grid grid-cols-1 sm:grid-cols-2 ${
-                        section.subCards.length === 2 || section.subCards.length === 4
+                        section.subCards.length === 2 ||
+                        section.subCards.length === 4
                           ? "lg:grid-cols-2 max-w-4xl mx-auto"
                           : "lg:grid-cols-3"
                       } gap-6 mb-6`}
                     >
                       {section.subCards.map((card) => (
-                        <motion.div
+                        <div
                           key={card.id}
-                          variants={fadeInUp}
+                          data-animate
                           className="border border-[#EAE1D0] rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow group"
                         >
                           <div className="relative h-48 w-full overflow-hidden">
@@ -263,9 +335,9 @@ export default function ServicesClient({ heroData, servicesData }: ServicesClien
                               {card.desc}
                             </p>
                           </div>
-                        </motion.div>
+                        </div>
                       ))}
-                    </motion.div>
+                    </div>
                   </div>
                 )}
               </section>
