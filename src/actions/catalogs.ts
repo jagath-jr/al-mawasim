@@ -2,19 +2,15 @@
 
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
+import { deleteUploadedFile } from "@/lib/uploads";
 import { google } from "googleapis";
-import fs from "fs/promises";
-import path from "path";
 
 // --- HELPER: Delete local thumbnail image ---
 async function deleteLocalFile(fileUrl: string | null) {
-  if (!fileUrl || !fileUrl.startsWith("/uploads/")) return;
   try {
-    const filePath = path.join(process.cwd(), "public", fileUrl);
-    await fs.unlink(filePath);
-    console.log(`Deleted local file: ${fileUrl}`);
+    await deleteUploadedFile(fileUrl);
   } catch (error) {
-    console.error(`Failed to delete local file ${fileUrl}:`, error);
+    console.error("Failed to delete uploaded file:", error);
   }
 }
 

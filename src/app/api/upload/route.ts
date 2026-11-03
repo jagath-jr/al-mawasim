@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { promises as fs } from "fs";
 import path from "path";
+import { UPLOAD_DIR } from "@/lib/uploads";
 
 export async function POST(request: NextRequest) {
   try {
@@ -23,7 +24,7 @@ export async function POST(request: NextRequest) {
     const uniqueFilename = `${uniqueSuffix}-${originalName}`;
 
     // 4. Define where the file will be saved (public/uploads)
-    const uploadDir = path.join(process.cwd(), "public", "uploads");
+    const uploadDir = UPLOAD_DIR;
     const filePath = path.join(uploadDir, uniqueFilename);
 
     // 5. Ensure the "public/uploads" directory exists. If it doesn't, create it automatically.

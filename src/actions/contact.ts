@@ -2,8 +2,8 @@
 
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
+import { deleteUploadedFile } from "@/lib/uploads";
 import nodemailer from "nodemailer";
-import fs from "fs/promises";
 import path from "path";
 import { headers } from "next/headers";
 
@@ -212,12 +212,10 @@ export async function sendQuoteEmail(formData: FormData) {
 // 3. ADMIN SETTINGS ACTIONS
 // ============================================================================
 async function deleteImageFile(imageUrl: string | null) {
-  if (!imageUrl || !imageUrl.startsWith("/uploads/")) return;
   try {
-    const filePath = path.join(process.cwd(), "public", imageUrl);
-    await fs.unlink(filePath);
+    await deleteUploadedFile(imageUrl);
   } catch (error) {
-    console.error(`Failed to delete image:`, error);
+    console.error("Failed to delete uploaded file:", error);
   }
 }
 
