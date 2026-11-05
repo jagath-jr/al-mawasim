@@ -51,48 +51,53 @@ interface ServicesClientProps {
 export default function ServicesClient({ heroData, servicesData }: ServicesClientProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
 
-    const ctx = gsap.context(() => {
-      // --- HERO ANIMATIONS (on load, not scroll) ---
-      gsap.fromTo(
-        "[data-hero-item]",
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: "power3.out",
-          delay: 0.2,
-        }
-      );
+useEffect(() => {
+  const ctx = gsap.context(() => {
+    // Hero content: animate movement only.
+    // Do not set opacity to 0.
+    gsap.fromTo(
+      "[data-hero-item]",
+      { y: 20 },
+      {
+        y: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power3.out",
+        delay: 0.2,
+        clearProps: "transform",
+      }
+    );
 
-      // Decorative palette icon
-      gsap.fromTo(
-        "[data-hero-icon]",
-        { opacity: 0, scale: 0 },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 0.6,
-          ease: "back.out(2)",
-          delay: 0.6,
-        }
-      );
+    // Hero decorative icon
+    gsap.fromTo(
+      "[data-hero-icon]",
+      { scale: 0.85 },
+      {
+        scale: 1,
+        duration: 0.6,
+        ease: "back.out(2)",
+        delay: 0.4,
+        clearProps: "transform",
+      }
+    );
 
-      // --- SCROLL-TRIGGERED ANIMATIONS ---
-      // Every element with data-animate will fade up when scrolled into view
-      gsap.utils.toArray<HTMLElement>("[data-animate]").forEach((el) => {
+    // Scroll animations: movement only, never hide content.
+    const animateElements = (
+      selector: string,
+      x: number,
+      y: number
+    ) => {
+      gsap.utils.toArray<HTMLElement>(selector).forEach((el) => {
         gsap.fromTo(
           el,
-          { opacity: 0, y: 30 },
+          { x, y },
           {
-            opacity: 1,
+            x: 0,
             y: 0,
             duration: 0.7,
             ease: "power3.out",
+            clearProps: "transform",
             scrollTrigger: {
               trigger: el,
               start: "top 85%",
@@ -101,56 +106,28 @@ export default function ServicesClient({ heroData, servicesData }: ServicesClien
           }
         );
       });
-
-      // Directional animations (slide in from left/right)
-      gsap.utils.toArray<HTMLElement>("[data-animate-left]").forEach((el) => {
-        gsap.fromTo(
-          el,
-          { opacity: 0, x: -40 },
-          {
-            opacity: 1,
-            x: 0,
-            duration: 0.7,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 85%",
-              once: true,
-            },
-          }
-        );
-      });
-
-      gsap.utils.toArray<HTMLElement>("[data-animate-right]").forEach((el) => {
-        gsap.fromTo(
-          el,
-          { opacity: 0, x: 40 },
-          {
-            opacity: 1,
-            x: 0,
-            duration: 0.7,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 85%",
-              once: true,
-            },
-          }
-        );
-      });
-    }, containerRef);
-
-    // Refresh ScrollTrigger after images load / layout settles
-    const timeout = setTimeout(() => ScrollTrigger.refresh(), 200);
-
-    return () => {
-      clearTimeout(timeout);
-      ctx.revert();
     };
-  }, []);
+
+    animateElements("[data-animate]", 0, 20);
+    animateElements("[data-animate-left]", -20, 0);
+    animateElements("[data-animate-right]", 20, 0);
+  }, containerRef);
+
+  const refresh = () => ScrollTrigger.refresh();
+
+  window.addEventListener("load", refresh);
+
+  const timeout = window.setTimeout(refresh, 500);
+
+  return () => {
+    window.removeEventListener("load", refresh);
+    window.clearTimeout(timeout);
+    ctx.revert();
+  };
+}, []);
 
   return (
-    <main
+    <div
       ref={containerRef}
       className="relative min-h-screen bg-[#fdfbf74e] overflow-x-hidden"
     >
@@ -345,6 +322,6 @@ export default function ServicesClient({ heroData, servicesData }: ServicesClien
           })}
         </div>
       </div>
-    </main>
+    </div>
   );
 }
